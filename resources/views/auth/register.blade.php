@@ -48,36 +48,66 @@
                 
                 <form action="{{ url('/register') }}" method="POST" name="register_form" class="form-input-flat">
                      {{ csrf_field() }}
+
+                     <div class="row row-space-14">
+                        <div class="col-md-6 m-b-15{{ $errors->has('username') ? ' has-error' : '' }}">
+                            <input type="text" class="form-control input-lg" placeholder="Username" name="username" value="{{ old('username') }}"/>
+                            @if ($errors->has('username'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('username') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                        <div class="col-md-6 m-b-15{{ $errors->has('username') ? ' has-error' : '' }}">
+                            <input type="text" class="form-control input-lg" placeholder="Cell Number" name="cellphone" value="{{ old('cellphone') }}"/>
+                            @if ($errors->has('cellphone'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('cellphone') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+
                     <div class="row row-space-14">
                         <div class="col-md-6 m-b-15{{ $errors->has('first_name') ? ' has-error' : '' }}">
                             <input type="text" class="form-control input-lg" placeholder="First Name" name="first_name" value="{{ old('first_name') }}"/>
+                            @if ($errors->has('first_name'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('first_name') }}</strong>
+                                </span>
+                            @endif
                         </div>
-                        <div class="col-md-6 m-b-15">
+                        <div class="col-md-6 m-b-15{{ $errors->has('last_name') ? ' has-error' : '' }}">
                             <input type="text" class="form-control input-lg" placeholder="Last Name" name="last_name" value="{{ old('last_name') }}"/>
+                             @if ($errors->has('last_name'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('last_name') }}</strong>
+                                </span>
+                            @endif
                         </div>
                     </div>
                     <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                         <input type="text" class="form-control input-lg" placeholder="Email Address" name="email" value="{{ old('email') }}"/>
 
-                        @if ($errors->has('name'))
+                        @if ($errors->has('email'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('email') }}</strong>
                             </span>
                         @endif
                     </div>
                     <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                        <input type="text" class="form-control input-lg" placeholder="Password" name="password" value="{{ old('password') }}"/>
+                        <input type="password" class="form-control input-lg" placeholder="Password" name="password" value="{{ old('password') }}"/>
                          @if ($errors->has('password'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('password') }}</strong>
                             </span>
                         @endif
                     </div>
-                    <div class="form-group{{ $errors->has('confirm_password') ? ' has-error' : '' }}">
-                        <input type="text" class="form-control input-lg" placeholder="Re-enter Password" name="confirm_password" value="{{ old('confirm_password') }}" />
-                         @if ($errors->has('confirm_password'))
+                    <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
+                        <input type="password" class="form-control input-lg" placeholder="Re-enter Password" name="password_confirmation" value="{{ old('password_confirmation') }}" />
+                         @if ($errors->has('password_confirmation'))
                             <span class="help-block">
-                                <strong>{{ $errors->first('confirm_password') }}</strong>
+                                <strong>{{ $errors->first('password_confirmation') }}</strong>
                             </span>
                         @endif
                     </div>
