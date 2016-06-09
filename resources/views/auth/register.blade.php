@@ -58,7 +58,7 @@
                                 </span>
                             @endif
                         </div>
-                        <div class="col-md-6 m-b-15{{ $errors->has('username') ? ' has-error' : '' }}">
+                        <div class="col-md-6 m-b-15{{ $errors->has('cellphone') ? ' has-error' : '' }}">
                             <input type="text" class="form-control input-lg" placeholder="Cell Number" name="cellphone" value="{{ old('cellphone') }}"/>
                             @if ($errors->has('cellphone'))
                                 <span class="help-block">
