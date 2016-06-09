@@ -56,7 +56,7 @@
                         @endif
                     </div>
                     <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                        <input type="text" class="form-control input-lg" placeholder="Password" />
+                        <input type="text" class="form-control input-lg" placeholder="Password" name="password"/>
 
                         @if ($errors->has('password'))
                             <span class="help-block">
