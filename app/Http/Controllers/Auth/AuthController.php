@@ -68,12 +68,28 @@ class AuthController extends Controller
     {
 
 
-        return User::create([
-            'first_name'    => $data['first_name'],
-            'last_name'     => $data['last_name'],
-            'username'      => $data['username'],
-            'email'         => $data['email'],
-            'password'      => bcrypt($data['password']),
-        ]);
+        $user = new User();
+        $user->first_name = $data['first_name'];
+        $user->last_name  = $data['last_name'];
+        $user->username   = $data['username'];
+        $user->email      = $data['email'];
+        $user->password   = bcrypt($data['password']);
+
+        $contact = new Contact();
+        $contact->primary_contact = $data['cellphone'];
+        
+         
+       \DB::transaction(function () use ($user, $contact) {
+
+            $user->save();
+            $contact->user_id = $user->id;
+            $contact->save();
+
+
+        });  
+
+
+
+
     }
 }
