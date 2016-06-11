@@ -18,6 +18,7 @@ class CreateUsersStatusesTable extends Migration
             $table->integer('created_by')->default(-1);
             $table->integer('updated_by')->default(-1);           
             $table->timestamps();
+            $table->primary('id');
         });
     }
 

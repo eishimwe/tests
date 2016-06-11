@@ -2,23 +2,18 @@
 
 namespace App;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Model as Eloquent;
 
-class UserRegistrationStatus extends Authenticatable
+class UserRegistrationStatus extends Eloquent
 {
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'description','id'
-    ];
+   
+   protected $table = 'user_registration_statuses';
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
+
+    public function users()
+    {
+        return $this->hasMany('App\User');
+    }
    
 }

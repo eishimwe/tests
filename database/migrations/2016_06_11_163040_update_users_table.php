@@ -12,7 +12,10 @@ class UpdateUsersTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::table('users', function ($table) {
+            $table->integer('user_registration_statuses_id');
+            $table->foreign('user_registration_statuses_id')->references('id')->on('user_registration_statuses');
+        });
     }
 
     /**
@@ -22,6 +25,9 @@ class UpdateUsersTable extends Migration
      */
     public function down()
     {
-        //
+         Schema::table('users', function ($table) {
+            $table->dropForeign('user_registration_statuses_id');
+            $table->dropColumn('user_registration_statuses_id');
+        });
     }
 }
