@@ -32,4 +32,30 @@ $this->get('password/reset/{token?}', 'Auth\PasswordController@showResetForm');
 $this->post('password/email', 'Auth\PasswordController@sendResetLinkEmail');
 $this->post('password/reset', 'Auth\PasswordController@reset');*/
 
+
+
+/*
+|--------------------------------------------------------------------------
+| Home Routes
+|--------------------------------------------------------------------------
+|
+| 
+*/
+
 Route::get('/home', 'HomeController@index');
+
+
+/*
+|--------------------------------------------------------------------------
+| Users Routes
+|--------------------------------------------------------------------------
+|
+| 
+*/
+
+Route::get('list-users', ['Middleware' => 'auth', function() {
+
+	return view('users.list');
+}]);
+
+Route::get('users-list',['Middleware' => 'auth','uses' => 'UsersController@index']);
