@@ -19,11 +19,10 @@ class CreateUsersTable extends Migration
             $table->string('last_name');
             $table->string('email')->unique();
             $table->string('id_number');
-            $table->string('cellphone')->unique();
-            $table->string('cellphone_2');
-            $table->boolean('active')->default(0);
             $table->string('password');
             $table->rememberToken();
+            $table->integer('created_by')->default(-1);
+            $table->integer('updated_by')->default(-1);
             $table->timestamps();
         });
     }

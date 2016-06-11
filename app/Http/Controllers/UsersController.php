@@ -26,7 +26,7 @@ class UsersController extends Controller
         							 `users`.last_name,
 									 `users`.email,
 									 `users`.id_number,
-									 `users`.cellphone,
+									
 									 `users`.active
 
         							"

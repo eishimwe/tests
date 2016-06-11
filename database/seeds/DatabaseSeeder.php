@@ -14,3 +14,12 @@ class DatabaseSeeder extends Seeder
         // $this->call(UsersTableSeeder::class);
     }
 }
+class UserRegistrationStatusesTableSeeder extends Seeder {
+
+    public function run()
+    {
+        DB::table('user_registration_statuses')->delete();
+        UserRegistrationStatus::create(['id' => 'Registered']);
+    }
+
+}
