@@ -67,6 +67,8 @@ class AuthController extends Controller
     protected function create(array $data)
     {
 
+        $enums = \Config::get('registrationstatusesenums');
+        $pending_user_status = $enums['users_registration_statuses']['pendingactivation'];
 
         $user = new User();
         $user->first_name = $data['first_name'];
@@ -74,7 +76,7 @@ class AuthController extends Controller
         $user->username   = $data['username'];
         $user->email      = $data['email'];
         $user->password   = bcrypt($data['password']);
-
+        $user->user_registration_statuses_id = $pending_user_status;
         $contact = new Contact();
         $contact->primary_contact = $data['cellphone'];
         
@@ -88,15 +90,7 @@ class AuthController extends Controller
 
         });
 
-   
-
         return $user;  
-
-
-      // $test = User::create([ 'first_name' => $data['first_name'],'last_name' => $data['last_name'],'username' => $data['username'] ,'email' => $data['email'], 'password' => bcrypt($data['password']) ]);
-
-
-       dd($test);
 
     }
 }
