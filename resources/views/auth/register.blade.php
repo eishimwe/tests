@@ -44,10 +44,19 @@
             <!-- begin register-content -->
             <div class="register-content">
                 <h4 class="m-t-0 m-b-5">Great to see you here!</h4>
-                <p class="m-b-20">Create your Rand Godz Account. It’s free and always will be.</p>
+                <p class="m-b-20">Create your Rand Godz Account</p>
                 
                 <form action="{{ url('/register') }}" method="POST" name="register_form" class="form-input-flat">
                      {{ csrf_field() }}
+
+                    <div class="form-group">
+
+                        @if (isset($referrer_names))
+                            <span class="label label-inverse m-b-5">Sponsored by : {{ $referrer_names }}</span>
+
+                        @endif
+
+                    </div>
 
                      <div class="row row-space-14">
                         <div class="col-md-6 m-b-15{{ $errors->has('username') ? ' has-error' : '' }}">

@@ -43,9 +43,11 @@ class UsersController extends Controller
         $result = User::where('username','=',$referral_id)
                         ->where('user_registration_statuses_id','=',$activated_user_status)->first();
 
+
         if ($result) {
 
-            return view('auth.register');
+            $referrer_names = $result->first_name. '  '.$result->last_name;               
+            return view('auth.register',compact('referrer_names'));
         }
         else {
 
