@@ -27,10 +27,8 @@
                                 <th>Username</th>
                                 <th>First Name</th>
                                 <th>Surname</th>
-                                <th>Cellphone</th>
                                 <th>Email</th>
-                                <th>Id Number</th>
-                                <th>Active</th>
+                                <th>Status</th>
                                 <th data-sorting="disabled"></th>
                             </tr>
                         </thead>

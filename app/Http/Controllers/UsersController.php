@@ -25,9 +25,7 @@ class UsersController extends Controller
         							 `users`.first_name,
         							 `users`.last_name,
 									 `users`.email,
-									 `users`.id_number,
-									
-									 `users`.active
+									 `users`.user_registration_statuses_id
 
         							"
 
