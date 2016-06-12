@@ -34,4 +34,25 @@ class UsersController extends Controller
 
         return Datatables::of($users)->make(true);
     }
+
+
+     public function getuserlandingpage($referral_id) {
+
+        $enums = \Config::get('registrationstatusesenums');
+        $activated_user_status = $enums['users_registration_statuses']['activated'];
+        $result = User::where('username','=',$referral_id)
+                        ->where('user_registration_statuses_id','=',$activated_user_status)->first();
+
+        if ($result) {
+
+            return view('auth.register');
+        }
+        else {
+
+            return view('auth.login');
+        }
+
+
+
+    }
 }

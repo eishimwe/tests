@@ -23,7 +23,7 @@
             @elseif(Auth::user()->user_registration_statuses_id == 3)
              <div class="alert alert-success fade in m-b-10">
                 <strong>Congratulations!</strong>
-                Your account has been successfully activated,your personal referral identification is '<strong>{{ \Request::root() }}/{{ \Auth::user()->username }}</strong>'
+                Your account has been successfully activated,your personal referral identification is '<strong>{{ \Request::root() }}/username/{{ \Auth::user()->username }}</strong>'
                 <span class="close" data-dismiss="alert">&times;</span>
             </div>
     

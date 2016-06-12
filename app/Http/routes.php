@@ -1,5 +1,7 @@
 <?php
 
+
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -11,12 +13,17 @@
 |
 */
 
+
+
 Route::get('/', function () {
     return view('auth.login');
 });
 
 // This is a shortcut for the below authantication controllers
 Route::auth();
+
+Route::get('/{username}',['Middleware' => 'auth','uses' => 'UsersController@getuserlandingpage']);
+
 
 /*// Authentication Routes...
 $this->get('login', 'Auth\AuthController@showLoginForm');
@@ -59,3 +66,7 @@ Route::get('list-users', ['Middleware' => 'auth', function() {
 }]);
 
 Route::get('users-list',['Middleware' => 'auth','uses' => 'UsersController@index']);
+
+
+
+
