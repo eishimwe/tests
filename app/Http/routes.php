@@ -22,7 +22,7 @@ Route::get('/', function () {
 // This is a shortcut for the below authantication controllers
 Route::auth();
 
-Route::get('/{username}',['Middleware' => 'auth','uses' => 'UsersController@getuserlandingpage']);
+Route::get('/sponsor/{username}',['Middleware' => 'auth','uses' => 'UsersController@getuserlandingpage']);
 
 
 /*// Authentication Routes...

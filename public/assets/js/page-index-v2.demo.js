@@ -374,9 +374,9 @@ var handleDoughnutChart = function() {
 var handleDashboardGritterNotification = function() {
     setTimeout(function() {
         $.gritter.add({
-            title: 'Welcome back, Admin!',
-            text: 'You have 5 new notifications. Please check your inbox.',
-            image: 'assets/img/user_profile.jpg',
+            title: 'Welcome back!',
+            text: '',
+            image: 'assets/img/logo-light.png',
             sticky: true,
             time: '',
             class_name: 'my-sticky-class'

@@ -46,7 +46,7 @@
             <div class="container-fluid">
                 <!-- begin mobile sidebar expand / collapse button -->
                 <div class="navbar-header">
-                    <a href="index.html" class="navbar-brand"><img src="assets/img/logo.png" class="logo" alt="" /> Rand Godz</a>
+                    <a href="index.html" class="navbar-brand" > Rand Godz</a>
                     <button type="button" class="navbar-toggle" data-click="sidebar-toggled">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -140,7 +140,7 @@
                     </li>
                     <li class="dropdown navbar-user">
                         <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
-                            <span class="image"><img src="assets/img/user_profile.jpg" alt="" /></span>
+                            <span class="image"><img src="assets/img/logo-white.png" alt="" /></span>
                             <span class="hidden-xs">
                                 
                                 
@@ -183,7 +183,7 @@
                 <ul class="nav">
                     <li class="nav-user">
                         <div class="image">
-                            <img src="assets/img/user_profile.jpg" alt="" />
+                            <img src="assets/img/logo-light.png" alt="" />
                         </div>
                         <div class="info">
                             <div class="name dropdown">
@@ -464,7 +464,7 @@
     <script src="{{ asset('/assets/plugins/bootstrap-calendar/js/bootstrap_calendar.min.js') }}"></script>
     <script src="{{ asset('/assets/plugins/chart-js/chart.min.js') }}"></script>
     <script src="{{ asset('/assets/plugins/gritter/js/jquery.gritter.js') }}"></script>
-    <script src="{{ asset('/assets/js/page-index-v2.demo.min.js') }}"></script>
+    <script src="{{ asset('/assets/js/page-index-v2.demo.js') }}"></script>
    
     
     <script src="{{ asset('assets/plugins/DataTables/media/js/jquery.dataTables.js') }}"></script>
