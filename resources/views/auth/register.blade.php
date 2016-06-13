@@ -38,7 +38,7 @@
 		<div class="register">
 		    <!-- begin register-brand -->
             <div class="register-brand bg-inverse text-white">
-                <img src="assets/img/logo-white.png" height="36" class="pull-right" alt="" /> Registration Form
+                <img src="assets/img/logo-light.png" height="36" class="pull-right" alt="" /> Registration Form
             </div>
             <!-- end register-brand -->
             <!-- begin register-content -->
