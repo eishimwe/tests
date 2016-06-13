@@ -27,7 +27,9 @@ var usersTable = function() {
                 {data: 'first_name', name: 'users.first_name'},
                 {data: 'last_name', name: 'users.last_name'},
                 {data: 'email', name: 'users.email'},
-                {data: 'user_registration_statuses_id', name: 'users.user_registration_statuses_id'},
+                {data: 'cellphone', name: 'contacts.primary_contact'},
+                {data: 'description', name: 'user_registration_statuses.description'},
+                {data: 'actions',  name: 'actions'}
 
             ]
         });

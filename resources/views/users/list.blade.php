@@ -28,6 +28,7 @@
                                 <th>First Name</th>
                                 <th>Surname</th>
                                 <th>Email</th>
+                                <th>Cellphone</th>
                                 <th>Status</th>
                                 <th data-sorting="disabled"></th>
                             </tr>

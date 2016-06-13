@@ -17,6 +17,8 @@ class UsersController extends Controller
     {
         
         $users = \DB::table('users')
+                            ->join('contacts','contacts.user_id','=','users.id')
+                            ->join('user_registration_statuses','user_registration_statuses.id','=','users.user_registration_statuses_id')
         					->select(
         						\DB::raw(
         							"
@@ -25,14 +27,18 @@ class UsersController extends Controller
         							 `users`.first_name,
         							 `users`.last_name,
 									 `users`.email,
-									 `users`.user_registration_statuses_id
+									 `user_registration_statuses`.description,
+                                     `contacts`.primary_contact as cellphone
 
         							"
 
         							)
         					);
 
-        return Datatables::of($users)->make(true);
+        return Datatables::of($users)
+                            ->addColumn('actions','<a class="btn btn-xs btn-alt" data-toggle="modal" onClick="launchUpdateAffiliationModal({{$id}});" data-target=".modalEditAffiliation"><i class="fa fa-fw m-r-10 pull-left f-s-18 fa-edit"></i></a>')
+                            ->make(true);
+
     }
 
 
