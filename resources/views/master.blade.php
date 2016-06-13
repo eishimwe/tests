@@ -488,6 +488,9 @@
 
     @yield('custom_stript')
 
+    @include('stript')
+    
+
 
     
     <script>

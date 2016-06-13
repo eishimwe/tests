@@ -371,18 +371,6 @@ var handleDoughnutChart = function() {
     });
 };
 
-var handleDashboardGritterNotification = function() {
-    setTimeout(function() {
-        $.gritter.add({
-            title: 'Welcome back!',
-            text: '',
-            image: 'assets/img/logo-light.png',
-            sticky: true,
-            time: '',
-            class_name: 'my-sticky-class'
-        });
-    }, 1000);
-};
 
 var handleWidgetReload = function() {
     "use strict";
