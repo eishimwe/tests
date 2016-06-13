@@ -41,10 +41,10 @@
               <!--    begin widget -->
                  <div class="widget widget-stat widget-stat-right bg-inverse text-white">
                      <div class="widget-stat-btn"><a href="javascript:;" data-click="widget-reload"><i class="fa fa-repeat"></i></a></div>
-                     <div class="widget-stat-icon"><i class="fa fa-chrome"></i></div>
+                     <div class="widget-stat-icon"><i class="fa fa-user"></i></div>
                      <div class="widget-stat-info">
                          <div class="widget-stat-title">Sponsored Users</div>
-                         <div class="widget-stat-number">839</div>
+                         <div class="widget-stat-number">{{ $number_of_sponsored_users }}</div>
                      </div>
                      <div class="widget-stat-progress">
                          <div class="progress">
