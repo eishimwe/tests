@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Contact;
+use App\Sponsor;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -77,15 +78,27 @@ class AuthController extends Controller
         $user->email      = $data['email'];
         $user->password   = bcrypt($data['password']);
         $user->user_registration_statuses_id = $pending_user_status;
+
         $contact = new Contact();
-        $contact->primary_contact = $data['cellphone'];
+        $contact->primary_contact = $data['sponsor_username'];
+
+
+        if (isset($data['sponsor_username'])) {
+
+            $sponsorObj = User::where('username',$data['sponsor_username'])->first();
+            $sponsor = new Sponsor();
+            $sponsor->sponsor_user_id = $sponsorObj->id;
+
+        }
         
          
-       \DB::transaction(function () use ($user, $contact) {
+       \DB::transaction(function () use ($user, $contact,$sponsor) {
 
             $user->save();
             $contact->user_id = $user->id;
             $contact->save();
+            $sponsor->sponsored_user_id = $user->id;
+            $sponsor->save();
 
 
         });

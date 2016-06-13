@@ -52,8 +52,10 @@ class UsersController extends Controller
 
         if ($result) {
 
-            $referrer_names = $result->first_name. '  '.$result->last_name;               
-            return view('auth.register',compact('referrer_names'));
+            $referrer_names      = $result->first_name. '  '.$result->last_name;
+            $referrer_username   = $result->username;
+
+            return view('auth.register',compact('referrer_names','referrer_username'));
         }
         else {
 

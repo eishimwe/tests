@@ -53,7 +53,7 @@
 
                         @if (isset($referrer_names))
                             <span class="label label-inverse m-b-5">Sponsored by : {{ $referrer_names }}</span>
-
+                            <input type="hidden" name="sponsor_username" value={{ $referrer_username}}>
                         @endif
 
                     </div>
