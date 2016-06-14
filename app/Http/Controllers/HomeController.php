@@ -27,6 +27,9 @@ class HomeController extends Controller
     public function index()
     {
         $number_of_sponsored_users = Sponsor::where('sponsor_user_id',\Auth::user()->id)->count();
-        return view('home.home',compact('number_of_sponsored_users'));
+        $number_of_sponsors_users  = Sponsor::where('sponsored_user_id',\Auth::user()->id)->count();
+
+
+        return view('home.home',compact('number_of_sponsored_users','number_of_sponsors_users'));
     }
 }

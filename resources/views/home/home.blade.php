@@ -43,8 +43,8 @@
                      <div class="widget-stat-btn"><a href="javascript:;" data-click="widget-reload"><i class="fa fa-repeat"></i></a></div>
                      <div class="widget-stat-icon"><i class="fa fa-user"></i></div>
                      <div class="widget-stat-info">
-                         <div class="widget-stat-title">Sponsored Users</div>
-                         <div class="widget-stat-number">{{ $number_of_sponsored_users }}</div>
+                         <div class="widget-stat-title">Your Sponsors Users</div>
+                         <div class="widget-stat-number">{{ $number_of_sponsors_users }}</div>
                      </div>
                      <div class="widget-stat-progress">
                          <div class="progress">
@@ -56,6 +56,25 @@
                  <!-- end widget -->
              </div>
              <!-- end col-3 -->
+
+              <div class="col-sm-6 col-lg-3">
+                    <!-- begin widget -->
+                    <div class="widget widget-stat widget-stat-right bg-success text-white">
+                        <div class="widget-stat-btn"><a href="javascript:;" data-click="widget-reload"><i class="fa fa-repeat"></i></a></div>
+                        <div class="widget-stat-icon"><i class="fa fa-user"></i></div>
+                        <div class="widget-stat-info">
+                            <div class="widget-stat-title">Your Sponsored Users</div>
+                            <div class="widget-stat-number">{{ $number_of_sponsored_users }}</div>
+                        </div>
+                        <div class="widget-stat-progress">
+                            <div class="progress">
+                                <div class="progress-bar" style="width: 60%"></div>
+                            </div>
+                        </div>
+                        <div class="widget-stat-footer">10.2% better than last week</div>
+                    </div>
+                    <!-- end widget -->
+                </div>
           
           
          
