@@ -17,6 +17,8 @@ class UsersController extends Controller
     {
         
         $users = \DB::table('users')
+                            ->join('contacts','contacts.user_id','=','users.id')
+                            ->join('user_registration_statuses','user_registration_statuses.id','=','users.user_registration_statuses_id')
         					->select(
         						\DB::raw(
         							"
@@ -25,29 +27,35 @@ class UsersController extends Controller
         							 `users`.first_name,
         							 `users`.last_name,
 									 `users`.email,
-									 `users`.user_registration_statuses_id
+									 `user_registration_statuses`.description,
+                                     `contacts`.primary_contact as cellphone
 
         							"
 
         							)
         					);
 
-        return Datatables::of($users)->make(true);
+        return Datatables::of($users)
+                            ->addColumn('actions','<a class="btn btn-xs btn-alt" data-toggle="modal" onClick="launchUpdateAffiliationModal({{$id}});" data-target=".modalEditAffiliation"><i class="fa fa-fw m-r-10 pull-left f-s-18 fa-edit"></i></a>')
+                            ->make(true);
+
     }
 
 
-     public function getuserlandingpage($referral_id) {
+     public function getuserlandingpage($referrer_username) {
 
         $enums = \Config::get('registrationstatusesenums');
         $activated_user_status = $enums['users_registration_statuses']['activated'];
-        $result = User::where('username','=',$referral_id)
+        $result = User::where('username','=',$referrer_username)
                         ->where('user_registration_statuses_id','=',$activated_user_status)->first();
 
 
         if ($result) {
 
-            $referrer_names = $result->first_name. '  '.$result->last_name;               
-            return view('auth.register',compact('referrer_names'));
+            $referrer_names      = $result->first_name. '  '.$result->last_name;
+            $referrer_username   = $result->username;
+
+            return view('auth.register',compact('referrer_names','referrer_username'));
         }
         else {
 

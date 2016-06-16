@@ -5,11 +5,11 @@ Author: Elie
 
 */
 
-var usersTable = function() {
+var sponsorsUsersTable = function() {
     "use strict";
 
-    if ($('#users-table').length !== 0) {
-        $('#users-table').DataTable({
+    if ($('#sponsors-users-table').length !== 0) {
+        $('#sponsors-users-table').DataTable({
             dom: 'lBfrtip',
             buttons: [
                 'copy', 'csv', 'excel', 'pdf', 'print'
@@ -20,15 +20,12 @@ var usersTable = function() {
             keys: true,
             rowReorder: true,
             select: true,
-            sAjaxSource : "users-list",
+            sAjaxSource : "sponsors-list",
             columns :[
                 {data: 'id', name: 'users.id'},
-                {data: 'username', name: 'users.username'},
                 {data: 'first_name', name: 'users.first_name'},
                 {data: 'last_name', name: 'users.last_name'},
                 {data: 'email', name: 'users.email'},
-                {data: 'cellphone', name: 'contacts.primary_contact'},
-                {data: 'description', name: 'user_registration_statuses.description'},
                 {data: 'actions',  name: 'actions'}
 
             ]
@@ -46,7 +43,7 @@ var PageDemo = function () {
 		//main function
 		init: function () {
 
-            usersTable();
+            sponsorsUsersTable();
 		}
   };
 }();

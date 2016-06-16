@@ -38,7 +38,7 @@
 		<div class="register">
 		    <!-- begin register-brand -->
             <div class="register-brand bg-inverse text-white">
-                <img src="assets/img/logo-white.png" height="36" class="pull-right" alt="" /> Registration Form
+                <img src="assets/img/logo-light.png" height="36" class="pull-right" alt="" /> Registration Form
             </div>
             <!-- end register-brand -->
             <!-- begin register-content -->
@@ -53,7 +53,7 @@
 
                         @if (isset($referrer_names))
                             <span class="label label-inverse m-b-5">Sponsored by : {{ $referrer_names }}</span>
-
+                            <input type="hidden" name="sponsor_username" value={{ $referrer_username}}>
                         @endif
 
                     </div>

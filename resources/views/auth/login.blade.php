@@ -27,7 +27,7 @@
 	    <script src="assets/crossbrowserjs/excanvas.min.js"></script>
 	<![endif]-->
 </head>
-<body class="pace-top">
+<body class="pace-top" >
 	<!-- begin #page-loader -->
 	<div id="page-loader" class="page-loader fade in"><span class="spinner">Loading...</span></div>
 	<!-- end #page-loader -->
@@ -38,7 +38,7 @@
 		<div class="login">
 		    <!-- begin login-brand -->
             <div class="login-brand bg-inverse text-white">
-                <img src="assets/img/logo-white.png" height="36" class="pull-right" alt="" /> Login Panel
+                <img src="assets/img/logo-light.png" height="36" class="pull-right" alt="" /> Login Panel
             </div>
 		    <!-- end login-brand -->
 		    <!-- begin login-content -->
