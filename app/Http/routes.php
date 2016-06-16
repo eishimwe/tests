@@ -88,3 +88,7 @@ Route::get('sponsored-list',['Middleware' => 'auth','uses' => 'SponsorsControlle
 
 
 
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
