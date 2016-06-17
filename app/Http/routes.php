@@ -89,7 +89,10 @@ Route::get('sponsored-list',['Middleware' => 'auth','uses' => 'SponsorsControlle
 | 
 */
 
-Route::get('banking-details',['Middleware' => 'auth','uses' => 'BankAccountsController@bank_accounts_list']);
+Route::get('banking-details',['Middleware' => 'auth','uses' => 'BankAccountsController@index']);
+
+Route::get('banking-list',['Middleware' => 'auth','uses' => 'BankAccountsController@banking_list']);
+
 
 
 
