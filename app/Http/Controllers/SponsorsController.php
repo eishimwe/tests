@@ -68,8 +68,11 @@ class SponsorsController extends Controller
                             )
                             );
         return Datatables::of($sponsored_users)
-                            ->addColumn('actions','<a class="btn btn-xs btn-alt" data-toggle="modal" onClick="launchUpdateAffiliationModal({{$id}});" data-target=".modalEditAffiliation"><i class="fa fa-fw m-r-10 pull-left f-s-18 fa-edit"></i></a>')
+                            ->addColumn('actions','<a href="javascript:;" class="btn btn-success m-r-5 m-b-5 active">Confirm Registration Fees Payment</a>
+')
                             ->make(true);
+
+
 
 
     }
