@@ -81,6 +81,17 @@ Route::get('sponsors-list',['Middleware' => 'auth','uses' => 'SponsorsController
 Route::get('sponsored-list',['Middleware' => 'auth','uses' => 'SponsorsController@sponsored_list']);
 
 
+/*
+|--------------------------------------------------------------------------
+| Banking Details Routes
+|--------------------------------------------------------------------------
+|
+| 
+*/
+
+Route::get('banking-details',['Middleware' => 'auth','uses' => 'SponsorsController@sponsored_list']);
+
+
 
 
 
