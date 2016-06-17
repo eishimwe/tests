@@ -51,6 +51,7 @@ class SponsorsController extends Controller
 
         $sponsored_users = \DB::table('users')
                             ->join('contacts','contacts.user_id','=','users.id')
+                            ->join('user_registration_statuses','user_registration_statuses.id','=','users.user_registration_statuses_id')
                             ->where('users.referred_by_id','=',\Auth::user()->id)
                             ->select(
                                 \DB::raw(
@@ -60,7 +61,8 @@ class SponsorsController extends Controller
                                      `users`.first_name,
                                      `users`.last_name,
                                      `users`.email,
-                                     `contacts`.`primary_contact`
+                                     `contacts`.`primary_contact`,
+                                     `user_registration_statuses`.`description`
                                     "
 
                             )
