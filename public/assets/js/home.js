@@ -48,7 +48,7 @@ var sponsoredUsersTable = function() {
             keys: true,
             rowReorder: true,
             select: true,
-            sAjaxSource : "sponsors-list/",
+            sAjaxSource : "sponsored-list/",
             columns :[
                 {data: 'id', name: 'users.id'},
                 {data: 'first_name', name: 'users.first_name'},

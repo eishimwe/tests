@@ -27,7 +27,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $number_of_sponsored_users = User::whereNull('referred_by_id')->where('referred_by_id',\Auth::user()->id)->count();
+        $number_of_sponsored_users = User::whereNotNull('referred_by_id')->where('referred_by_id',\Auth::user()->id)->count();
         $number_of_sponsors_users  = 1;
 
 

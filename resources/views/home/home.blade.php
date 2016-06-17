@@ -116,7 +116,7 @@
 
                             </div>
                             <div class="tab-pane fade" id="nav-pills-tab-2">
-                                <h4>sponsered users</h4>
+                                <h4>sponsored users</h4>
 
 
                                  <!-- begin panel -->
