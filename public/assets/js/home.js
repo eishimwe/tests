@@ -22,10 +22,11 @@ var sponsorsUsersTable = function() {
             select: true,
             sAjaxSource : "sponsors-list/",
             columns :[
-                {data: 'id', name: 'users.id'},
+               
+                {data: 'username', name: 'users.username'},
                 {data: 'first_name', name: 'users.first_name'},
                 {data: 'last_name', name: 'users.last_name'},
-                {data: 'email', name: 'users.email'},
+                {data: 'primary_contact', name: 'contacts.primary_contact'},
                 {data: 'actions',  name: 'actions'}
 
             ]

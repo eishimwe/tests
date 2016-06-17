@@ -30,7 +30,6 @@ class HomeController extends Controller
         $number_of_sponsored_users = User::whereNotNull('referred_by_id')->where('referred_by_id',\Auth::user()->id)->count();
         $number_of_sponsors_users  = 1;
 
-
         return view('home.home',compact('number_of_sponsored_users','number_of_sponsors_users'));
     }
 }

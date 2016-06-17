@@ -8,6 +8,8 @@ use App\Http\Requests;
 
 use Yajra\Datatables\Facades\Datatables;
 
+use App\User;
+
 
 class SponsorsController extends Controller
 {
@@ -16,9 +18,11 @@ class SponsorsController extends Controller
 	public function sponsors_list()
     {
 
+        $user = User::find(\Auth::user()->id);
+
         $sponsors_users = \DB::table('users')
                             ->join('contacts','contacts.user_id','=','users.id')
-                            ->where('users.referred_by_id','=',\Auth::user()->id)
+                            ->where('users.id','=',$user->referred_by_id)
         					->select(
         						\DB::raw(
         							"

@@ -99,12 +99,11 @@
                                       <table id="sponsors-users-table" data-order='[[1,"asc"]]' class="table table-bordered table-hover">
                                           <thead>
                                               <tr class="inverse">
-                                                  <th data-sorting="disabled"></th>
                                                   <th>Username</th>
                                                   <th>First Name</th>
                                                   <th>Surname</th>
-                                                  <th>Email Address</th>
-                                                  <th>Cellphone</th>
+                                                  <th>Primary Contact</th>
+                                                  <th>Secondary Contact</th>
                                                   <th data-sorting="disabled"></th>
                                               </tr>
                                           </thead>
@@ -117,7 +116,6 @@
                             </div>
                             <div class="tab-pane fade" id="nav-pills-tab-2">
                                 <h4>sponsored users</h4>
-
 
                                  <!-- begin panel -->
                                   <div class="panel pagination-inverse m-b-0 clearfix">

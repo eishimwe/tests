@@ -91,11 +91,15 @@ class AuthController extends Controller
 
                 $sponsor = User::where('username',$data['sponsor_username'])->first();
                
+            } else {
+
+                $sponsor = User::where('username','RandGodz')->first();
+
+
             }
 
-            $user->referred_by_id  = (isset($sponsor))? $sponsor->id : NULL;
-            $user->sponsor_type_id = (isset($sponsor))? $sponsor->sponsor_type_id : 1;
-
+            $user->referred_by_id  = $sponsor->id;
+            $user->sponsor_type_id = $sponsor->sponsor_type_id;
             $user->save();
             $contact->user_id = $user->id;
             $contact->save();
