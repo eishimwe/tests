@@ -82,14 +82,14 @@ Route::get('sponsored-list',['Middleware' => 'auth','uses' => 'SponsorsControlle
 
 
 /*
-|--------------------------------------------------------------------------
+|---------------------s-----------------------------------------------------
 | Banking Details Routes
 |--------------------------------------------------------------------------
 |
 | 
 */
 
-Route::get('banking-details',['Middleware' => 'auth','uses' => 'SponsorsController@sponsored_list']);
+Route::get('banking-details',['Middleware' => 'auth','uses' => 'BankAccountsController@bank_accounts_list']);
 
 
 
