@@ -16,11 +16,9 @@ class SponsorsController extends Controller
 	public function sponsors_list()
     {
 
-
-
-        $sponsors = \DB::table('sponsors')
-                            ->join('users','sponsors.sponsor_user_id','=','users.id')
-                            ->where('sponsors.sponsored_user_id','=',\Auth::user()->id)
+        $sponsors = \DB::table('users')
+                            ->join('contacts','contacts.user_id','=','users.id')
+                            ->where('users.referred_by_id','=',\Auth::user()->id)
         					->select(
         						\DB::raw(
         							"
@@ -28,7 +26,8 @@ class SponsorsController extends Controller
         							 `users`.username,
         							 `users`.first_name,
         							 `users`.last_name,
-									 `users`.email
+									 `users`.email,
+                                     `contacts`.`primary_contact`
         							"
 
         					)

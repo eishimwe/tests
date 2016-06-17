@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use App\User;
 
 
 class HomeController extends Controller
@@ -26,7 +27,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $number_of_sponsored_users = 1;
+        $number_of_sponsored_users = User::whereNull('referred_by_id')->where('referred_by_id',\Auth::user()->id)->count();
         $number_of_sponsors_users  = 1;
 
 

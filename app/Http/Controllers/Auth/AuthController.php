@@ -80,26 +80,25 @@ class AuthController extends Controller
         $user->user_registration_statuses_id = $pending_user_status;
 
         $contact = new Contact();
-        $contact->primary_contact = $data['sponsor_username'];
+        $contact->primary_contact = $data['cellphone'];
 
 
-        if (isset($data['sponsor_username'])) {
-
-            $sponsorObj = User::where('username',$data['sponsor_username'])->first();
-            $sponsor = new Sponsor();
-            $sponsor->sponsor_user_id = $sponsorObj->id;
-
-        }
-        
          
-       \DB::transaction(function () use ($user, $contact,$sponsor) {
+       \DB::transaction(function () use ($user, $contact,$data) {
+
+
+            if (isset($data['sponsor_username'])) {
+
+                $sponsor = User::where('username',$data['sponsor_username'])->first();
+               
+            }
+
+            $user->referred_by_id  = (isset($sponsor))? $sponsor->id : NULL;
+            $user->sponsor_type_id = (isset($sponsor))? $sponsor->sponsor_type_id : 1;
 
             $user->save();
             $contact->user_id = $user->id;
             $contact->save();
-            $sponsor->sponsored_user_id = $user->id;
-            $sponsor->save();
-
 
         });
 
