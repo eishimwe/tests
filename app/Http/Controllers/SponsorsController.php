@@ -32,13 +32,14 @@ class SponsorsController extends Controller
         							 `users`.last_name,
 									 `users`.email,
                                      `contacts`.`primary_contact`
+
         							"
 
         					)
         					);
 
         return Datatables::of($sponsors_users)
-                            ->addColumn('actions','<a class="btn btn-xs btn-alt" data-toggle="modal" onClick="launchUpdateAffiliationModal({{$id}});" data-target=".modalEditAffiliation"><i class="fa fa-fw m-r-10 pull-left f-s-18 fa-edit"></i></a>')
+                            ->addColumn('actions','<a class="btn btn-xs btn-alt" data-toggle="modal" onClick="launchUpdateAffiliationModal({{$id}});" data-target=".modalEditAffiliation">View Banking Details</a>')
                             ->make(true);
 
 

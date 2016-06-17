@@ -103,7 +103,6 @@
                                                   <th>First Name</th>
                                                   <th>Surname</th>
                                                   <th>Primary Contact</th>
-                                                  <th>Secondary Contact</th>
                                                   <th data-sorting="disabled"></th>
                                               </tr>
                                           </thead>
@@ -122,12 +121,11 @@
                                       <table id="sponsored-users-table" data-order='[[1,"asc"]]' class="table table-bordered table-hover">
                                           <thead>
                                               <tr class="inverse">
-                                                  <th data-sorting="disabled"></th>
+                                      
                                                   <th>Username</th>
                                                   <th>First Name</th>
                                                   <th>Surname</th>
-                                                  <th>Email Address</th>
-                                                  <th>Cellphone</th>
+                                                  <th>Primary Contact</th>
                                                   <th data-sorting="disabled"></th>
                                               </tr>
                                           </thead>
