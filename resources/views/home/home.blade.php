@@ -103,6 +103,7 @@
                                                   <th>First Name</th>
                                                   <th>Surname</th>
                                                   <th>Primary Contact</th>
+                                                  <th>Amount Due</th>
                                                   <th data-sorting="disabled"></th>
                                               </tr>
                                           </thead>

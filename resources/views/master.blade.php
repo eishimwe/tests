@@ -218,6 +218,15 @@
                         </a>
                       
                     </li>
+
+                    <li class="has-sub">
+                        <a href="{{ url('home') }}">
+                            <b class="pull-right"></b>
+                            <i class="fa fa-money"></i>
+                            <span>Banking Details</span>
+                        </a>
+                      
+                    </li>
                
              
                     <li class="has-sub">
