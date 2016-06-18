@@ -33,10 +33,10 @@ class SponsorsController extends Controller
         							 `users`.username,
         							 `users`.first_name,
         							 `users`.last_name,
-									     `users`.email,
-                       `users`.referred_by_id,
-                       `contacts`.`primary_contact`,
-                       `users_registrations`.`amount_due`
+									 `users`.email,
+                                    `users`.referred_by_id,
+                                    `contacts`.`primary_contact`,
+                                    `users_registrations`.`amount_due`
 
         							"
 
@@ -56,21 +56,24 @@ class SponsorsController extends Controller
     {
 
 
-        $sponsored_users = \DB::table('users')
-                            ->join('contacts','contacts.user_id','=','users.id')
+        $sponsored_users = \DB::table('users_registrations')
+                            ->join('contacts','contacts.user_id','=','users_registrations.sponsor_user_id')  
+                            ->join('users','users.id','=','users_registrations.sponsored_user_id')
                             ->join('user_registration_statuses','user_registration_statuses.id','=','users.user_registration_statuses_id')
-                            ->where('users.referred_by_id','=',\Auth::user()->id)
+                            ->where('users_registrations.sponsor_user_id','=',\Auth::user()->id)
+                           
                             ->select(
                                 \DB::raw(
                                     "
-                                     `users`.id,
-                                     `users`.username,
-                                     `users`.first_name,
-                                     `users`.last_name,
-                                     `users`.email,
-                                     `contacts`.`primary_contact`,
-                                     `users`.`referred_by_id`,
-                                     `user_registration_statuses`.`description`
+                                    `users`.id,
+                                    `users`.username,
+                                    `users`.first_name,
+                                    `users`.last_name,
+                                    `users`.email,
+                                    `users`.referred_by_id,
+                                    `contacts`.`primary_contact`,
+                                    `users_registrations`.`amount_due`,
+                                    `user_registration_statuses`.`description`
                                      
                                     "
 
