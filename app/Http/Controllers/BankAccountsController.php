@@ -46,4 +46,10 @@ class BankAccountsController extends Controller
 
 
     }
+
+
+    public function add_form() {
+
+    	return view('banks.add');
+    }
 }

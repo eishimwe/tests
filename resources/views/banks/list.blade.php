@@ -52,10 +52,7 @@ var bank_accounts_table = function() {
 
     if ($('#bank-accounts-table').length !== 0) {
         $('#bank-accounts-table').DataTable({
-            dom: 'lBfrtip',
-            buttons: [
-                'copy', 'csv', 'excel', 'pdf', 'print'
-            ],
+            dom: '<"toolbar">',
             responsive: true,
             autoFill: true,
             colReorder: true,
@@ -86,7 +83,10 @@ var PageDemo = function () {
 		//main function
 		init: function () {
 
+			var buttonVar= "<a href='add-bank' class='btn btn-inverse m-b-5'><i class='fa fa-plus fa-1x pull-left'> Add New </i></a>";
             bank_accounts_table();
+
+            $("div.toolbar").html(buttonVar);
 		}
   };
 }();
