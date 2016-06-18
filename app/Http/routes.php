@@ -97,6 +97,9 @@ Route::get('add-bank',['Middleware' => 'auth','uses' => 'BankAccountsController@
 
 Route::post('save_bank',['Middleware' => 'auth','uses' => 'BankAccountsController@save_bank']);
 
+Route::get('delete_bank/{id}',['Middleware' => 'auth','uses' => 'BankAccountsController@delete_bank']);
+
+
 
 
 

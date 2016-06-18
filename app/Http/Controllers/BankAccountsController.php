@@ -36,13 +36,14 @@ class BankAccountsController extends Controller
 							 `bank_accounts`.account_number,
 							 `bank_accounts`.account_holder,
 							 `bank_accounts`.branch_name,
-							 `bank_accounts`.branch_code
+							 `bank_accounts`.branch_code,
+                             `bank_accounts`.id
 							"
 							)
 					);
 
         return Datatables::of($banking_list)
-                            ->addColumn('actions','<a class="btn btn-xs btn-alt" data-toggle="modal" onClick="launchUpdateAffiliationModal({{$id}});" data-target=".modalEditAffiliation"><i class="fa fa-fw m-r-10 pull-left f-s-18 fa-edit"></i></a>')
+                            ->addColumn('actions','<a href="delete_bank/{{$id}}" class="btn btn-xs btn-alt"><i class="fa fa-fw m-r-10 pull-left f-s-18 fa-trash"> Delete</i></a>')
                             ->make(true);
 
 
@@ -71,5 +72,18 @@ class BankAccountsController extends Controller
 
 
 
+    }
+
+    public function delete_bank(BankAccount $BankAccount,$id) {
+
+        $BankAccount = BankAccount::find($id);
+        $BankAccount->delete();
+
+        \Session::flash('success','Bank deleted');
+
+        return redirect('banking-details');
+
+
+        
     }
 }

@@ -224,6 +224,7 @@
                             <b class="pull-right"></b>
                             <i class="fa fa-money"></i>
                             <span>Banking Details</span>
+                            <span class="badge pull-right">10</span>
                         </a>
                       
                     </li>
