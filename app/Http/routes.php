@@ -98,4 +98,3 @@ Route::get('banking-details',['Middleware' => 'auth','uses' => 'SponsorsControll
 
 
 
-
