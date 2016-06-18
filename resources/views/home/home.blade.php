@@ -34,56 +34,7 @@
 
             @endif
             <!-- end page-header -->
-<<<<<<< HEAD
-       <!--   begin row -->
-         <div class="row">
-            <!--  begin col-3 -->
-             <div class="col-sm-6 col-lg-3">
-              <!--    begin widget -->
-                 <div class="widget widget-stat widget-stat-right bg-inverse text-white">
-                     <div class="widget-stat-btn"><a href="javascript:;" data-click="widget-reload"><i class="fa fa-repeat"></i></a></div>
-                     <div class="widget-stat-icon"><i class="fa fa-user"></i></div>
-                     <div class="widget-stat-info">
-                         <div class="widget-stat-title">Your Sponsors Users</div>
-                         <div class="widget-stat-number">{{ $number_of_sponsors_users }}</div>
-                     </div>
-                     <div class="widget-stat-progress">
-                         <div class="progress">
-                             <div class="progress-bar" style="width: 80%"></div>
-                         </div>
-                     </div>
-                     <div class="widget-stat-footer text-left">3.10% better than last week</div>
-                 </div>
-                 <!-- end widget -->
-             </div>
-             <!-- end col-3 -->
 
-              <div class="col-sm-6 col-lg-3">
-                    <!-- begin widget -->
-                    <div class="widget widget-stat widget-stat-right bg-success text-white">
-                        <div class="widget-stat-btn"><a href="javascript:;" data-click="widget-reload"><i class="fa fa-repeat"></i></a></div>
-                        <div class="widget-stat-icon"><i class="fa fa-user"></i></div>
-                        <div class="widget-stat-info">
-                            <div class="widget-stat-title">Your Sponsored Users</div>
-                            <div class="widget-stat-number">{{ $number_of_sponsored_users }}</div>
-                        </div>
-                        <div class="widget-stat-progress">
-                            <div class="progress">
-                                <div class="progress-bar" style="width: 60%"></div>
-                            </div>
-                        </div>
-                        <div class="widget-stat-footer">10.2% better than last week</div>
-                    </div>
-                    <!-- end widget -->
-                </div>
-          
-          
-         
-         </div>
-        <!--  end row -->
-              
-            
-=======
       
           <!-- begin section-container -->
             <div class="section-container section-with-top-border p-b-5">
@@ -190,6 +141,43 @@
 
                                
                             </div>
+
+                             <!-- #modal-dialog -->
+                          <div class="modal fade modalBank" id="modalBank">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                            <h4 class="modal-title">Banking Details</h4>
+                                        </div>
+                                        <div class="modal-body">
+
+                                            <!-- begin panel -->
+                                            <div class="panel pagination-inverse m-b-0 clearfix">
+                                                <table id="sponsors-banking-details-table" data-order='[[1,"asc"]]' class="table table-bordered table-hover">
+                                                    <thead>
+                                                        <tr class="inverse">
+                                                          <th>Bank Name</th>
+                                                          <th>Bank Holder</th>
+                                                          <th>Bank Account</th>
+                                                          <th>Branch Code</th>
+                                                         
+                                                        </tr>
+                                                    </thead>
+                                                   
+                                                </table>
+                                            </div>
+                                            <!-- end panel -->
+
+                                          
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a href="javascript:;" class="btn width-100 btn-default" data-dismiss="modal">Close</a>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                            
                         </div>
                         <!-- end tab-content -->
@@ -208,5 +196,52 @@
 
             <script src="{{ asset('assets/js/home.js') }}"></script>
 
->>>>>>> c069028c0742e086308a05171dd8ade5ac51e7c3
+
+            <script>
+
+                function launchBankModal(bank_id){
+
+                  var sponsorsBankingDetails;
+
+                 /* if ($.fn.dataTable('#sponsors-banking-details-table')) {
+
+                     sponsorsBankingDetails.destroy();
+                  }*/
+
+
+
+
+                  if ($('#sponsors-banking-details-table').length !== 0) {
+
+                  
+
+                    
+                    sponsorsBankingDetails = $('#sponsors-banking-details-table').DataTable({
+                        dom: '<"toolbar">',
+                        bRetrieve:true,
+                        responsive: true,
+                        autoFill: true,
+                        colReorder: true,
+                        keys: true,
+                        rowReorder: true,
+                        select: true,
+                        sAjaxSource : "sponsors-banking-list/" + bank_id,
+                        columns :[
+                           
+                            {data: 'description', name: 'bank_types.description'},
+                            {data: 'account_holder', name: 'bank_accounts.account_holder'},
+                            {data: 'account_number', name: 'bank_accounts.account_number'}, 
+                            {data: 'branch_code', name: 'bank_accounts.branch_code'}, 
+                            
+
+                        ]
+                    });
+                  }
+
+                }
+
+
+            </script>
+
+
         @endsection

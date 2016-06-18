@@ -38,8 +38,10 @@ class SponsorsController extends Controller
         					)
         					);
 
+                         
+
         return Datatables::of($sponsors_users)
-                            ->addColumn('actions','<a class="btn btn-xs btn-alt" data-toggle="modal" onClick="launchUpdateAffiliationModal({{$id}});" data-target=".modalEditAffiliation">View Banking Details</a>')
+                            ->addColumn('actions','<a class="btn btn-xs btn-block btn-success" data-toggle="modal" onClick="launchBankModal({{$id}});" data-target=".modalBank">View Banking Details</a>')
                             ->make(true);
 
 
@@ -76,5 +78,8 @@ class SponsorsController extends Controller
 
 
     }
+
+
+  
      
 }

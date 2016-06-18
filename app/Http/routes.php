@@ -68,8 +68,7 @@ Route::get('list-users', ['Middleware' => 'auth', function() {
 Route::get('users-list',['Middleware' => 'auth','uses' => 'UsersController@index']);
 
 
-<<<<<<< HEAD
-=======
+
 /*
 |--------------------------------------------------------------------------
 | Sponsors Routes
@@ -84,20 +83,33 @@ Route::get('sponsored-list',['Middleware' => 'auth','uses' => 'SponsorsControlle
 
 
 /*
-|--------------------------------------------------------------------------
+|---------------------s-----------------------------------------------------
 | Banking Details Routes
 |--------------------------------------------------------------------------
 |
 | 
 */
 
-Route::get('banking-details',['Middleware' => 'auth','uses' => 'SponsorsController@sponsored_list']);
+Route::get('banking-details',['Middleware' => 'auth','uses' => 'BankAccountsController@index']);
+
+Route::get('banking-list',['Middleware' => 'auth','uses' => 'BankAccountsController@banking_list']);
+
+Route::get('add-bank',['Middleware' => 'auth','uses' => 'BankAccountsController@add_form']);
+
+Route::post('save_bank',['Middleware' => 'auth','uses' => 'BankAccountsController@save_bank']);
+
+Route::get('delete_bank/{id}',['Middleware' => 'auth','uses' => 'BankAccountsController@delete_bank']);
+
+Route::get('sponsors-banking-list/{id}',['Middleware' => 'auth','uses' => 'BankAccountsController@sponsors_banking_list']);
 
 
 
 
 
 
->>>>>>> c069028c0742e086308a05171dd8ade5ac51e7c3
+
+
+
+
 
 

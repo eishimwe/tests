@@ -315,9 +315,9 @@ var PageDemo = function () {
 	return {
 		//main function
 		init: function () {
-		    handleVisitorAnalyticsChart();
-		    handleVisitorsVectorMap();
-		    handleServerChart();
+		  
+		    
+		  
 		    handleWidgetChat();
 		    handleWidgetReload();
 		    handleWidgetTodolist();

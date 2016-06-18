@@ -397,10 +397,9 @@ var PageDemo = function () {
 		//main function
 		init: function () {
 		    $(window).load(function() {
-                handleDoughnutChart();
-                handleRenderVisitorAnalyticsChart();
+                
 		    });
-		    handleWindowResize();
+		    
 		    handleDashboardGritterNotification();
 		    handleWidgetReload();
 		}
