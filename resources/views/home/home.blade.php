@@ -160,7 +160,7 @@
                                                           <th>Bank Holder</th>
                                                           <th>Bank Account</th>
                                                           <th>Branch Code</th>
-                                                          <th data-sorting="disabled"></th>
+                                                         
                                                         </tr>
                                                     </thead>
                                                    
@@ -199,9 +199,24 @@
 
                 function launchBankModal(bank_id){
 
+                  var sponsorsBankingDetails;
+
+                 /* if ($.fn.dataTable('#sponsors-banking-details-table')) {
+
+                     sponsorsBankingDetails.destroy();
+                  }*/
+
+
+
+
                   if ($('#sponsors-banking-details-table').length !== 0) {
-                    $('#sponsors-banking-details-table').DataTable({
+
+                  
+
+                    
+                    sponsorsBankingDetails = $('#sponsors-banking-details-table').DataTable({
                         dom: '<"toolbar">',
+                        bRetrieve:true,
                         responsive: true,
                         autoFill: true,
                         colReorder: true,
@@ -215,7 +230,7 @@
                             {data: 'account_holder', name: 'bank_accounts.account_holder'},
                             {data: 'account_number', name: 'bank_accounts.account_number'}, 
                             {data: 'branch_code', name: 'bank_accounts.branch_code'}, 
-                            {data: 'actions',  name: 'actions'}
+                            
 
                         ]
                     });
