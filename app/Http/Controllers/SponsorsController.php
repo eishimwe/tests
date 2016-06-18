@@ -10,6 +10,8 @@ use Yajra\Datatables\Facades\Datatables;
 
 use App\User;
 
+use App\UserRegistration;
+
 
 class SponsorsController extends Controller
 {
@@ -20,9 +22,10 @@ class SponsorsController extends Controller
 
         $user = User::find(\Auth::user()->id);
 
-        $sponsors_users = \DB::table('users')
-                            ->join('contacts','contacts.user_id','=','users.id')
-                            ->where('users.id','=',$user->referred_by_id)
+        $sponsors_users = \DB::table('users_registrations')
+                            ->join('contacts','contacts.user_id','=','users_registrations.sponsor_user_id')
+                            ->join('users','users.id','=','users_registrations.sponsor_user_id')
+                            ->where('users_registrations.sponsored_user_id','=',\Auth::user()->id)
         					->select(
         						\DB::raw(
         							"
@@ -30,9 +33,10 @@ class SponsorsController extends Controller
         							 `users`.username,
         							 `users`.first_name,
         							 `users`.last_name,
-									 `users`.email,
-                                     `users`.referred_by_id,
-                                     `contacts`.`primary_contact`
+									     `users`.email,
+                       `users`.referred_by_id,
+                       `contacts`.`primary_contact`,
+                       `users_registrations`.`amount_due`
 
         							"
 
@@ -65,6 +69,7 @@ class SponsorsController extends Controller
                                      `users`.last_name,
                                      `users`.email,
                                      `contacts`.`primary_contact`,
+                                     `users`.`referred_by_id`,
                                      `user_registration_statuses`.`description`
                                      
                                     "
@@ -74,8 +79,8 @@ class SponsorsController extends Controller
         return Datatables::of($sponsored_users)
                             ->addColumn('actions','
                                                   @if($description == "Pending activation")
-                                                    <a href="javascript:;" class="btn btn-success m-r-5 m-b-5 active">
-                                                        Confirm Registration Fees Payment
+                                                    <a href="confirm-registration-fees/{{ $username }}" class="btn btn-success m-r-5 m-b-5 active">
+                                                        Confirm Payment
                                                     </a>
                                                   @endif
                                                 ')

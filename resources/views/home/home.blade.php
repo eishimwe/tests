@@ -128,6 +128,7 @@
                                                   <th>Surname</th>
                                                   <th>Primary Contact</th>
                                                   <th>Status</th>
+                                                  <th>Amount Paid</th>
                                                   <th data-sorting="disabled"></th>
                                               </tr>
                                           </thead>

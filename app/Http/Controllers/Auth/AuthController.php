@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Auth;
 use App\User;
 use App\Contact;
 use App\Sponsor;
+use App\UserRegistration;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+
 
 class AuthController extends Controller
 {
@@ -82,27 +84,105 @@ class AuthController extends Controller
         $contact = new Contact();
         $contact->primary_contact = $data['cellphone'];
 
+        
+
+
+
 
          
        \DB::transaction(function () use ($user, $contact,$data) {
 
-
             if (isset($data['sponsor_username'])) {
 
-                $sponsor = User::where('username',$data['sponsor_username'])->first();
-               
-            } else {
+                 $secondary_sponsor     = User::where('username',$data['sponsor_username'])->first();
+            }
+            else {
 
-                $sponsor = User::where('username','RandGodz')->first();
-
+                 $secondary_sponsor     = User::where('username','RandGodz')->first();
 
             }
 
-            $user->referred_by_id  = $sponsor->id;
-            $user->sponsor_type_id = $sponsor->sponsor_type_id;
+           
+            $user->referred_by_id  = $secondary_sponsor->id;
+            $user->sponsor_type_id = $secondary_sponsor->sponsor_type_id;
             $user->save();
             $contact->user_id = $user->id;
             $contact->save();
+
+
+            if (isset($data['sponsor_username'])) {
+
+                
+                $primary_sponsor    = User::find($secondary_sponsor->referred_by_id);
+                $system_sponsor     = User::where('username','RandGodz')->first();
+
+                if ($primary_sponsor->username == 'RandGodz') {
+
+
+                    $user_registration                    = new UserRegistration();
+                    $user_registration->sponsor_user_id   = $primary_sponsor->id;
+                    $user_registration->sponsor_type_id   = 2;
+                    $user_registration->sponsored_user_id = $user->id;
+                    $user_registration->amount_due        = '300';
+                    $user_registration->save();
+                    
+                    $user_registration                    = new UserRegistration();
+                    $user_registration->sponsor_user_id   = $secondary_sponsor->id;
+                    $user_registration->sponsor_type_id   = 3;
+                    $user_registration->sponsored_user_id = $user->id;
+                    $user_registration->amount_due        = '200';
+                    $user_registration->save();
+
+
+
+
+                }else {
+
+
+                    $user_registration                    = new UserRegistration();
+                    $user_registration->sponsor_user_id   = $system_sponsor->id;
+                    $user_registration->sponsor_type_id   = 1;
+                    $user_registration->sponsored_user_id = $user->id;
+                    $user_registration->amount_due        = '100';
+                    $user_registration->save();
+                    
+                    $user_registration                    = new UserRegistration();
+                    $user_registration->sponsor_user_id   = $primary_sponsor->id;
+                    $user_registration->sponsor_type_id   = 2;
+                    $user_registration->sponsored_user_id = $user->id;
+                    $user_registration->amount_due        = '200';
+                    $user_registration->save();
+                    
+                    $user_registration                    = new UserRegistration();
+                    $user_registration->sponsor_user_id   = $secondary_sponsor->id;
+                    $user_registration->sponsor_type_id   = 3;
+                    $user_registration->sponsored_user_id = $user->id;
+                    $user_registration->amount_due        = '200';
+                    $user_registration->save();
+
+
+
+
+
+                }
+                
+               
+     
+     
+     
+               
+            } else {
+
+                $system_sponsor                       = User::where('username','RandGodz')->first();
+                $user_registration->sponsor_user_id   = $system_sponsor->id;
+                $user_registration->sponsor_type_id   = 1;
+                $user_registration->sponsored_user_id = $user->id;
+                $user_registration->amount_due        = '500';
+                $user_registration->save();
+
+            }
+
+            
 
         });
 
