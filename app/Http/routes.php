@@ -68,5 +68,36 @@ Route::get('list-users', ['Middleware' => 'auth', function() {
 Route::get('users-list',['Middleware' => 'auth','uses' => 'UsersController@index']);
 
 
+<<<<<<< HEAD
+=======
+/*
+|--------------------------------------------------------------------------
+| Sponsors Routes
+|--------------------------------------------------------------------------
+|
+| 
+*/
+
+Route::get('sponsors-list',['Middleware' => 'auth','uses' => 'SponsorsController@sponsors_list']);
+
+Route::get('sponsored-list',['Middleware' => 'auth','uses' => 'SponsorsController@sponsored_list']);
+
+
+/*
+|--------------------------------------------------------------------------
+| Banking Details Routes
+|--------------------------------------------------------------------------
+|
+| 
+*/
+
+Route::get('banking-details',['Middleware' => 'auth','uses' => 'SponsorsController@sponsored_list']);
+
+
+
+
+
+
+>>>>>>> c069028c0742e086308a05171dd8ade5ac51e7c3
 
 

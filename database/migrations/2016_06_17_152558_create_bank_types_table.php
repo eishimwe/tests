@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSponsorsTable extends Migration
+class CreateBankTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,13 +12,13 @@ class CreateSponsorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('sponsors', function (Blueprint $table) {
+        Schema::create('bank_types', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('sponsor_user_id');
-            $table->integer('sponsored_user_id');
+            $table->string('description');
             $table->integer('created_by')->default(-1);
             $table->integer('updated_by')->default(-1);
             $table->timestamps();
+          
         });
     }
 
@@ -29,7 +29,6 @@ class CreateSponsorsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('sponsors');
-        
+        Schema::drop('bank_types');
     }
 }
