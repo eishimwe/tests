@@ -208,24 +208,25 @@
                             <b class="pull-right"></b>
                             <i class="fa fa-money"></i>
                             <span>Banking Details</span>
-                            <span class="badge pull-right">counter</span>
+                            <span class="badge pull-right">{{ $variable }}</span>
                         </a>
                       
                     </li>
                
-             
-                    <li class="has-sub">
-                        <a href="javascript:;">
-                            <b class="caret pull-right"></b>
-                            <i class="fa fa-cogs"></i>
-                            <span>Administration</span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li><a href="{{ url('list-users') }}">Users</a></li>
-                            <li><a href="page_blank.html">Group Users</a></li>
-                          
-                        </ul>
-                    </li>
+                    @if (Auth::user()->role_id == 1)
+                        <li class="has-sub">
+                            <a href="javascript:;">
+                                <b class="caret pull-right"></b>
+                                <i class="fa fa-cogs"></i>
+                                <span>Administration</span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li><a href="{{ url('list-users') }}">Users</a></li>
+                                <li><a href="page_blank.html">Group Users</a></li>
+                              
+                            </ul>
+                        </li>
+                    @endif
                 
                   
                     <li class="divider has-minify-btn">

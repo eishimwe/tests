@@ -7,6 +7,7 @@ use App\UserRole;
 use App\User;
 use App\BankType;
 use App\SponsorType;
+use App\Contact;
 
 
 
@@ -116,6 +117,14 @@ class DatabaseSeeder extends Seeder {
         BankType::create(['id' => '3','description' => 'CAPITEC BANK']);
         BankType::create(['id' => '4','description' => 'NEDBANK']);
         BankType::create(['id' => '5','description' => 'STANDARD BANK']);
+
+
+        DB::table('contacts')->delete();
+        Contact::create(['id' => '1','primary_contact' => '0849260644','user_id' =>'1']);
+        Contact::create(['id' => '2','primary_contact' => '0829699114','user_id' =>'2']);
+        Contact::create(['id' => '3','primary_contact' => '0827871674','user_id' =>'3']);
+        Contact::create(['id' => '4','primary_contact' => '0793993378','user_id' =>'4']);
+       
 
 
 

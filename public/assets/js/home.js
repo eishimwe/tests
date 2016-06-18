@@ -19,7 +19,6 @@ var sponsorsUsersTable = function() {
             colReorder: true,
             keys: true,
             rowReorder: true,
-            select: true,
             sAjaxSource : "sponsors-list/",
             columns :[
                
@@ -27,6 +26,13 @@ var sponsorsUsersTable = function() {
                 {data: 'first_name', name: 'users.first_name'},
                 {data: 'last_name', name: 'users.last_name'},
                 {data: 'primary_contact', name: 'contacts.primary_contact'},
+                {data : function(data){
+
+                    return 'R'+ data.amount_due;
+
+                   
+                }
+                },
                 {data: 'actions',  name: 'actions'}
 
             ]
@@ -48,7 +54,6 @@ var sponsoredUsersTable = function() {
             colReorder: true,
             keys: true,
             rowReorder: true,
-            select: true,
             sAjaxSource : "sponsored-list/",
             columns :[
                 {data: 'username', name: 'users.username'},
@@ -56,6 +61,16 @@ var sponsoredUsersTable = function() {
                 {data: 'last_name', name: 'users.last_name'},
                 {data: 'primary_contact', name: 'contacts.primary_contact'},
                 {data: 'description', name: 'user_registration_statuses.description'},
+                {data : function(data){
+
+                    if (data.referred_by_id == 1) {
+
+                         return 'R500';
+                    }
+
+                   
+                }
+                },
                 {data: 'actions',  name: 'actions'}
 
             ]
