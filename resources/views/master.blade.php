@@ -208,7 +208,7 @@
                             <b class="pull-right"></b>
                             <i class="fa fa-money"></i>
                             <span>Banking Details</span>
-                            <span class="badge pull-right">counter</span>
+                            <span class="badge pull-right">{{ $variable }}</span>
                         </a>
                       
                     </li>

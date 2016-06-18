@@ -35,6 +35,12 @@ class AppServiceProvider extends ServiceProvider
 
         }
 
+        view()->composer('master', function($view)
+        {
+            $number_bank_accounts = BankAccount::where('user_id',\Auth::user()->id)->count();
+            $view->with('variable', $number_bank_accounts);
+        });
+
       
         
         
