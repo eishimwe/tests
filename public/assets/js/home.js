@@ -19,13 +19,51 @@ var sponsorsUsersTable = function() {
             colReorder: true,
             keys: true,
             rowReorder: true,
-            select: true,
-            sAjaxSource : "sponsors-list",
+            sAjaxSource : "sponsors-list/",
             columns :[
-                {data: 'id', name: 'users.id'},
+               
+                {data: 'username', name: 'users.username'},
                 {data: 'first_name', name: 'users.first_name'},
                 {data: 'last_name', name: 'users.last_name'},
-                {data: 'email', name: 'users.email'},
+                {data: 'primary_contact', name: 'contacts.primary_contact'},
+                {data : function(data){
+
+                    if (data.referred_by_id == 1) {
+
+                         return 'R500';
+                    }
+
+                   
+                }
+                },
+                {data: 'actions',  name: 'actions'}
+
+            ]
+        });
+    }
+};
+
+var sponsoredUsersTable = function() {
+    "use strict";
+
+    if ($('#sponsored-users-table').length !== 0) {
+        $('#sponsored-users-table').DataTable({
+            dom: 'lBfrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ],
+            responsive: true,
+            autoFill: true,
+            colReorder: true,
+            keys: true,
+            rowReorder: true,
+            sAjaxSource : "sponsored-list/",
+            columns :[
+                {data: 'username', name: 'users.username'},
+                {data: 'first_name', name: 'users.first_name'},
+                {data: 'last_name', name: 'users.last_name'},
+                {data: 'primary_contact', name: 'contacts.primary_contact'},
+                {data: 'description', name: 'user_registration_statuses.description'},
                 {data: 'actions',  name: 'actions'}
 
             ]
@@ -44,6 +82,7 @@ var PageDemo = function () {
 		init: function () {
 
             sponsorsUsersTable();
+            sponsoredUsersTable();
 		}
   };
 }();
