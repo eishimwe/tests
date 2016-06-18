@@ -68,23 +68,5 @@ Route::get('list-users', ['Middleware' => 'auth', function() {
 Route::get('users-list',['Middleware' => 'auth','uses' => 'UsersController@index']);
 
 
-/*
-|--------------------------------------------------------------------------
-| Sponsors Routes
-|--------------------------------------------------------------------------
-|
-| 
-*/
-
-Route::get('sponsors-list',['Middleware' => 'auth','uses' => 'SponsorsController@sponsors_list']);
-
-Route::get('sponsored-list',['Middleware' => 'auth','uses' => 'SponsorsController@sponsored_list']);
-
-
-
-
-
-
-
 
 
