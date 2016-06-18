@@ -84,7 +84,7 @@ class SponsorsController extends Controller
                             );
         return Datatables::of($sponsored_users)
                             ->addColumn('actions','
-                                                  @if($description == "Pending activation")
+                                                  @if($description == "Pending activation" && $paid == 0)
                                                     <a href="confirm-registration-fees/{{ $username }}/{{ $reg }}" class="btn btn-success m-r-5 m-b-5 active">
                                                         Confirm Payment
                                                     </a>
@@ -103,11 +103,31 @@ class SponsorsController extends Controller
         $user_registration                   = UserRegistration::where('id',$reg)->first();
         $user_registration->paid             = 1;
         $user_registration->save();
+
         
         $user                                = User::where('username',$username)->first();
-        $user->user_registration_statuses_id = 3;
-        $user->save();
 
+        //Check if other sponsors have confirmed payments and activate the user
+        $registrations                      = UserRegistration::where('sponsored_user_id',$user->id)->get();
+        $amount_paid                        = 0;
+        foreach ($registrations as $registration) {
+            
+            if($registration->paid == 1) {
+
+                $amount_paid += $registration->amount_due;
+            }
+
+        }
+
+        if ($amount_paid == 500) {
+
+            $user->user_registration_statuses_id = 3;
+            $user->save();
+
+        }
+
+    
+       
         //SMS NEED TO BE SEND
 
 
