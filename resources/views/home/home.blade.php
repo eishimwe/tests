@@ -34,6 +34,7 @@
 
             @endif
             <!-- end page-header -->
+
       
           <!-- begin section-container -->
             <div class="section-container section-with-top-border p-b-5">
@@ -103,7 +104,7 @@
                                                   <th>First Name</th>
                                                   <th>Surname</th>
                                                   <th>Primary Contact</th>
-                                                  <th>Amount Due</th>
+                                                  <th>Amount</th>
                                                   <th data-sorting="disabled"></th>
                                               </tr>
                                           </thead>
@@ -128,6 +129,7 @@
                                                   <th>Surname</th>
                                                   <th>Primary Contact</th>
                                                   <th>Status</th>
+                                                  <th>Amount</th>
                                                   <th data-sorting="disabled"></th>
                                               </tr>
                                           </thead>
@@ -195,6 +197,7 @@
 
             <script src="{{ asset('assets/js/home.js') }}"></script>
 
+
             <script>
 
                 function launchBankModal(bank_id){
@@ -240,5 +243,6 @@
 
 
             </script>
+
 
         @endsection

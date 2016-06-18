@@ -68,6 +68,7 @@ Route::get('list-users', ['Middleware' => 'auth', function() {
 Route::get('users-list',['Middleware' => 'auth','uses' => 'UsersController@index']);
 
 
+
 /*
 |--------------------------------------------------------------------------
 | Sponsors Routes
@@ -79,6 +80,8 @@ Route::get('users-list',['Middleware' => 'auth','uses' => 'UsersController@index
 Route::get('sponsors-list',['Middleware' => 'auth','uses' => 'SponsorsController@sponsors_list']);
 
 Route::get('sponsored-list',['Middleware' => 'auth','uses' => 'SponsorsController@sponsored_list']);
+
+Route::get('confirm-registration-fees/{username}/{reg}',['Middleware' => 'auth','uses' => 'SponsorsController@confirm_payment']);
 
 
 /*
@@ -100,7 +103,6 @@ Route::post('save_bank',['Middleware' => 'auth','uses' => 'BankAccountsControlle
 Route::get('delete_bank/{id}',['Middleware' => 'auth','uses' => 'BankAccountsController@delete_bank']);
 
 Route::get('sponsors-banking-list/{id}',['Middleware' => 'auth','uses' => 'BankAccountsController@sponsors_banking_list']);
-
 
 
 
