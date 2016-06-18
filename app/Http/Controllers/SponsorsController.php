@@ -31,6 +31,7 @@ class SponsorsController extends Controller
         							 `users`.first_name,
         							 `users`.last_name,
 									 `users`.email,
+                                     `users`.referred_by_id,
                                      `contacts`.`primary_contact`
 
         							"
@@ -65,13 +66,19 @@ class SponsorsController extends Controller
                                      `users`.email,
                                      `contacts`.`primary_contact`,
                                      `user_registration_statuses`.`description`
+                                     
                                     "
 
                             )
                             );
         return Datatables::of($sponsored_users)
-                            ->addColumn('actions','<a href="javascript:;" class="btn btn-success m-r-5 m-b-5 active">Confirm Registration Fees Payment</a>
-')
+                            ->addColumn('actions','
+                                                  @if($description == "Pending activation")
+                                                    <a href="javascript:;" class="btn btn-success m-r-5 m-b-5 active">
+                                                        Confirm Registration Fees Payment
+                                                    </a>
+                                                  @endif
+                                                ')
                             ->make(true);
 
 
