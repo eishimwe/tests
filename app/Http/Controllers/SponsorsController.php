@@ -36,7 +36,8 @@ class SponsorsController extends Controller
 									 `users`.email,
                                     `users`.referred_by_id,
                                     `contacts`.`primary_contact`,
-                                    `users_registrations`.`amount_due`
+                                    `users_registrations`.`amount_due`,
+                                    `users_registrations`.`paid`
 
         							"
 
@@ -73,6 +74,8 @@ class SponsorsController extends Controller
                                     `users`.referred_by_id,
                                     `contacts`.`primary_contact`,
                                     `users_registrations`.`amount_due`,
+                                    `users_registrations`.`paid`,
+                                    `users_registrations`.`id` as 'reg',
                                     `user_registration_statuses`.`description`
                                      
                                     "
@@ -82,13 +85,33 @@ class SponsorsController extends Controller
         return Datatables::of($sponsored_users)
                             ->addColumn('actions','
                                                   @if($description == "Pending activation")
-                                                    <a href="confirm-registration-fees/{{ $username }}" class="btn btn-success m-r-5 m-b-5 active">
+                                                    <a href="confirm-registration-fees/{{ $username }}/{{ $reg }}" class="btn btn-success m-r-5 m-b-5 active">
                                                         Confirm Payment
                                                     </a>
                                                   @endif
                                                 ')
                             ->make(true);
 
+
+
+
+    }
+
+    public function confirm_payment($username,$reg) {
+
+
+        $user_registration                   = UserRegistration::where('id',$reg)->first();
+        $user_registration->paid             = 1;
+        $user_registration->save();
+        
+        $user                                = User::where('username',$username)->first();
+        $user->user_registration_statuses_id = 3;
+        $user->save();
+
+        //SMS NEED TO BE SEND
+
+
+        return redirect('home');
 
 
 

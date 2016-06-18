@@ -81,6 +81,8 @@ Route::get('sponsors-list',['Middleware' => 'auth','uses' => 'SponsorsController
 
 Route::get('sponsored-list',['Middleware' => 'auth','uses' => 'SponsorsController@sponsored_list']);
 
+Route::get('confirm-registration-fees/{username}/{reg}',['Middleware' => 'auth','uses' => 'SponsorsController@confirm_payment']);
+
 
 /*
 |---------------------s-----------------------------------------------------

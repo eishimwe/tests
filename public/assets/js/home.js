@@ -63,7 +63,18 @@ var sponsoredUsersTable = function() {
                 {data: 'description', name: 'user_registration_statuses.description'},
                 {data : function(data){
 
-                    return 'R'+ data.amount_due;
+                    
+
+                    if (data.paid == 0) {
+
+                       return 'R'+ data.amount_due + "  <button type='button' class='btn btn-xs btn-danger btn-rounded m-b-5'>Not Paid</button>"; 
+                    } else {
+
+                       return 'R'+ data.amount_due + "  <button type='button' class='btn btn-xs btn-success btn-rounded m-b-5'>Paid</button>"; 
+
+                    }
+
+                    
 
                    
                 }
