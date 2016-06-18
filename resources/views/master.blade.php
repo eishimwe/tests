@@ -57,18 +57,11 @@
                 
                 <!-- begin navbar-right -->
                 <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <form class="navbar-form form-input-flat">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Enter keyword..." />
-                                <button type="submit" class="btn btn-search"><i class="fa fa-search"></i></button>
-                            </div>
-                        </form>
-                    </li>
+                   
                     <li class="dropdown">
-                        <a href="javascript:;" data-toggle="dropdown" class="dropdown-toggle has-notify" data-click="toggle-notify">
-                            <i class="fa fa-bell"></i>
-                        </a>
+                       <!--  <a href="javascript:;" data-toggle="dropdown" class="dropdown-toggle has-notify" data-click="toggle-notify">
+                           <i class="fa fa-bell"></i>
+                       </a> -->
                         <ul class="dropdown-menu dropdown-notification pull-right">
                             <li class="dropdown-header">Notifications (5)</li>
                             <li class="notification-item">
@@ -140,7 +133,7 @@
                     </li>
                     <li class="dropdown navbar-user">
                         <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
-                            <span class="image"><img src="assets/img/logo-white.png" alt="" /></span>
+                            <span class="image"><img src="assets/img/logo-light.png" alt="" /></span>
                             <span class="hidden-xs">
                                 
                                 
@@ -155,18 +148,14 @@
                             </span> <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu pull-right">
-                            <li><a href="javascript:;">Edit Profile</a></li>
-                            <li><a href="javascript:;"><span class="badge badge-danger pull-right">2</span> Inbox</a></li>
-                            <li><a href="javascript:;">Calendar</a></li>
-                            <li><a href="javascript:;">Setting</a></li>
-                            <li class="divider"></li>
+                        
                             <li><a href="{{ url('/logout') }}">Log Out</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href="javascript:;" data-click="right-sidebar-toggled">
+                        <!-- <a href="javascript:;" data-click="right-sidebar-toggled">
                             <i class="fa fa-align-left"></i>
-                        </a>
+                        </a> -->
                     </li>
                 </ul>
                 <!-- end navbar-right -->
@@ -198,11 +187,6 @@
 
                                  <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="javascript:;">Edit Profile</a></li>
-                                    <li><a href="javascript:;"><span class="badge badge-danger pull-right">2</span> Inbox</a></li>
-                                    <li><a href="javascript:;">Calendar</a></li>
-                                    <li><a href="javascript:;">Setting</a></li>
-                                    <li class="divider"></li>
                                     <li><a href="{{ url('/logout') }}">Log Out</a></li>
                                 </ul>
                             </div>
