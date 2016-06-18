@@ -4,6 +4,9 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App\BankType;
+use App\BankAccount;
+use App\User;
+use App\Auth;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -31,6 +34,10 @@ class AppServiceProvider extends ServiceProvider
             \View::share('selectBankTypes',$select_bank_types);
 
         }
+
+      
+        
+        
     }
 
     /**
