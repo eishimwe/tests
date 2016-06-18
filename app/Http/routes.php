@@ -99,6 +99,8 @@ Route::post('save_bank',['Middleware' => 'auth','uses' => 'BankAccountsControlle
 
 Route::get('delete_bank/{id}',['Middleware' => 'auth','uses' => 'BankAccountsController@delete_bank']);
 
+Route::get('sponsors-banking-list/{id}',['Middleware' => 'auth','uses' => 'BankAccountsController@sponsors_banking_list']);
+
 
 
 

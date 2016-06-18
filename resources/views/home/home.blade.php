@@ -153,16 +153,14 @@
 
                                             <!-- begin panel -->
                                             <div class="panel pagination-inverse m-b-0 clearfix">
-                                                <table id="sponsored-users-table" data-order='[[1,"asc"]]' class="table table-bordered table-hover">
+                                                <table id="sponsors-banking-details-table" data-order='[[1,"asc"]]' class="table table-bordered table-hover">
                                                     <thead>
                                                         <tr class="inverse">
-                                                
-                                                            <th>Username</th>
-                                                            <th>First Name</th>
-                                                            <th>Surname</th>
-                                                            <th>Primary Contact</th>
-                                                            <th>Status</th>
-                                                            <th data-sorting="disabled"></th>
+                                                          <th>Bank Name</th>
+                                                          <th>Bank Holder</th>
+                                                          <th>Bank Account</th>
+                                                          <th>Branch Code</th>
+                                                          <th data-sorting="disabled"></th>
                                                         </tr>
                                                     </thead>
                                                    
@@ -196,5 +194,36 @@
         @section('custom_stript')
 
             <script src="{{ asset('assets/js/home.js') }}"></script>
+
+            <script>
+
+                function launchBankModal(bank_id){
+
+                  if ($('#sponsors-banking-details-table').length !== 0) {
+                    $('#sponsors-banking-details-table').DataTable({
+                        dom: '<"toolbar">',
+                        responsive: true,
+                        autoFill: true,
+                        colReorder: true,
+                        keys: true,
+                        rowReorder: true,
+                        select: true,
+                        sAjaxSource : "sponsors-banking-list/" + bank_id,
+                        columns :[
+                           
+                            {data: 'description', name: 'bank_types.description'},
+                            {data: 'account_holder', name: 'bank_accounts.account_holder'},
+                            {data: 'account_number', name: 'bank_accounts.account_number'}, 
+                            {data: 'branch_code', name: 'bank_accounts.branch_code'}, 
+                            {data: 'actions',  name: 'actions'}
+
+                        ]
+                    });
+                  }
+
+                }
+
+
+            </script>
 
         @endsection
