@@ -56,7 +56,18 @@ class BankAccountsController extends Controller
     }
 
 
-    public function save_bank(BankRequest $request) {
+    public function save_bank(BankRequest $request,BankAccount $BankAccount) {
+
+        $BankAccount->account_holder      = $request['account_holder'];
+        $BankAccount->account_number      = $request['account_number'];
+        $BankAccount->bank_type_id        = $request['bank_type_id'];
+        $BankAccount->branch_code         = $request['branch_code'];
+        $BankAccount->user_id             = \Auth::user()->id;
+        $BankAccount->save();
+
+        \Session::flash('success','Bank Account added');
+
+        return redirect('banking-details');
 
 
 

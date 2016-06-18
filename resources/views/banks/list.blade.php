@@ -15,9 +15,13 @@
 			
 			<!-- begin section-container -->
 			<div class="section-container section-with-top-border">
-                <p class="m-b-20">
-                    
-                </p>
+                @if(Session::has('success'))
+                <div class="alert alert-success alert-bordered fade in m-b-10">
+                    <strong>Success!</strong>
+                    {{ Session::get('success') }}
+                    <span class="close" data-dismiss="alert">&times;</span>
+                </div>
+                @endif
                 <!-- begin panel -->
                 <div class="panel pagination-inverse clearfix m-b-0">
                     <table id="bank-accounts-table" data-order='[[1,"asc"]]' class="table table-bordered table-hover">
