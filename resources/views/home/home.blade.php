@@ -140,6 +140,45 @@
 
                                
                             </div>
+
+                             <!-- #modal-dialog -->
+                          <div class="modal fade modalBank" id="modalBank">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                            <h4 class="modal-title">Banking Details</h4>
+                                        </div>
+                                        <div class="modal-body">
+
+                                            <!-- begin panel -->
+                                            <div class="panel pagination-inverse m-b-0 clearfix">
+                                                <table id="sponsored-users-table" data-order='[[1,"asc"]]' class="table table-bordered table-hover">
+                                                    <thead>
+                                                        <tr class="inverse">
+                                                
+                                                            <th>Username</th>
+                                                            <th>First Name</th>
+                                                            <th>Surname</th>
+                                                            <th>Primary Contact</th>
+                                                            <th>Status</th>
+                                                            <th data-sorting="disabled"></th>
+                                                        </tr>
+                                                    </thead>
+                                                   
+                                                </table>
+                                            </div>
+                                            <!-- end panel -->
+
+                                          
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a href="javascript:;" class="btn width-100 btn-default" data-dismiss="modal">Close</a>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                            
                         </div>
                         <!-- end tab-content -->
