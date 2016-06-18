@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
                 
             }
 
-            
+
 
             \View::share('selectBankTypes',$select_bank_types);
 

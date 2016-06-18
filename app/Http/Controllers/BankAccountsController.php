@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use App\Http\Requests\BankRequest;
+
 use App\BankAccount;
 
 use Yajra\Datatables\Facades\Datatables;
@@ -51,5 +53,12 @@ class BankAccountsController extends Controller
     public function add_form() {
 
     	return view('banks.add');
+    }
+
+
+    public function save_bank(BankRequest $request) {
+
+
+
     }
 }

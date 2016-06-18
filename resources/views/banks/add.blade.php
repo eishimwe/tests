@@ -23,35 +23,42 @@
                         
                         
                         
-
-                        	{!! Form::open(['url'=>'save_bank_account','method'=>'post','class'=>'form-horizontal']) !!}
+                        	{!! Form::open(['url'=>'save_bank','method'=>'post','class'=>'form-horizontal']) !!}
 
 						  
-                            <div class="form-group m-b-10">
-                                <label class="col-md-3 control-label">Bank Name</label>
+                            <div class="form-group m-b-10 @if ($errors->has('bank_type_id')) has-error has-feedback @endif">
+                               
+                               {!! Form::label('Bank Name', 'Bank Name', array('class' => 'col-md-3 control-label')) !!}   
                                 <div class="col-md-7">
-                                    {!! Form::select('Bank Name',$selectBankTypes,0,array('class' => 'form-control')) !!}
+                                    {!! Form::select('bank_type_id',$selectBankTypes,0,array('class' => 'form-control','id' => 'bank_type_id')) !!}
                                 </div>
                             </div>
 
-
-                            <div class="form-group m-b-10">
-                                <label class="col-md-3 control-label">Bank Holder Names</label>
+                          
+                            <div class="form-group m-b-10 @if ($errors->has('account_holder')) has-error has-feedback @endif">
+                                {!! Form::label('Bank Holder Names', 'Bank Holder Names', array('class' => 'col-md-3 control-label')) !!}  
+                                
                                 <div class="col-md-7">
-                                    <input type="text" class="form-control" placeholder="Default input" />
+                                    {!! Form::text('account_holder',NULL,['class' =>'form-control','id' => 'account_holder' ]) !!}   
                                 </div>
                             </div>
-                            <div class="form-group m-b-10">
-                                <label class="col-md-3 control-label">Bank Account Number</label>
+                            <div class="form-group m-b-10 @if ($errors->has('account_number')) has-error has-feedback @endif">
+
+                                {!! Form::label('Bank Account Number', 'Bank Account Number', array('class' => 'col-md-3 control-label')) !!}   
+                               
                                 <div class="col-md-7">
-                                    <input type="text" class="form-control" placeholder="Default input" />
+                                    {!! Form::text('account_number',NULL,['class' =>'form-control','id' => 'account_number' ]) !!} 
                                 </div>
                             </div>
 
                              <div class="form-group m-b-10">
-                                <label class="col-md-3 control-label">Bank Branch Code</label>
+
+                                {!! Form::label('Bank Branch Code', 'Bank Branch Code', array('class' => 'col-md-3 control-label')) !!}   
+
                                 <div class="col-md-7">
-                                    <input type="text" class="form-control" placeholder="Default input" />
+
+                                    {!! Form::text('branch_code',NULL,['class' =>'form-control','id' => 'branch_code' ]) !!} 
+
                                 </div>
                             </div>
 

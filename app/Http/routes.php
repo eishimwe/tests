@@ -95,6 +95,9 @@ Route::get('banking-list',['Middleware' => 'auth','uses' => 'BankAccountsControl
 
 Route::get('add-bank',['Middleware' => 'auth','uses' => 'BankAccountsController@add_form']);
 
+Route::post('save_bank',['Middleware' => 'auth','uses' => 'BankAccountsController@save_bank']);
+
+
 
 
 
