@@ -99,7 +99,7 @@
         
         <ul>
             <li class="link"><a href="mailto:admin@randgodz.co.za"><i class="fa fa-envelope"></i> admin@randgodz.co.za</a></li>
-            <li class="link"><a href="register.html"><i class="fa fa-edit"></i> Register</a></li>
+            <li class="link"><a href="{{ url('/register') }}"><i class="fa fa-edit"></i> Register</a></li>
             <li class="link"><a href="{{ url('/login') }}"><i class="fa fa-edit"></i> Login</a></li>
         </ul>
         
@@ -135,7 +135,7 @@
         
         <li> <a href="contact.html">Contact</a></li>
         
-        <li> <a href="register.html">Register</a></li>
+        <li> <a href="{{ url('/register') }}">Register</a></li>
         
         <li> <a href="{{ url('/login') }}">Login</a></li>
         
@@ -208,7 +208,7 @@
             data-duration="900"
             data-effect="scale(1.5,1.6)"
         >
-            <a href="register.html" class="sbutton1">Become a Rand God Now!</a>
+            <a href="{{ url('/register') }}" class="sbutton1">Become a Rand God Now!</a>
         </div>
         
     </div>
@@ -295,7 +295,7 @@
 
                             One you have donated to a member, you will get an incentive of 50% in at least 48 hours.</p>
                         <br /><br />
-                        <a href="register.html" class="readmore_but10">Register Now!</a> 
+                        <a href="{{ url('/register') }}" class="readmore_but10">Register Now!</a> 
                         <a href="{{ url('/login') }}" class="readmore_but10">Login</a>
                     </div>
                     
@@ -310,7 +310,7 @@
                         <h1 class="whitecaps">Members should be at least <br /> <strong>18 years or older</strong> to become a member</h1>
 
                         <br /><br />
-                        <a href="register.html" class="readmore_but10">Register Now!</a> <a href="{{ url('/login') }}" class="readmore_but10">Login</a>
+                        <a href="{{ url('/register') }}" class="readmore_but10">Register Now!</a> <a href="{{ url('/login') }}" class="readmore_but10">Login</a>
                     </div>
                     
                     <div class="one_half last"><img src="{{ asset('/assets/images/desktop-2.png') }}" alt="" class="img_left" /></div>
@@ -323,7 +323,7 @@
                         <br />
                         <h1 class="whitecaps">More about the <br /> <strong>Rand Godz</strong></h1>
                         <br /><br />
-                        <a href="register.html" class="readmore_but10">Get Started</a> <a href="{{ url('/login') }}" class="readmore_but10">Login!</a>
+                        <a href="{{ url('/register') }}" class="readmore_but10">Get Started</a> <a href="{{ url('/login') }}" class="readmore_but10">Login!</a>
                     </div>
                     
                     <div class="one_half last"><img src="{{ asset('/assets/images/desktop-3.png') }}" alt="" class="img_left" /></div>
