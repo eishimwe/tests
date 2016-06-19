@@ -60,6 +60,7 @@ class AuthController extends Controller
             'last_name'     => 'required|max:255',
             'email'         => 'required|email|max:255|unique:users',
             'password'      => 'required|min:6|confirmed',
+            'terms_conditions_accepted' => 'required|not_in:0',
         ]);
     }
 
@@ -71,6 +72,8 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
+
+        dd($data);
 
         $enums = \Config::get('registrationstatusesenums');
         $pending_user_status = $enums['users_registration_statuses']['pendingactivation'];

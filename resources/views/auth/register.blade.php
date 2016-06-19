@@ -120,9 +120,9 @@
                             </span>
                         @endif
                     </div>
-                    <div class="checkbox m-b-15">
+                    <div class="checkbox m-b-15 p{{ $errors->has('terms_conditions_accepted') ? ' has-error' : '' }}">
                         <label>
-                            <input type="checkbox"> By creating an account, you agree to our <a href="#" class="text-muted">Terms and condition</a> and <a href="#" class="text-muted">Privacy Policy</a>.
+                            <input name="terms_conditions_accepted" type="checkbox"> By creating an account, you agree to our <a href="#" class="text-muted">Terms and condition</a> and <a href="#" class="text-muted">Privacy Policy</a>.
                         </label>
                     </div>
                     <div class="row m-b-15">
