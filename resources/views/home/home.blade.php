@@ -200,33 +200,23 @@
 
             <script>
 
+            var oTable;
+
                 function launchBankModal(bank_id){
 
-                  var sponsorsBankingDetails;
+                  if ($.fn.dataTable.isDataTable('#sponsors-banking-details-table')) {
 
-                 /* if ($.fn.dataTable('#sponsors-banking-details-table')) {
-
-                     sponsorsBankingDetails.destroy();
-                  }*/
-
-
-
-
-                  if ($('#sponsors-banking-details-table').length !== 0) {
-
-                  
-
-                    
-                    sponsorsBankingDetails = $('#sponsors-banking-details-table').DataTable({
+                     oTable.destroy();
+                  }        
+   
+                    oTable = $('#sponsors-banking-details-table').DataTable({
                         dom: '<"toolbar">',
-                        bRetrieve:true,
                         responsive: true,
-                        autoFill: true,
+                        serveSide:true,
+                        autoFill: false,
                         colReorder: true,
-                        keys: true,
                         rowReorder: true,
-                        select: true,
-                        sAjaxSource : "sponsors-banking-list/" + bank_id,
+                        ajax : "sponsors-banking-list/" + bank_id,
                         columns :[
                            
                             {data: 'description', name: 'bank_types.description'},
@@ -237,7 +227,10 @@
 
                         ]
                     });
-                  }
+
+                   
+                  
+                  $(".modalBank").modal('show');
 
                 }
 

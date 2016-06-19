@@ -15,7 +15,6 @@ var sponsorsUsersTable = function() {
             responsive: true,
             autoFill: true,
             colReorder: true,
-            keys: true,
             rowReorder: true,
             sAjaxSource : "sponsors-list/",
             columns :[
@@ -55,7 +54,7 @@ var sponsoredUsersTable = function() {
             responsive: true,
             autoFill: true,
             colReorder: true,
-            keys: true,
+          
             rowReorder: true,
             sAjaxSource : "sponsored-list/",
             columns :[
