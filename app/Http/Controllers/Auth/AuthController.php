@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Auth;
 use App\User;
 use App\Contact;
 use App\Sponsor;
+use App\UserRegistration;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+
 
 class AuthController extends Controller
 {
@@ -31,6 +33,8 @@ class AuthController extends Controller
      * @var string
      */
     protected $redirectTo = 'home';
+
+    //protected $redirectAfterLogout = 'welcome';
 
     /**
      * Create a new authentication controller instance.
@@ -76,30 +80,113 @@ class AuthController extends Controller
         $user->last_name  = $data['last_name'];
         $user->username   = $data['username'];
         $user->email      = $data['email'];
+        $user->role_id    = 2;
         $user->password   = bcrypt($data['password']);
         $user->user_registration_statuses_id = $pending_user_status;
 
         $contact = new Contact();
-        $contact->primary_contact = $data['sponsor_username'];
+        $contact->primary_contact = $data['cellphone'];
 
-
-        if (isset($data['sponsor_username'])) {
-
-            $sponsorObj = User::where('username',$data['sponsor_username'])->first();
-            $sponsor = new Sponsor();
-            $sponsor->sponsor_user_id = $sponsorObj->id;
-
-        }
         
-         
-       \DB::transaction(function () use ($user, $contact,$sponsor) {
 
+
+
+
+         
+       \DB::transaction(function () use ($user, $contact,$data) {
+
+            if (isset($data['sponsor_username'])) {
+
+                 $primary_sponsor     = User::where('username',$data['sponsor_username'])->first();
+            }
+            else {
+
+                 $primary_sponsor     = User::where('username','admin')->first();
+
+            }
+
+
+
+           
+            $user->referred_by_id  = $primary_sponsor->id;
+            $user->sponsor_type_id = $primary_sponsor->sponsor_type_id;
             $user->save();
             $contact->user_id = $user->id;
             $contact->save();
-            $sponsor->sponsored_user_id = $user->id;
-            $sponsor->save();
 
+
+            if (isset($data['sponsor_username'])) {
+
+                
+                $secondary_sponsor    = User::find($primary_sponsor->referred_by_id);
+
+
+                $system_sponsor     = User::where('username','admin')->first();
+
+                if ($secondary_sponsor->username == 'admin') {
+
+
+                    $user_registration                    = new UserRegistration();
+                    $user_registration->sponsor_user_id   = $secondary_sponsor->id;
+                    $user_registration->sponsor_type_id   = 3;
+                    $user_registration->sponsored_user_id = $user->id;
+                    $user_registration->amount_due        = '300';
+                    $user_registration->save();
+                    
+                    $user_registration                    = new UserRegistration();
+                    $user_registration->sponsor_user_id   = $primary_sponsor->id;
+                    $user_registration->sponsor_type_id   = 2;
+                    $user_registration->sponsored_user_id = $user->id;
+                    $user_registration->amount_due        = '200';
+                    $user_registration->save();
+
+
+
+
+                }else {
+
+
+                    $user_registration                    = new UserRegistration();
+                    $user_registration->sponsor_user_id   = $system_sponsor->id;
+                    $user_registration->sponsor_type_id   = 1;
+                    $user_registration->sponsored_user_id = $user->id;
+                    $user_registration->amount_due        = '100';
+                    $user_registration->save();
+                    
+                    $user_registration                    = new UserRegistration();
+                    $user_registration->sponsor_user_id   = $primary_sponsor->id;
+                    $user_registration->sponsor_type_id   = 2;
+                    $user_registration->sponsored_user_id = $user->id;
+                    $user_registration->amount_due        = '200';
+                    $user_registration->save();
+                    
+                    $user_registration                    = new UserRegistration();
+                    $user_registration->sponsor_user_id   = $secondary_sponsor->id;
+                    $user_registration->sponsor_type_id   = 3;
+                    $user_registration->sponsored_user_id = $user->id;
+                    $user_registration->amount_due        = '200';
+                    $user_registration->save();
+
+
+
+
+
+                }
+                
+               
+            } else {
+
+                $system_sponsor                       = User::where('username','admin')->first();   
+                $user_registration                    = new UserRegistration();
+                $user_registration->sponsor_user_id   = $system_sponsor->id;
+                $user_registration->sponsor_type_id   = 1;
+                $user_registration->sponsored_user_id = $user->id;
+                $user_registration->amount_due        = '500';
+                $user_registration->save();
+
+            }
+
+            
 
         });
 

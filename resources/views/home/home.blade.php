@@ -34,137 +34,209 @@
 
             @endif
             <!-- end page-header -->
-       <!--   begin row -->
-         <div class="row">
-            <!--  begin col-3 -->
-             <div class="col-sm-6 col-lg-3">
-              <!--    begin widget -->
-                 <div class="widget widget-stat widget-stat-right bg-inverse text-white">
-                     <div class="widget-stat-btn"><a href="javascript:;" data-click="widget-reload"><i class="fa fa-repeat"></i></a></div>
-                     <div class="widget-stat-icon"><i class="fa fa-user"></i></div>
-                     <div class="widget-stat-info">
-                         <div class="widget-stat-title">Your Sponsors Users</div>
-                         <div class="widget-stat-number"><a href="#nav-pills-tab-1" data-toggle="tab">{{ $number_of_sponsors_users }}</a></div>
-                     </div>
-                     <div class="widget-stat-progress">
-                         <div class="progress">
-                             <div class="progress-bar" style="width: 80%"></div>
-                         </div>
-                     </div>
-                     <div class="widget-stat-footer text-left"></div>
-                 </div>
-                 <!-- end widget -->
-             </div>
-             <!-- end col-3 -->
-            
-              <div class="col-sm-6 col-lg-3">
-                    <!-- begin widget -->
-                    <div class="widget widget-stat widget-stat-right bg-success text-white">
-                        <div class="widget-stat-btn"><a href="javascript:;" data-click="widget-reload"><i class="fa fa-repeat"></i></a></div>
-                        <div class="widget-stat-icon"><i class="fa fa-user"></i></div>
-                        <div class="widget-stat-info">
-                            <div class="widget-stat-title">Your Sponsored Users</div>
-                            <div class="widget-stat-number"><a href="{{ url('sponsored-list') }}">{{ $number_of_sponsored_users }}</a></div>
-                        </div>
-                        <div class="widget-stat-progress">
-                            <div class="progress">
-                                <div class="progress-bar" style="width: 60%"></div>
-                            </div>
-                        </div>
-                        <div class="widget-stat-footer"></div>
-                    </div>
-                    <!-- end widget -->
-                </div>
 
-         </div>
-        <!--  end row -->
-
-        <!-- begin section-container -->
-           <!--  <div class="section-container section-with-top-border p-b-5">
-               <h5 class="m-t-0">Default Nav Pills & Justified Pills</h5>
-               begin row
-               <div class="row">
-                   begin col-6
-                   <div class="col-md-6">
-                       begin nav-pills
-                       <ul class="nav nav-pills nav-pills-success">
-                           <li class="active"><a href="#nav-pills-tab-1" data-toggle="tab">Pills One</a></li>
-                           <li><a href="#nav-pills-tab-2" data-toggle="tab">Pills Two</a></li>
-                           <li><a href="#nav-pills-tab-3" data-toggle="tab">Pills Three</a></li>
-                       </ul>
-                       end nav-pills
-                       begin tab-content
-                       <div class="tab-content panel">
-                           <div class="tab-pane fade active in" id="nav-pills-tab-1">
-                               <h4>Affordable solutions for all your creativity needs.</h4>
-                               <p>
-                                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                                   Integer ac dui eu felis hendrerit lobortis. Phasellus elementum, nibh eget adipiscing porttitor, 
-                                   est diam sagittis orci, a ornare nisi quam elementum tortor. 
-                                   Proin interdum ante porta est convallis dapibus dictum in nibh. 
-                               </p>
-                           </div>
-                           <div class="tab-pane fade" id="nav-pills-tab-2">
-                               <h4>Accessible. Affordable. Design.</h4>
-                               <p>
-                                   Proin interdum ante porta est convallis dapibus dictum in nibh. 
-                                   Aenean quis massa congue metus mollis fermentum eget et tellus. 
-                                   Aenean tincidunt, mauris ut dignissim lacinia, nisi urna consectetur sapien, 
-                                   nec eleifend orci eros id lectus.
-                               </p>
-                           </div>
-                           <div class="tab-pane fade" id="nav-pills-tab-3">
-                               <h4>Engaging Purposeful and Creative.</h4>
-                               <p>
-                                   Aenean quis massa congue metus mollis fermentum eget et tellus. 
-                                   Aenean tincidunt, mauris ut dignissim lacinia, nisi urna consectetur sapien, 
-                                   nec eleifend orci eros id lectus.
-                                   Proin interdum ante porta est convallis dapibus dictum in nibh. 
-                               </p>
-                           </div>
-                       </div>
-                       end tab-content
-                   </div>
-                   end col-6
-                   begin col-6
-                
-               </div>
-               end row
-           </div> -->
-            <!-- end section-container -->
-
-
+      
           <!-- begin section-container -->
-            <div class="section-container section-with-top-border">
-                <p class="m-b-20">
-                    <b>Sponsors</b> 
-                </p>
-                <!-- begin panel -->
-                <div class="panel pagination-inverse m-b-0 clearfix">
-                    <table id="sponsors-users-table" data-order='[[1,"asc"]]' class="table table-bordered table-hover">
-                        <thead>
-                            <tr class="inverse">
-                                <th data-sorting="disabled"></th>
-                                <th>Username</th>
-                                <th>First Name</th>
-                                <th>Surname</th>
-                                <th>Email Address</th>
-                                <th>Cellphone</th>
-                                <th data-sorting="disabled"></th>
-                            </tr>
-                        </thead>
-                       
-                    </table>
+            <div class="section-container section-with-top-border p-b-5">
+                <h5 class="m-t-0"></h5>
+                <!-- begin row -->
+                <div class="row">
+                    <!-- begin col-6 -->
+                    <div class="col-md-12">
+                        <!-- begin nav-pills -->
+                        <ul class="nav nav-pills nav-pills-success">
+
+                          <li class="active">
+
+                               
+                                <!--    begin widget -->
+                                 <div class="widget widget-stat widget-stat-right bg-inverse text-white">
+                                     <div class="widget-stat-btn"><a href="javascript:;" data-click="widget-reload"><i class="fa fa-repeat"></i></a></div>
+                                     <div class="widget-stat-icon"><i class="fa fa-user"></i></div>
+                                     <div class="widget-stat-info">
+                                         <div class="widget-stat-title">Sponsors Users</div>
+                                         <div class="widget-stat-number"> <a href="#nav-pills-tab-1" data-toggle="tab">{{ $number_of_sponsors_users }} </a></div>
+                                     </div>
+                                     <div class="widget-stat-progress">
+                                         <div class="progress">
+                                             <div class="progress-bar" style="width: 80%"></div>
+                                         </div>
+                                     </div>
+                                     <div class="widget-stat-footer text-left"></div>
+                                 </div>
+                                 <!-- end widget -->
+                              </li>
+                            <li>
+
+                                  <!-- begin widget -->
+                                  <div class="widget widget-stat widget-stat-right bg-success text-white">
+                                      <div class="widget-stat-btn"><a href="javascript:;" data-click="widget-reload"><i class="fa fa-repeat"></i></a></div>
+                                      <div class="widget-stat-icon"><i class="fa fa-user"></i></div>
+                                      <div class="widget-stat-info">
+                                          <div class="widget-stat-title">Sponsored Users</div>
+                                          <div class="widget-stat-number"><a href="#nav-pills-tab-2" data-toggle="tab">{{ $number_of_sponsored_users }}</a></div>
+                                      </div>
+                                      <div class="widget-stat-progress">
+                                          <div class="progress">
+                                              <div class="progress-bar" style="width: 60%"></div>
+                                          </div>
+                                      </div>
+                                      <div class="widget-stat-footer"></div>
+                                  </div>
+                                  <!-- end widget -->
+
+                            </li>
+                           
+                        </ul>
+                        <!-- end nav-pills -->
+                        <!-- begin tab-content -->
+                        <div class="tab-content panel">
+                            <div class="tab-pane fade active in" id="nav-pills-tab-1">
+                                <h4>sponsors list</h4>
+
+
+                                  <!-- begin panel -->
+                                  <div class="panel pagination-inverse m-b-0 clearfix">
+                                      <table id="sponsors-users-table" data-order='[[1,"asc"]]' class="table table-bordered table-hover">
+                                          <thead>
+                                              <tr class="inverse">
+                                                  <th>Sponsor Type</th>
+                                                  <th>Username</th>
+                                                  <th>First Name</th>
+                                                  <th>Surname</th>
+                                                  <th>Primary Contact</th>
+                                                  <th>Amount</th>
+                                                  <th data-sorting="disabled"></th>
+                                              </tr>
+                                          </thead>
+                                         
+                                      </table>
+                                  </div>
+                                  <!-- end panel -->
+                                                
+
+                            </div>
+                            <div class="tab-pane fade" id="nav-pills-tab-2">
+                                <h4>sponsored users</h4>
+
+                                 <!-- begin panel -->
+                                  <div class="panel pagination-inverse m-b-0 clearfix">
+                                      <table id="sponsored-users-table" data-order='[[1,"asc"]]' class="table table-bordered table-hover">
+                                          <thead>
+                                              <tr class="inverse">
+                                                  
+                                                  <th>Username</th>
+                                                  <th>First Name</th>
+                                                  <th>Surname</th>
+                                                  <th>Primary Contact</th>
+                                                  <th>Status</th>
+                                                  <th>Amount</th>
+                                                  <th data-sorting="disabled"></th>
+                                              </tr>
+                                          </thead>
+                                         
+                                      </table>
+                                  </div>
+                                  <!-- end panel -->
+
+
+
+                               
+                            </div>
+
+                             <!-- #modal-dialog -->
+                          <div class="modal fade modalBank" id="modalBank">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                            <h4 class="modal-title">Banking Details</h4>
+                                        </div>
+                                        <div class="modal-body">
+
+                                            <!-- begin panel -->
+                                            <div class="panel pagination-inverse m-b-0 clearfix">
+                                                <table id="sponsors-banking-details-table" data-order='[[1,"asc"]]' class="table table-bordered table-hover">
+                                                    <thead>
+                                                        <tr class="inverse">
+                                                          <th>Bank Name</th>
+                                                          <th>Bank Holder</th>
+                                                          <th>Bank Account</th>
+                                                          <th>Branch Code</th>
+                                                         
+                                                        </tr>
+                                                    </thead>
+                                                   
+                                                </table>
+                                            </div>
+                                            <!-- end panel -->
+
+                                          
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a href="javascript:;" class="btn width-100 btn-default" data-dismiss="modal">Close</a>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                           
+                        </div>
+                        <!-- end tab-content -->
+                    </div>
+                    <!-- end col-6 -->
+                  
                 </div>
-                <!-- end panel -->
+                <!-- end row -->
             </div>
             <!-- end section-container -->
-        
+          
                   
         @endsection
 
         @section('custom_stript')
 
             <script src="{{ asset('assets/js/home.js') }}"></script>
+
+
+            <script>
+
+            var oTable;
+
+                function launchBankModal(bank_id){
+
+                  if ($.fn.dataTable.isDataTable('#sponsors-banking-details-table')) {
+
+                     oTable.destroy();
+                  }        
+   
+                    oTable = $('#sponsors-banking-details-table').DataTable({
+                        dom: '<"toolbar">',
+                        responsive: true,
+                        serveSide:true,
+                        autoFill: false,
+                        colReorder: true,
+                        rowReorder: true,
+                        ajax : "sponsors-banking-list/" + bank_id,
+                        columns :[
+                           
+                            {data: 'description', name: 'bank_types.description'},
+                            {data: 'account_holder', name: 'bank_accounts.account_holder'},
+                            {data: 'account_number', name: 'bank_accounts.account_number'}, 
+                            {data: 'branch_code', name: 'bank_accounts.branch_code'}, 
+                            
+
+                        ]
+                    });
+
+                   
+                  
+                  $(".modalBank").modal('show');
+
+                }
+
+
+            </script>
+
 
         @endsection

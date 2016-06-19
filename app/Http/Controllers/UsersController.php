@@ -42,11 +42,11 @@ class UsersController extends Controller
     }
 
 
-     public function getuserlandingpage($referrer_username) {
+     public function getuserlandingpage($referral_id) {
 
         $enums = \Config::get('registrationstatusesenums');
         $activated_user_status = $enums['users_registration_statuses']['activated'];
-        $result = User::where('username','=',$referrer_username)
+        $result = User::where('username','=',$referral_id)
                         ->where('user_registration_statuses_id','=',$activated_user_status)->first();
 
 

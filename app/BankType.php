@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Sponsor extends Model
+class BankType extends Model
 {
-   protected $table = 'sponsors';
+   protected $table = 'bank_types';
 
-    
+  
 }

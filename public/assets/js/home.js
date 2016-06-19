@@ -10,22 +10,81 @@ var sponsorsUsersTable = function() {
 
     if ($('#sponsors-users-table').length !== 0) {
         $('#sponsors-users-table').DataTable({
-            dom: 'lBfrtip',
-            buttons: [
-                'copy', 'csv', 'excel', 'pdf', 'print'
-            ],
+            dom: 'rfrtip',
+           
             responsive: true,
             autoFill: true,
             colReorder: true,
-            keys: true,
             rowReorder: true,
-            select: true,
-            sAjaxSource : "sponsors-list",
+            sAjaxSource : "sponsors-list/",
             columns :[
-                {data: 'id', name: 'users.id'},
+                {data: 'sponsor_type', name: 'sponsors_type.description'},
+                {data: 'username', name: 'users.username'},
                 {data: 'first_name', name: 'users.first_name'},
                 {data: 'last_name', name: 'users.last_name'},
-                {data: 'email', name: 'users.email'},
+                {data: 'primary_contact', name: 'contacts.primary_contact'},
+              
+
+                {data : function(data){
+
+                     if (data.paid == 0) {
+
+                       return 'R'+ data.amount_due + "  <button type='button' class='btn btn-xs btn-danger btn-rounded m-b-5'>Not Paid</button>"; 
+                    } else {
+
+                       return 'R'+ data.amount_due + "  <button type='button' class='btn btn-xs btn-success btn-rounded m-b-5'>Paid</button>"; 
+
+                    }
+
+
+                   
+                }
+                },
+                {data: 'actions',  name: 'actions'}
+
+            ]
+        });
+    }
+};
+
+var sponsoredUsersTable = function() {
+    "use strict";
+
+    if ($('#sponsored-users-table').length !== 0) {
+        $('#sponsored-users-table').DataTable({
+            dom: 'rfrtip',
+            responsive: true,
+            autoFill: true,
+            colReorder: true,
+          
+            rowReorder: true,
+            sAjaxSource : "sponsored-list/",
+            columns :[
+              
+                {data: 'username', name: 'users.username'},
+                {data: 'first_name', name: 'users.first_name'},
+                {data: 'last_name', name: 'users.last_name'},
+                {data: 'primary_contact', name: 'contacts.primary_contact'},
+                {data: 'description', name: 'user_registration_statuses.description'},
+
+                {data : function(data){
+
+                    
+
+                    if (data.paid == 0) {
+
+                       return 'R'+ data.amount_due + "  <button type='button' class='btn btn-xs btn-danger btn-rounded m-b-5'>Not Paid</button>"; 
+                    } else {
+
+                       return 'R'+ data.amount_due + "  <button type='button' class='btn btn-xs btn-success btn-rounded m-b-5'>Paid</button>"; 
+
+                    }
+
+                    
+
+                   
+                }
+                },
                 {data: 'actions',  name: 'actions'}
 
             ]
@@ -44,6 +103,7 @@ var PageDemo = function () {
 		init: function () {
 
             sponsorsUsersTable();
+            sponsoredUsersTable();
 		}
   };
 }();
