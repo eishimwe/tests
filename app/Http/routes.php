@@ -18,7 +18,13 @@
 Route::get('/', function () {
     
 	return view('welcome');
-    //return view('auth.login');
+    
+});
+
+Route::get('login',function() {
+
+	return view('auth.login');
+
 });
 
 // This is a shortcut for the below authantication controllers
