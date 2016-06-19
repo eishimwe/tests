@@ -73,7 +73,7 @@ class AuthController extends Controller
     protected function create(array $data)
     {
 
-        dd($data);
+        
 
         $enums = \Config::get('registrationstatusesenums');
         $pending_user_status = $enums['users_registration_statuses']['pendingactivation'];
