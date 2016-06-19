@@ -23,7 +23,7 @@ class SponsorsController extends Controller
         $user = User::find(\Auth::user()->id);
 
         $sponsors_users = \DB::table('users_registrations')
-                            ->join('contacts','contacts.user_id','=','users_registrations.sponsored_user_id')
+                            ->join('contacts','contacts.user_id','=','users_registrations.sponsor_user_id')
                             ->join('users','users.id','=','users_registrations.sponsor_user_id')
                             ->join('sponsor_types','sponsor_types.id','=','users_registrations.sponsor_type_id')
                             ->where('users_registrations.sponsored_user_id','=',\Auth::user()->id)
@@ -60,7 +60,7 @@ class SponsorsController extends Controller
 
 
         $sponsored_users = \DB::table('users_registrations')
-                            ->join('contacts','contacts.user_id','=','users_registrations.sponsor_user_id')
+                            ->join('contacts','contacts.user_id','=','users_registrations.sponsored_user_id')
                             ->join('sponsor_types','sponsor_types.id','=','users_registrations.sponsor_type_id')  
                             ->join('users','users.id','=','users_registrations.sponsored_user_id')
                             ->join('user_registration_statuses','user_registration_statuses.id','=','users.user_registration_statuses_id')
