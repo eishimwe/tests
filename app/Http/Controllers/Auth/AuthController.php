@@ -99,7 +99,7 @@ class AuthController extends Controller
             }
             else {
 
-                 $secondary_sponsor     = User::where('username','RandGodz')->first();
+                 $secondary_sponsor     = User::where('username','admin')->first();
 
             }
 
@@ -115,9 +115,9 @@ class AuthController extends Controller
 
                 
                 $primary_sponsor    = User::find($secondary_sponsor->referred_by_id);
-                $system_sponsor     = User::where('username','RandGodz')->first();
+                $system_sponsor     = User::where('username','admin')->first();
 
-                if ($primary_sponsor->username == 'RandGodz') {
+                if ($primary_sponsor->username == 'admin') {
 
 
                     $user_registration                    = new UserRegistration();
@@ -174,7 +174,7 @@ class AuthController extends Controller
                
             } else {
 
-                $system_sponsor                       = User::where('username','RandGodz')->first();
+                $system_sponsor                       = User::where('username','admin')->first();
                 $user_registration->sponsor_user_id   = $system_sponsor->id;
                 $user_registration->sponsor_type_id   = 1;
                 $user_registration->sponsored_user_id = $user->id;
