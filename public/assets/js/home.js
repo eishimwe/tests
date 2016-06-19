@@ -10,10 +10,8 @@ var sponsorsUsersTable = function() {
 
     if ($('#sponsors-users-table').length !== 0) {
         $('#sponsors-users-table').DataTable({
-            dom: 'lBfrtip',
-            buttons: [
-                'copy', 'csv', 'excel', 'pdf', 'print'
-            ],
+            dom: 'rfrtip',
+           
             responsive: true,
             autoFill: true,
             colReorder: true,
@@ -53,10 +51,7 @@ var sponsoredUsersTable = function() {
 
     if ($('#sponsored-users-table').length !== 0) {
         $('#sponsored-users-table').DataTable({
-            dom: 'lBfrtip',
-            buttons: [
-                'copy', 'csv', 'excel', 'pdf', 'print'
-            ],
+            dom: 'rfrtip',
             responsive: true,
             autoFill: true,
             colReorder: true,

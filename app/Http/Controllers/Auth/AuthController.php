@@ -168,10 +168,6 @@ class AuthController extends Controller
                 }
                 
                
-     
-     
-     
-               
             } else {
 
                 $system_sponsor                       = User::where('username','admin')->first();   
