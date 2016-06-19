@@ -100,6 +100,7 @@
                                       <table id="sponsors-users-table" data-order='[[1,"asc"]]' class="table table-bordered table-hover">
                                           <thead>
                                               <tr class="inverse">
+                                                  <th>Sponsor Type</th>
                                                   <th>Username</th>
                                                   <th>First Name</th>
                                                   <th>Surname</th>
@@ -123,7 +124,7 @@
                                       <table id="sponsored-users-table" data-order='[[1,"asc"]]' class="table table-bordered table-hover">
                                           <thead>
                                               <tr class="inverse">
-                                      
+                                                  
                                                   <th>Username</th>
                                                   <th>First Name</th>
                                                   <th>Surname</th>

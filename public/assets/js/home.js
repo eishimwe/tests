@@ -18,11 +18,13 @@ var sponsorsUsersTable = function() {
             rowReorder: true,
             sAjaxSource : "sponsors-list/",
             columns :[
-               
+                {data: 'sponsor_type', name: 'sponsors_type.description'},
                 {data: 'username', name: 'users.username'},
                 {data: 'first_name', name: 'users.first_name'},
                 {data: 'last_name', name: 'users.last_name'},
                 {data: 'primary_contact', name: 'contacts.primary_contact'},
+              
+
                 {data : function(data){
 
                      if (data.paid == 0) {
@@ -58,11 +60,13 @@ var sponsoredUsersTable = function() {
             rowReorder: true,
             sAjaxSource : "sponsored-list/",
             columns :[
+              
                 {data: 'username', name: 'users.username'},
                 {data: 'first_name', name: 'users.first_name'},
                 {data: 'last_name', name: 'users.last_name'},
                 {data: 'primary_contact', name: 'contacts.primary_contact'},
                 {data: 'description', name: 'user_registration_statuses.description'},
+
                 {data : function(data){
 
                     

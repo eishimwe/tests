@@ -41,7 +41,7 @@ class DatabaseSeeder extends Seeder {
         					'username' 						=> 'admin',
         					'first_name' 					=> 'admin',
         					'last_name'						=> 'admin',
-        					'email'							=> 'info@randgodz.co.za',
+        					'email'							=> 'admin@randgodz.co.za',
         					'id_number'     				=> '1000000000000',
         					'password'      				=> bcrypt('Billionnaire'),
         					'created_by'					=> '-1',
