@@ -174,7 +174,8 @@ class AuthController extends Controller
                
             } else {
 
-                $system_sponsor                       = User::where('username','admin')->first();
+                $system_sponsor                       = User::where('username','admin')->first();   
+                $user_registration                    = new UserRegistration();
                 $user_registration->sponsor_user_id   = $system_sponsor->id;
                 $user_registration->sponsor_type_id   = 1;
                 $user_registration->sponsored_user_id = $user->id;
