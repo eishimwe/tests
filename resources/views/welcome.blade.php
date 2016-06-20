@@ -127,13 +127,13 @@
       
         <ul class="nav navbar-nav">
         
-        <li><a href="#" class="active">Home</a></li>
+        <li><a href="{{ url('/') }}" class="active">Home</a></li>
         
-        <li> <a href="process.html">Process</a></li>
+        <li> <a href="#">Process</a></li>
        
-        <li> <a href="faqs.html">FAQs</a></li>
+        <li> <a href="#">FAQs</a></li>
         
-        <li> <a href="contact.html">Contact</a></li>
+        <li> <a href="#">Contact</a></li>
         
         <li> <a href="{{ url('/register') }}">Register</a></li>
         
@@ -345,7 +345,7 @@
     
     <div class="one_half">
     
-        Copyright © 2016 Rand Godz. All rights reserved.  <a href="termsandconditions.html">Terms and Conditions of use</a>
+        Copyright © 2016 Rand Godz. All rights reserved.  <a href="#">Terms and Conditions of use</a>
                    
     </div>
     
