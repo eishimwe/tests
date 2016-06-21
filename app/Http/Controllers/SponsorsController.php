@@ -125,7 +125,7 @@ class SponsorsController extends Controller
 
         }
 
-        if ($amount_paid == 500) {
+        if ($amount_paid == 100) {
 
             $user->user_registration_statuses_id = 3;
             $user->save();
