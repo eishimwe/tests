@@ -125,7 +125,9 @@ class SponsorsController extends Controller
 
         }
 
-        if ($amount_paid == 100 && $username =='admin') {
+
+
+        if ($amount_paid == 100 && \Auth::user()->username =='admin') {
 
             $user->user_registration_statuses_id = 3;
             $user->save();
