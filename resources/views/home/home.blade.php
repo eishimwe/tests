@@ -54,7 +54,7 @@
                                      <div class="widget-stat-btn"><a href="javascript:;" data-click="widget-reload"><i class="fa fa-repeat"></i></a></div>
                                      <div class="widget-stat-icon"><i class="fa fa-user"></i></div>
                                      <div class="widget-stat-info">
-                                         <div class="widget-stat-title">Sponsors Users</div>
+                                         <div class="widget-stat-title">My Sponsors</div>
                                          <div class="widget-stat-number"> <a href="#nav-pills-tab-1" data-toggle="tab">{{ $number_of_sponsors_users }} </a></div>
                                      </div>
                                      <div class="widget-stat-progress">
@@ -73,7 +73,7 @@
                                       <div class="widget-stat-btn"><a href="javascript:;" data-click="widget-reload"><i class="fa fa-repeat"></i></a></div>
                                       <div class="widget-stat-icon"><i class="fa fa-user"></i></div>
                                       <div class="widget-stat-info">
-                                          <div class="widget-stat-title">Sponsored Users</div>
+                                          <div class="widget-stat-title">My Team</div>
                                           <div class="widget-stat-number"><a href="#nav-pills-tab-2" data-toggle="tab">{{ $number_of_sponsored_users }}</a></div>
                                       </div>
                                       <div class="widget-stat-progress">
@@ -92,7 +92,7 @@
                         <!-- begin tab-content -->
                         <div class="tab-content panel">
                             <div class="tab-pane fade active in" id="nav-pills-tab-1">
-                                <h4>sponsors list</h4>
+                                <h4>My Sponsors</h4>
 
 
                                   <!-- begin panel -->
@@ -117,7 +117,7 @@
 
                             </div>
                             <div class="tab-pane fade" id="nav-pills-tab-2">
-                                <h4>sponsored users</h4>
+                                <h4>My Team</h4>
 
                                  <!-- begin panel -->
                                   <div class="panel pagination-inverse m-b-0 clearfix">
