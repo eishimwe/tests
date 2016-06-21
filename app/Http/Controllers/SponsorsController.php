@@ -25,6 +25,7 @@ class SponsorsController extends Controller
         $sponsors_users = \DB::table('users_registrations')
                             ->join('contacts','contacts.user_id','=','users_registrations.sponsor_user_id')
                             ->join('users','users.id','=','users_registrations.sponsor_user_id')
+                            ->join('sponsor_types','sponsor_types.id','=','users_registrations.sponsor_type_id')
                             ->where('users_registrations.sponsored_user_id','=',\Auth::user()->id)
         					->select(
         						\DB::raw(
@@ -37,7 +38,8 @@ class SponsorsController extends Controller
                                     `users`.referred_by_id,
                                     `contacts`.`primary_contact`,
                                     `users_registrations`.`amount_due`,
-                                    `users_registrations`.`paid`
+                                    `users_registrations`.`paid`,
+                                    `sponsor_types`.`description` as sponsor_type
 
         							"
 
@@ -47,7 +49,7 @@ class SponsorsController extends Controller
                          
 
         return Datatables::of($sponsors_users)
-                            ->addColumn('actions','<a class="btn btn-xs btn-block btn-success" data-toggle="modal" onClick="launchBankModal({{$id}});" data-target=".modalBank">View Banking Details</a>')
+                            ->addColumn('actions','<a class="btn btn-xs btn-block btn-success" onClick="launchBankModal({{$id}});">View Banking Details</a>')
                             ->make(true);
 
 
@@ -58,14 +60,16 @@ class SponsorsController extends Controller
 
 
         $sponsored_users = \DB::table('users_registrations')
-                            ->join('contacts','contacts.user_id','=','users_registrations.sponsor_user_id')  
+                            ->join('contacts','contacts.user_id','=','users_registrations.sponsored_user_id')
+                            ->join('sponsor_types','sponsor_types.id','=','users_registrations.sponsor_type_id')  
                             ->join('users','users.id','=','users_registrations.sponsored_user_id')
                             ->join('user_registration_statuses','user_registration_statuses.id','=','users.user_registration_statuses_id')
                             ->where('users_registrations.sponsor_user_id','=',\Auth::user()->id)
-                           
+                          
                             ->select(
                                 \DB::raw(
                                     "
+                                    `users`.created_at,
                                     `users`.id,
                                     `users`.username,
                                     `users`.first_name,
@@ -76,7 +80,9 @@ class SponsorsController extends Controller
                                     `users_registrations`.`amount_due`,
                                     `users_registrations`.`paid`,
                                     `users_registrations`.`id` as 'reg',
-                                    `user_registration_statuses`.`description`
+                                    `user_registration_statuses`.`description`,
+                                    `sponsor_types`.`description` as sponsor_type
+                                    
                                      
                                     "
 

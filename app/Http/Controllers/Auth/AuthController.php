@@ -34,6 +34,8 @@ class AuthController extends Controller
      */
     protected $redirectTo = 'home';
 
+    //protected $redirectAfterLogout = 'welcome';
+
     /**
      * Create a new authentication controller instance.
      *
@@ -58,6 +60,7 @@ class AuthController extends Controller
             'last_name'     => 'required|max:255',
             'email'         => 'required|email|max:255|unique:users',
             'password'      => 'required|min:6|confirmed',
+            'terms_conditions_accepted' => 'required|not_in:0',
         ]);
     }
 
@@ -69,6 +72,8 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
+
+        
 
         $enums = \Config::get('registrationstatusesenums');
         $pending_user_status = $enums['users_registration_statuses']['pendingactivation'];
@@ -95,17 +100,19 @@ class AuthController extends Controller
 
             if (isset($data['sponsor_username'])) {
 
-                 $secondary_sponsor     = User::where('username',$data['sponsor_username'])->first();
+                 $primary_sponsor     = User::where('username',$data['sponsor_username'])->first();
             }
             else {
 
-                 $secondary_sponsor     = User::where('username','RandGodz')->first();
+                 $primary_sponsor     = User::where('username','admin')->first();
 
             }
 
+
+
            
-            $user->referred_by_id  = $secondary_sponsor->id;
-            $user->sponsor_type_id = $secondary_sponsor->sponsor_type_id;
+            $user->referred_by_id  = $primary_sponsor->id;
+            $user->sponsor_type_id = $primary_sponsor->sponsor_type_id;
             $user->save();
             $contact->user_id = $user->id;
             $contact->save();
@@ -114,22 +121,24 @@ class AuthController extends Controller
             if (isset($data['sponsor_username'])) {
 
                 
-                $primary_sponsor    = User::find($secondary_sponsor->referred_by_id);
-                $system_sponsor     = User::where('username','RandGodz')->first();
+                $secondary_sponsor    = User::find($primary_sponsor->referred_by_id);
 
-                if ($primary_sponsor->username == 'RandGodz') {
+
+                $system_sponsor     = User::where('username','admin')->first();
+
+                if ($secondary_sponsor->username == 'admin') {
 
 
                     $user_registration                    = new UserRegistration();
-                    $user_registration->sponsor_user_id   = $primary_sponsor->id;
-                    $user_registration->sponsor_type_id   = 2;
+                    $user_registration->sponsor_user_id   = $secondary_sponsor->id;
+                    $user_registration->sponsor_type_id   = 3;
                     $user_registration->sponsored_user_id = $user->id;
                     $user_registration->amount_due        = '300';
                     $user_registration->save();
                     
                     $user_registration                    = new UserRegistration();
-                    $user_registration->sponsor_user_id   = $secondary_sponsor->id;
-                    $user_registration->sponsor_type_id   = 3;
+                    $user_registration->sponsor_user_id   = $primary_sponsor->id;
+                    $user_registration->sponsor_type_id   = 2;
                     $user_registration->sponsored_user_id = $user->id;
                     $user_registration->amount_due        = '200';
                     $user_registration->save();
@@ -168,17 +177,14 @@ class AuthController extends Controller
                 }
                 
                
-     
-     
-     
-               
             } else {
 
-                $system_sponsor                       = User::where('username','RandGodz')->first();
+                $system_sponsor                       = User::where('username','admin')->first();   
+                $user_registration                    = new UserRegistration();
                 $user_registration->sponsor_user_id   = $system_sponsor->id;
                 $user_registration->sponsor_type_id   = 1;
                 $user_registration->sponsored_user_id = $user->id;
-                $user_registration->amount_due        = '500';
+                $user_registration->amount_due        = '100';
                 $user_registration->save();
 
             }

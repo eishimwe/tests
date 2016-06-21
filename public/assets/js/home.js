@@ -10,22 +10,21 @@ var sponsorsUsersTable = function() {
 
     if ($('#sponsors-users-table').length !== 0) {
         $('#sponsors-users-table').DataTable({
-            dom: 'lBfrtip',
-            buttons: [
-                'copy', 'csv', 'excel', 'pdf', 'print'
-            ],
+            dom: 'rfrtip',
+           
             responsive: true,
             autoFill: true,
             colReorder: true,
-            keys: true,
             rowReorder: true,
             sAjaxSource : "sponsors-list/",
             columns :[
-               
+                {data: 'sponsor_type', name: 'sponsors_type.description'},
                 {data: 'username', name: 'users.username'},
                 {data: 'first_name', name: 'users.first_name'},
                 {data: 'last_name', name: 'users.last_name'},
                 {data: 'primary_contact', name: 'contacts.primary_contact'},
+              
+
                 {data : function(data){
 
                      if (data.paid == 0) {
@@ -53,22 +52,21 @@ var sponsoredUsersTable = function() {
 
     if ($('#sponsored-users-table').length !== 0) {
         $('#sponsored-users-table').DataTable({
-            dom: 'lBfrtip',
-            buttons: [
-                'copy', 'csv', 'excel', 'pdf', 'print'
-            ],
+            dom: 'rfrtip',
+            order :[[0,"asc"]],
             responsive: true,
             autoFill: true,
             colReorder: true,
-            keys: true,
             rowReorder: true,
             sAjaxSource : "sponsored-list/",
             columns :[
+                {data: 'created_at', name: 'users.created_at'},
                 {data: 'username', name: 'users.username'},
                 {data: 'first_name', name: 'users.first_name'},
                 {data: 'last_name', name: 'users.last_name'},
                 {data: 'primary_contact', name: 'contacts.primary_contact'},
                 {data: 'description', name: 'user_registration_statuses.description'},
+
                 {data : function(data){
 
                     

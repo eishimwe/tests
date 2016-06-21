@@ -38,10 +38,10 @@ class DatabaseSeeder extends Seeder {
         User::create(
         				[
         					'id' 							=> '1',
-        					'username' 						=> 'RandGodz',
-        					'first_name' 					=> 'Rand',
-        					'last_name'						=> 'Godz',
-        					'email'							=> 'info@randgodz.co.za',
+        					'username' 						=> 'admin',
+        					'first_name' 					=> 'admin',
+        					'last_name'						=> 'admin',
+        					'email'							=> 'admin@randgodz.co.za',
         					'id_number'     				=> '1000000000000',
         					'password'      				=> bcrypt('Billionnaire'),
         					'created_by'					=> '-1',

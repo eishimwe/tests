@@ -4,3 +4,5 @@ Homestead.yaml
 Homestead.json
 /.phpintel
 .env
+/bower_components
+

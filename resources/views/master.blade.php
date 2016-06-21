@@ -28,6 +28,9 @@
     <!-- ================== BEGIN BASE JS ================== -->
     <script src="{{ asset('/assets/plugins/pace/pace.min.js') }}"></script>
     <!-- ================== END BASE JS ================== -->
+
+      <!-- DataTables Responsive CSS -->
+        <link href="{{ asset('/bower_components/datatables-responsive/css/responsive.dataTables.scss') }}" rel="stylesheet">
     
     <!--[if lt IE 9]>
         <script src="assets/crossbrowserjs/excanvas.min.js"></script>

@@ -97,9 +97,10 @@
 
                                   <!-- begin panel -->
                                   <div class="panel pagination-inverse m-b-0 clearfix">
-                                      <table id="sponsors-users-table" data-order='[[1,"asc"]]' class="table table-bordered table-hover">
+                                      <table id="sponsors-users-table" data-order='[[0,"asc"]]' class="table-responsive table table-bordered table-hover">
                                           <thead>
                                               <tr class="inverse">
+                                                  <th>Sponsor Type</th>
                                                   <th>Username</th>
                                                   <th>First Name</th>
                                                   <th>Surname</th>
@@ -120,10 +121,10 @@
 
                                  <!-- begin panel -->
                                   <div class="panel pagination-inverse m-b-0 clearfix">
-                                      <table id="sponsored-users-table" data-order='[[1,"asc"]]' class="table table-bordered table-hover">
+                                      <table id="sponsored-users-table" data-order='[[0,"desc"]]' class="table-responsive table table-bordered table-hover">
                                           <thead>
                                               <tr class="inverse">
-                                      
+                                                  <th>Created at</th>
                                                   <th>Username</th>
                                                   <th>First Name</th>
                                                   <th>Surname</th>
@@ -200,33 +201,23 @@
 
             <script>
 
+            var oTable;
+
                 function launchBankModal(bank_id){
 
-                  var sponsorsBankingDetails;
+                  if ($.fn.dataTable.isDataTable('#sponsors-banking-details-table')) {
 
-                 /* if ($.fn.dataTable('#sponsors-banking-details-table')) {
-
-                     sponsorsBankingDetails.destroy();
-                  }*/
-
-
-
-
-                  if ($('#sponsors-banking-details-table').length !== 0) {
-
-                  
-
-                    
-                    sponsorsBankingDetails = $('#sponsors-banking-details-table').DataTable({
+                     oTable.destroy();
+                  }        
+   
+                    oTable = $('#sponsors-banking-details-table').DataTable({
                         dom: '<"toolbar">',
-                        bRetrieve:true,
                         responsive: true,
-                        autoFill: true,
+                        serveSide:true,
+                        autoFill: false,
                         colReorder: true,
-                        keys: true,
                         rowReorder: true,
-                        select: true,
-                        sAjaxSource : "sponsors-banking-list/" + bank_id,
+                        ajax : "sponsors-banking-list/" + bank_id,
                         columns :[
                            
                             {data: 'description', name: 'bank_types.description'},
@@ -237,7 +228,10 @@
 
                         ]
                     });
-                  }
+
+                   
+                  
+                  $(".modalBank").modal('show');
 
                 }
 
