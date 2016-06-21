@@ -124,7 +124,7 @@
                                       <table id="sponsored-users-table" data-order='[[1,"asc"]]' class="table table-bordered table-hover">
                                           <thead>
                                               <tr class="inverse">
-                                                  
+                                                  <th>Created at</th>
                                                   <th>Username</th>
                                                   <th>First Name</th>
                                                   <th>Surname</th>

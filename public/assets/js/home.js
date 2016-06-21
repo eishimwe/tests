@@ -53,14 +53,14 @@ var sponsoredUsersTable = function() {
     if ($('#sponsored-users-table').length !== 0) {
         $('#sponsored-users-table').DataTable({
             dom: 'rfrtip',
+            order :[[0,"asc"]],
             responsive: true,
             autoFill: true,
             colReorder: true,
-          
             rowReorder: true,
             sAjaxSource : "sponsored-list/",
             columns :[
-              
+                {data: 'created_at', name: 'users.created_at'},
                 {data: 'username', name: 'users.username'},
                 {data: 'first_name', name: 'users.first_name'},
                 {data: 'last_name', name: 'users.last_name'},

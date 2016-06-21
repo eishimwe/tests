@@ -65,10 +65,11 @@ class SponsorsController extends Controller
                             ->join('users','users.id','=','users_registrations.sponsored_user_id')
                             ->join('user_registration_statuses','user_registration_statuses.id','=','users.user_registration_statuses_id')
                             ->where('users_registrations.sponsor_user_id','=',\Auth::user()->id)
-                           
+                          
                             ->select(
                                 \DB::raw(
                                     "
+                                    `users`.created_at,
                                     `users`.id,
                                     `users`.username,
                                     `users`.first_name,
