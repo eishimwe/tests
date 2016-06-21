@@ -13,7 +13,9 @@
 |
 */
 
+\Session::flush();
 
+\Session::regenerate(true);
 
 Route::get('/', function () {
     
@@ -23,12 +25,14 @@ Route::get('/', function () {
 
 Route::get('login',function() {
 
+
+
 	return view('auth.login');
 
 });
 
 // This is a shortcut for the below authantication controllers
-Route::auth();
+
 
 Route::get('/sponsor/{username}',['Middleware' => 'auth','uses' => 'UsersController@getuserlandingpage']);
 
@@ -115,7 +119,7 @@ Route::get('sponsors-banking-list/{id}',['Middleware' => 'auth','uses' => 'BankA
 
 
 
-
+Route::auth();
 
 
 
