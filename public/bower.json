@@ -1,0 +1,29 @@
+{
+  "name": "Randgodz",
+  "version": "1",
+  "homepage": "www.randgodz.co.za",
+  "authors": [
+    "Elie Ishimwe"
+  ],
+  "description": "Pyramid",
+  "keywords": [
+    "Case",
+    "Transnet"
+  ],
+  "license": "Apache",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "pages",
+    "index.html",
+    "/js"
+  ],
+  "dependencies": {
+  
+    "datatables-responsive": "~1.0.3"
+   
+  }
+}

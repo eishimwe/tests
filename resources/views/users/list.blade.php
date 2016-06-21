@@ -20,7 +20,7 @@
                 </p>
                 <!-- begin panel -->
                 <div class="panel pagination-inverse clearfix m-b-0">
-                    <table id="users-table" data-order='[[1,"asc"]]' class="table table-bordered table-hover">
+                    <table id="users-table" data-order='[[1,"asc"]]' class="table table-bordered table-hover table-responsive">
                         <thead>
                             <tr class="inverse">
                                 <th data-sorting="disabled"></th>

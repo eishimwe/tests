@@ -97,7 +97,7 @@
 
                                   <!-- begin panel -->
                                   <div class="panel pagination-inverse m-b-0 clearfix">
-                                      <table id="sponsors-users-table" data-order='[[1,"asc"]]' class="table table-bordered table-hover">
+                                      <table id="sponsors-users-table" data-order='[[0,"asc"]]' class="table table-bordered table-hover table-responsive">
                                           <thead>
                                               <tr class="inverse">
                                                   <th>Sponsor Type</th>
@@ -121,7 +121,7 @@
 
                                  <!-- begin panel -->
                                   <div class="panel pagination-inverse m-b-0 clearfix">
-                                      <table id="sponsored-users-table" data-order='[[1,"asc"]]' class="table table-bordered table-hover">
+                                      <table id="sponsored-users-table" data-order='[[0,"desc"]]' class="table table-bordered table-hover table-responsive">
                                           <thead>
                                               <tr class="inverse">
                                                   <th>Created at</th>
