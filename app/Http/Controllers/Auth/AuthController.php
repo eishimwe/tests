@@ -184,7 +184,7 @@ class AuthController extends Controller
                 $user_registration->sponsor_user_id   = $system_sponsor->id;
                 $user_registration->sponsor_type_id   = 1;
                 $user_registration->sponsored_user_id = $user->id;
-                $user_registration->amount_due        = '500';
+                $user_registration->amount_due        = '100';
                 $user_registration->save();
 
             }
