@@ -88,12 +88,12 @@ Route::get('/home', 'HomeController@index');
 | 
 */
 
-Route::get('list-users', ['Middleware' => 'cors', function() {
+Route::get('list-users', ['Middleware' => 'auth', function() {
 
 	return view('users.list');
 }]);
 
-Route::get('users-list',['Middleware' => 'cors','uses' => 'UsersController@index']);
+Route::get('users-list',['Middleware' => 'auth','uses' => 'UsersController@index']);
 
 
 
@@ -109,7 +109,7 @@ Route::get('sponsors-list',['Middleware' => 'cors','uses' => 'SponsorsController
 
 Route::get('sponsored-list',['Middleware' => 'cors','uses' => 'SponsorsController@sponsored_list']);
 
-Route::get('confirm-registration-fees/{username}/{reg}',['Middleware' => 'cors','uses' => 'SponsorsController@confirm_payment']);
+Route::get('confirm-registration-fees/{username}/{reg}',['Middleware' => 'auth','uses' => 'SponsorsController@confirm_payment']);
 
 
 /*
@@ -120,15 +120,15 @@ Route::get('confirm-registration-fees/{username}/{reg}',['Middleware' => 'cors',
 | 
 */
 
-Route::get('banking-details',['Middleware' => 'cors','uses' => 'BankAccountsController@index']);
+Route::get('banking-details',['Middleware' => 'auth','uses' => 'BankAccountsController@index']);
 
-Route::get('banking-list',['Middleware' => 'cors','uses' => 'BankAccountsController@banking_list']);
+Route::get('banking-list',['Middleware' => 'auth','uses' => 'BankAccountsController@banking_list']);
 
-Route::get('add-bank',['Middleware' => 'cors','uses' => 'BankAccountsController@add_form']);
+Route::get('add-bank',['Middleware' => 'auth','uses' => 'BankAccountsController@add_form']);
 
-Route::post('save_bank',['Middleware' => 'cors','uses' => 'BankAccountsController@save_bank']);
+Route::post('save_bank',['Middleware' => 'auth','uses' => 'BankAccountsController@save_bank']);
 
-Route::get('delete_bank/{id}',['Middleware' => 'cors','uses' => 'BankAccountsController@delete_bank']);
+Route::get('delete_bank/{id}',['Middleware' => 'auth','uses' => 'BankAccountsController@delete_bank']);
 
 Route::get('sponsors-banking-list/{id}',['Middleware' => 'cors','uses' => 'BankAccountsController@sponsors_banking_list']);
 
