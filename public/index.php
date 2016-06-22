@@ -1,5 +1,9 @@
 <?php
 
+header('Access-Control-Allow-Origin: *');
+header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept,Authorization,X-Csrf-Token,api_key,api_key_new");
+header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
+
 /**
  * Laravel - A PHP Framework For Web Artisans
  *
