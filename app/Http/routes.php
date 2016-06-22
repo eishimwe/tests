@@ -13,23 +13,39 @@
 |
 */
 
-\Session::flush();
+use App\UserRegistration;
 
-\Session::regenerate(true);
 
-Route::get('/', function () {
-    
-	return view('welcome');
-    
-});
+
+Route::auth();
+
 
 Route::get('login',function() {
 
+	if (\Auth::check()) {
 
+        $number_of_sponsors_users  = UserRegistration::where('sponsored_user_id',\Auth::user()->id)->count();
+        $number_of_sponsored_users = UserRegistration::where('sponsor_user_id',\Auth::user()->id)->count();
+        return view('home.home',compact('number_of_sponsored_users','number_of_sponsors_users'));
+
+	
+	}
+    
 
 	return view('auth.login');
 
 });
+
+
+
+
+Route::get('/', function () {
+
+
+	return view('welcome');
+    
+});
+
 
 // This is a shortcut for the below authantication controllers
 
@@ -118,8 +134,6 @@ Route::get('sponsors-banking-list/{id}',['Middleware' => 'auth','uses' => 'BankA
 
 
 
-
-Route::auth();
 
 
 
