@@ -293,7 +293,7 @@
                         <h1 class="whitecaps">Join The <em>Rand Godz</em> <br /> <strong>Community</strong></h1>
                         <p class="white">Become a Rand God by making donations to other members of the Rand Godz community. The minimum amount allowed for donations is R500.00. This donation is offered to other members of the Rand community who need the financial injection.<br><br>
 
-                            One you have donated to a member, you will get an incentive of 50% in at least 48 hours.</p>
+                            One you have donated to a member, you will get an incentive of 50% in at least 30 days.</p>
                         <br /><br />
                         <a href="{{ url('/register') }}" class="readmore_but10">Register Now!</a> 
                         <a href="{{ url('/login') }}" class="readmore_but10">Login</a>
