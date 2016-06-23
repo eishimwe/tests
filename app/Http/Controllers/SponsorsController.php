@@ -49,7 +49,7 @@ class SponsorsController extends Controller
                          
 
         return Datatables::of($sponsors_users)
-                            ->addColumn('actions','<a class="btn btn-xs btn-block btn-success" onClick="launchBankModal({{$id}});">View Banking Details</a>')
+                            ->addColumn('actions','<a class="btn btn-xs  btn-success" onClick="launchBankModal({{$id}});">View</a>')
                             ->make(true);
 
 
