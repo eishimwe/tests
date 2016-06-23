@@ -18,12 +18,7 @@ var sponsorsUsersTable = function() {
             rowReorder: true,
             sAjaxSource : "sponsors-list/",
             columns :[
-                {data: 'sponsor_type', name: 'sponsors_type.description'},
-                {data: 'username', name: 'users.username'},
-                {data: 'first_name', name: 'users.first_name'},
-                {data: 'last_name', name: 'users.last_name'},
-                {data: 'primary_contact', name: 'contacts.primary_contact'},
-              
+
 
                 {data : function(data){
 
@@ -40,7 +35,15 @@ var sponsorsUsersTable = function() {
                    
                 }
                 },
-                {data: 'actions',  name: 'actions'}
+
+                 {data: 'actions',  name: 'actions'},
+                
+                {data: 'username', name: 'users.username'},
+               
+                {data: 'primary_contact', name: 'contacts.primary_contact'},
+              
+
+               
 
             ]
         });

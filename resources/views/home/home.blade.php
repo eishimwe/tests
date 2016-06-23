@@ -100,13 +100,14 @@
                                       <table id="sponsors-users-table" data-order='[[0,"asc"]]' class="table-responsive table table-bordered table-hover">
                                           <thead>
                                               <tr class="inverse">
-                                                  <th>Sponsor Type</th>
+                                                  
+                                                  <th>Amount to pay</th>
+                                                  <th data-sorting="disabled">Banking details</th>
                                                   <th>Username</th>
-                                                  <th>First Name</th>
-                                                  <th>Surname</th>
                                                   <th>Primary Contact</th>
-                                                  <th>Amount</th>
-                                                  <th data-sorting="disabled"></th>
+                                                
+                                                  
+                                                                      
                                               </tr>
                                           </thead>
                                          
