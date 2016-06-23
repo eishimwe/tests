@@ -29,6 +29,7 @@ class BankAccountsController extends Controller
         $banking_list = \DB::table('bank_accounts')
                     ->join('bank_types','bank_types.id','=','bank_accounts.bank_type_id')
                     ->where('bank_accounts.user_id',\Auth::user()->id)
+                    ->where('active',1)
 					->select(
 						\DB::raw(
 							"
@@ -105,8 +106,10 @@ class BankAccountsController extends Controller
 
     public function delete_bank(BankAccount $BankAccount,$id) {
 
-        $BankAccount = BankAccount::find($id);
-        $BankAccount->delete();
+        $BankAccount         = BankAccount::find($id);
+        $BankAccount->active = 0;
+        $BankAccount->save();
+       
 
         \Session::flash('success','Bank deleted');
 

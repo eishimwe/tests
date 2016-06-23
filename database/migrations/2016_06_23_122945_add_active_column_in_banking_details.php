@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddTermsConditionsTcsToUsersTable extends Migration
+class AddActiveColumnInBankingDetails extends Migration
 {
     /**
      * Run the migrations.
@@ -12,8 +12,8 @@ class AddTermsConditionsTcsToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function ($table) {
-            $table->boolean('terms_conditions_accepted')->default(0);
+        Schema::table('bank_accounts', function ($table) {
+            $table->boolean('active')->default(0);
             
         });
     }
@@ -25,8 +25,9 @@ class AddTermsConditionsTcsToUsersTable extends Migration
      */
     public function down()
     {
-         Schema::table('users', function ($table) {
-            $table->dropColumn('terms_conditions_accepted');
+        
+        Schema::table('bank_accounts', function ($table) {
+            $table->dropColumn('active');
            
         });
     }
