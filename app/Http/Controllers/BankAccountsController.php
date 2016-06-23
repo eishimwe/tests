@@ -70,6 +70,9 @@ class BankAccountsController extends Controller
                              `bank_accounts`.branch_code,
                              `bank_accounts`.id,
                              `bank_accounts`.user_id
+                           
+
+
                             "
                             )
                     );

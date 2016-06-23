@@ -156,13 +156,14 @@
 
                                             <!-- begin panel -->
                                             <div class="panel pagination-inverse m-b-0 clearfix">
-                                                <table id="sponsors-banking-details-table" data-order='[[1,"asc"]]' class="table table-bordered table-hover">
+                                                <table id="sponsors-banking-details-table" data-order='[[0,"asc"]]' class="table table-bordered table-hover">
                                                     <thead>
                                                         <tr class="inverse">
                                                           <th>Bank Name</th>
                                                           <th>Bank Holder</th>
                                                           <th>Bank Account</th>
                                                           <th>Branch Code</th>
+                                                          <th>Reference</th>
                                                          
                                                         </tr>
                                                     </thead>
@@ -202,13 +203,18 @@
             <script>
 
             var oTable;
+            
 
                 function launchBankModal(bank_id){
 
                   if ($.fn.dataTable.isDataTable('#sponsors-banking-details-table')) {
 
                      oTable.destroy();
-                  }        
+                  } 
+
+                  var username = "{!! \Auth::user()->username !!}";  
+
+                   
    
                     oTable = $('#sponsors-banking-details-table').DataTable({
                         dom: '<"toolbar">',
@@ -224,6 +230,13 @@
                             {data: 'account_holder', name: 'bank_accounts.account_holder'},
                             {data: 'account_number', name: 'bank_accounts.account_number'}, 
                             {data: 'branch_code', name: 'bank_accounts.branch_code'}, 
+                                        
+                            {data : function(data){
+
+                                return username;
+                               
+                            }
+                            },
                             
 
                         ]
