@@ -13,9 +13,7 @@ var sponsorsUsersTable = function() {
             dom: 'rfrtip',
            
             responsive: true,
-            autoFill: true,
-            colReorder: true,
-            rowReorder: true,
+          
             sAjaxSource : "sponsors-list/",
             columns :[
 
@@ -56,17 +54,15 @@ var sponsoredUsersTable = function() {
     if ($('#sponsored-users-table').length !== 0) {
         $('#sponsored-users-table').DataTable({
             dom: 'rfrtip',
-            order :[[0,"asc"]],
+           
             responsive: true,
-            autoFill: true,
-            colReorder: true,
-            rowReorder: true,
+           
             sAjaxSource : "sponsored-list/",
             columns :[
               
                 {data: 'username', name: 'users.username'},
                 {data: 'primary_contact', name: 'contacts.primary_contact'},
-                {data: 'description', name: 'user_registration_statuses.description'},
+               
 
                 {data : function(data){
 

@@ -128,7 +128,7 @@
                                                  
                                                   <th>Username</th>
                                                   <th>Primary Contact</th>
-                                                  <th>Status</th>
+  
                                                   <th>Amount</th>
                                                   <th data-sorting="disabled"></th>
                                               </tr>
