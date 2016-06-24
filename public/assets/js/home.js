@@ -63,10 +63,8 @@ var sponsoredUsersTable = function() {
             rowReorder: true,
             sAjaxSource : "sponsored-list/",
             columns :[
-                {data: 'created_at', name: 'users.created_at'},
+              
                 {data: 'username', name: 'users.username'},
-                {data: 'first_name', name: 'users.first_name'},
-                {data: 'last_name', name: 'users.last_name'},
                 {data: 'primary_contact', name: 'contacts.primary_contact'},
                 {data: 'description', name: 'user_registration_statuses.description'},
 

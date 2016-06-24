@@ -91,8 +91,8 @@ class SponsorsController extends Controller
         return Datatables::of($sponsored_users)
                             ->addColumn('actions','
                                                   @if($description == "Pending activation" && $paid == 0)
-                                                    <a href="confirm-registration-fees/{{ $username }}/{{ $reg }}" class="btn btn-success m-r-5 m-b-5 active">
-                                                        Confirm Payment
+                                                    <a href="confirm-registration-fees/{{ $username }}/{{ $reg }}" class="btn btn-xs btn-success active">
+                                                        Confirm 
                                                     </a>
                                                   @endif
                                                 ')

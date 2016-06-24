@@ -125,10 +125,8 @@
                                       <table id="sponsored-users-table" data-order='[[0,"desc"]]' class="table-responsive table table-bordered table-hover">
                                           <thead>
                                               <tr class="inverse">
-                                                  <th>Created at</th>
+                                                 
                                                   <th>Username</th>
-                                                  <th>First Name</th>
-                                                  <th>Surname</th>
                                                   <th>Primary Contact</th>
                                                   <th>Status</th>
                                                   <th>Amount</th>
