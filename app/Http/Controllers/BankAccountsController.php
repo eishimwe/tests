@@ -97,6 +97,7 @@ class BankAccountsController extends Controller
         $BankAccount->bank_type_id        = $request['bank_type_id'];
         $BankAccount->branch_code         = $request['branch_code'];
         $BankAccount->user_id             = \Auth::user()->id;
+        $BankAccount->active              = 1;
         $BankAccount->save();
 
         \Session::flash('success','Bank Account added');
