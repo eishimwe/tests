@@ -16,7 +16,7 @@ class CreateUsersTransactionsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->integer('transaction_id')->unsigned();
+            $table->integer('transaction_id');
             $table->foreign('transaction_id')->references('id')->on('transactions');
             $table->integer('created_by')->default(-1);
             $table->integer('updated_by')->default(-1);
