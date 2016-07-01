@@ -144,6 +144,10 @@ Route::get('sponsors-banking-list/{id}',['Middleware' => 'cors','uses' => 'BankA
 
 Route::get('donations-details',['Middleware' => 'cors','uses' => 'DonationsController@index']);
 Route::get('donations-list',['Middleware' => 'cors','uses' => 'DonationsController@donations_list']);
+Route::get('add-donation',['Middleware' => 'cors','uses' => 'DonationsController@add_donation']);
+Route::post('save_donation',['Middleware' => 'cors','uses' => 'DonationsController@save_donation']);
+
+
 
 
 

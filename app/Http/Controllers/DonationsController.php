@@ -8,6 +8,11 @@ use App\Http\Requests;
 
 use Yajra\Datatables\Facades\Datatables;
 
+use App\Donation;
+
+use App\Http\Requests\DonationRequest;
+
+
 
 class DonationsController extends Controller
 {
@@ -47,4 +52,27 @@ class DonationsController extends Controller
 
 
     }
+
+
+    public function add_donation() {
+
+    	return view('donations.add');
+    }
+
+
+     public function save_donation(DonationRequest $request,Donation $Donation) {
+
+		$Donation->donation_amount    = $request['donation_amount'];
+		$Donation->user_id            = \Auth::user()->id;
+		$Donation->is_valid           = 1;
+		$Donation->returns_percentage = 30;
+        $Donation->save();
+
+        \Session::flash('success','Donation added');
+        return redirect('donations-details');
+
+
+
+    }
+
 }
