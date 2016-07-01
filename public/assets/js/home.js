@@ -92,6 +92,47 @@ var sponsoredUsersTable = function() {
     }
 };
 
+var transactionsTable = function() {
+    "use strict";
+
+    if ($('#transactions-table').length !== 0) {
+        $('#transactions-table').DataTable({
+            dom: 'rfrtip',
+           
+            responsive: true,
+            autoFill: true,
+            colReorder: true,
+            rowReorder: true,
+            sAjaxSource : "transactions-list/",
+            columns :[
+                {data: 'created_at', name: 'transactions.created_at'},
+                {data: 'username', name: 'users.username'},
+                {data: 'first_name', name: 'users.first_name'},
+                {data: 'last_name', name: 'users.last_name'},
+                {data: 'primary_contact', name: 'contacts.primary_contact'},
+                {data: 'description', name: 'transaction_types.description'},
+
+                {data : function(data){
+
+                     if (data.paid == 0) {
+
+                       return 'R'+ data.amount_due + "  <button type='button' class='btn btn-xs btn-danger btn-rounded m-b-5'>Not Paid</button>"; 
+                    } else {
+
+                       return 'R'+ data.amount_due + "  <button type='button' class='btn btn-xs btn-success btn-rounded m-b-5'>Paid</button>"; 
+
+                    }
+
+
+                   
+                }
+                },
+                {data: 'actions',  name: 'actions'}
+
+            ]
+        });
+    }
+};
 
 /* Application Controller
 ------------------------------------------------ */
@@ -104,6 +145,7 @@ var PageDemo = function () {
 
             sponsorsUsersTable();
             sponsoredUsersTable();
+            transactionsTable();
 		}
   };
 }();

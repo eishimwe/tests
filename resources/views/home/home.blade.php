@@ -86,6 +86,26 @@
                                   <!-- end widget -->
 
                             </li>
+                            <li>
+
+                                  <!-- begin widget -->
+                                  <div class="widget widget-stat widget-stat-right bg-info text-white">
+                                      <div class="widget-stat-btn"><a href="javascript:;" data-click="widget-reload"><i class="fa fa-repeat"></i></a></div>
+                                      <div class="widget-stat-icon"><i class="fa fa-chrome"></i></div>
+                                      <div class="widget-stat-info">
+                                          <div class="widget-stat-title">Transactions</div>
+                                          <div class="widget-stat-number"><a href="#nav-pills-tab-3" data-toggle="tab">{{ $number_of_transactions }}</a></div>
+                                      </div>
+                                      <div class="widget-stat-progress">
+                                          <div class="progress">
+                                              <div class="progress-bar" style="width: 60%"></div>
+                                          </div>
+                                      </div>
+                                      <div class="widget-stat-footer"></div>
+                                  </div>
+                                  <!-- end widget -->
+
+                            </li>
                            
                         </ul>
                         <!-- end nav-pills -->
@@ -125,6 +145,34 @@
                                           <thead>
                                               <tr class="inverse">
                                                   <th>Created at</th>
+                                                  <th>Username</th>
+                                                  <th>First Name</th>
+                                                  <th>Surname</th>
+                                                  <th>Primary Contact</th>
+                                                  <th>Status</th>
+                                                  <th>Amount</th>
+                                                  <th data-sorting="disabled"></th>
+                                              </tr>
+                                          </thead>
+                                         
+                                      </table>
+                                  </div>
+                                  <!-- end panel -->
+
+
+
+                               
+                            </div>
+
+                            <div class="tab-pane fade" id="nav-pills-tab-3">
+                                <h4>Transactions</h4>
+
+                                 <!-- begin panel -->
+                                  <div class="panel pagination-inverse m-b-0 clearfix">
+                                      <table id="transactions-table" data-order='[[0,"desc"]]' class="table-responsive table table-bordered table-hover">
+                                          <thead>
+                                              <tr class="inverse">
+                                                  <th>Transaction Id</th>
                                                   <th>Username</th>
                                                   <th>First Name</th>
                                                   <th>Surname</th>

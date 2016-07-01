@@ -14,6 +14,8 @@ use App\Http\Requests\DonationRequest;
 
 
 
+
+
 class DonationsController extends Controller
 {
 
@@ -46,7 +48,7 @@ class DonationsController extends Controller
 					);
 
         return Datatables::of($donations_list)
-                            ->addColumn('actions','<a href="delete_bank/{{$id}}" class="btn btn-xs btn-alt"><i class="fa fa-fw m-r-10 pull-left f-s-18 fa-trash"> Delete</i></a>')
+                            ->addColumn('actions','<a href="delete_bank/{{$id}}" class="btn btn-xs btn-alt"></a>')
                             ->make(true);
 
 
@@ -74,5 +76,7 @@ class DonationsController extends Controller
 
 
     }
+
+    
 
 }

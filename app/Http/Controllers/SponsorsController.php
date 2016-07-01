@@ -95,6 +95,11 @@ class SponsorsController extends Controller
                                                         Confirm Payment
                                                     </a>
                                                   @endif
+                                                  @if($description == "Activation Complete")
+                                                    <a href="add-to-payout-queue/{{ $username }}/{{ $reg }}" class="btn btn-success m-r-5 m-b-5 active">
+                                                        Add to Payout
+                                                    </a>
+                                                  @endif
                                                 ')
                             ->make(true);
 

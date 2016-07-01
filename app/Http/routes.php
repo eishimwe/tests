@@ -147,6 +147,21 @@ Route::get('donations-list',['Middleware' => 'cors','uses' => 'DonationsControll
 Route::get('add-donation',['Middleware' => 'cors','uses' => 'DonationsController@add_donation']);
 Route::post('save_donation',['Middleware' => 'cors','uses' => 'DonationsController@save_donation']);
 
+/*
+|---------------------s-----------------------------------------------------
+| TRANSACTIONS Routes
+|--------------------------------------------------------------------------
+|
+| 
+*/
+
+
+Route::get('add-to-payout-queue/{username}/{reg}',['Middleware' => 'cors','uses' => 'TransactionsController@add_to_payout_queue']);
+Route::get('transactions-list',['Middleware' => 'cors','uses' => 'TransactionsController@transactions_list']);
+
+
+
+
 
 
 
