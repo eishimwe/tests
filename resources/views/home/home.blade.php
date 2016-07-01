@@ -86,6 +86,8 @@
                                   <!-- end widget -->
 
                             </li>
+
+                            @if(\Auth::user()->role_id == 1 || \Auth::user()->role_id == 2)
                             <li>
 
                                   <!-- begin widget -->
@@ -106,6 +108,7 @@
                                   <!-- end widget -->
 
                             </li>
+                            @endif
                            
                         </ul>
                         <!-- end nav-pills -->
@@ -164,6 +167,8 @@
                                
                             </div>
 
+                            @if(\Auth::user()->role_id == 1 || \Auth::user()->role_id == 2)
+
                             <div class="tab-pane fade" id="nav-pills-tab-3">
                                 <h4>Transactions</h4>
 
@@ -191,6 +196,7 @@
 
                                
                             </div>
+                            @endif
 
                              <!-- #modal-dialog -->
                           <div class="modal fade modalBank" id="modalBank">
