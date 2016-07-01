@@ -14,10 +14,11 @@ class CreateDonationsTable extends Migration
     {
         Schema::create('donations', function (Blueprint $table) {
             $table->increments('id');
-            $table->decimal('donation_amount', 5, 2);
-            $table->decimal('min_donation_amount', 3, 2);
-            $table->decimal('max_donation_amount', 5, 2);
-            $table->decimal('returns_percentage',3,2);
+            $table->integer('donation_amount');
+            $table->integer('min_donation_amount');
+            $table->integer('max_donation_amount');
+            $table->integer('returns_percentage');
+            $table->boolean('is_valid')->default(0);
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
             $table->integer('created_by')->default(-1);

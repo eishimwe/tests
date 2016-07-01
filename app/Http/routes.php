@@ -133,6 +133,21 @@ Route::get('delete_bank/{id}',['Middleware' => 'cors','uses' => 'BankAccountsCon
 Route::get('sponsors-banking-list/{id}',['Middleware' => 'cors','uses' => 'BankAccountsController@sponsors_banking_list']);
 
 
+/*
+|---------------------s-----------------------------------------------------
+| DONATIONS Routes
+|--------------------------------------------------------------------------
+|
+| 
+*/
+
+
+Route::get('donations-details',['Middleware' => 'cors','uses' => 'DonationsController@index']);
+Route::get('donations-list',['Middleware' => 'cors','uses' => 'DonationsController@donations_list']);
+
+
+
+
 
 
 
