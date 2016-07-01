@@ -13,9 +13,9 @@ class TransactionsTable extends Migration
     public function up()
     {
         Schema::create('transactions', function (Blueprint $table) {
-            $table->integer('id');
-            $table->primary('id');
-            $table->integer('transaction_type_id')->unsigned();
+
+            $table->increments('id');
+            $table->integer('transaction_type_id');
             $table->foreign('transaction_type_id')->references('id')->on('transactions_types');
             $table->integer('created_by')->default(-1);
             $table->integer('updated_by')->default(-1);
