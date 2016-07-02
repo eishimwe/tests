@@ -75,6 +75,7 @@ class SponsorsController extends Controller
                                     `users`.first_name,
                                     `users`.last_name,
                                     `users`.email,
+                                    `users`.role_id,
                                     `users`.referred_by_id,
                                     `contacts`.`primary_contact`,
                                     `users_registrations`.`amount_due`,
@@ -95,7 +96,8 @@ class SponsorsController extends Controller
                                                         Confirm Payment
                                                     </a>
                                                   @endif
-                                                  @if($description == "Activation Complete")
+                                                  @if($description == "Activation Complete" && (\Auth::user()->role_id == 1 || \Auth::user()->role_id == 2))
+
                                                     <a href="add-to-payout-queue/{{ $username }}/{{ $reg }}" class="btn btn-success m-r-5 m-b-5 active">
                                                         Add to Payout
                                                     </a>

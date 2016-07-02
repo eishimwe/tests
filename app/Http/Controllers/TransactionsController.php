@@ -93,7 +93,6 @@ class TransactionsController extends Controller
     public function save_transaction_payout_amount(TransactionAmountRequest $request,TransactionPayout $transaction_payout) {
 
         $response = array();
-		
 		$transaction_payout->payout_amount  = $request['payout_amount'];
 		$transaction_payout->transaction_id = $request['transactionID'];
         $transaction_payout->save();
@@ -102,11 +101,9 @@ class TransactionsController extends Controller
         $response["error"]     = FALSE;
         $response["meetingID"] = $request['transactionID'];
 
-        return \Response::json($response,201);
-
         //\Session::flash('success','Donation added');
-        //return redirect('donations-details');
 
+        return \Response::json($response,201);
 
 
     }
