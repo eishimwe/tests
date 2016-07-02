@@ -59,7 +59,13 @@ class TransactionsController extends Controller
                          
 
         return Datatables::of($transactions_list)
-                            ->addColumn('actions','<a class="btn btn-xs btn-block btn-success" onClick="launchBankModal({{$id}});">View Banking Details</a>')
+                            ->addColumn('actions','
+                                                    @if($transaction_payout_amount)
+                                                    <a class="btn btn-xs btn-block btn-success" onClick="launchBankModal({{$id}});">
+                                                        Start Payout
+                                                    </a>
+                                                    @endif
+                                                ')
                             ->make(true);
 
 
