@@ -55,6 +55,37 @@ class DonationsController extends Controller
 
     }
 
+    public function all_donations(){
+
+        $all_donations = \DB::table('donations')
+                    ->join('users','users.id','=','donations.user_id')
+                    ->join('contacts','contacts.user_id','=','donations.user_id')
+                    ->where('donations.is_valid',1)
+                    ->select(
+                        \DB::raw(
+                            "
+                             `donations`.created_at,
+                             `donations`.id,
+                             `users`.username,
+                             `users`.first_name,
+                             `users`.last_name,
+                             `contacts`.primary_contact,
+                             `donations`.donation_amount,
+                             `donations`.returns_percentage
+                             
+                            
+                            "
+                            )
+                    );
+
+        return Datatables::of($all_donations)
+                            ->addColumn('actions','<a href="delete_bank/{{$id}}" class="btn btn-xs btn-alt"></a>')
+                            ->make(true);
+
+
+
+    }
+
 
     public function add_donation() {
 

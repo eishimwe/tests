@@ -86,6 +86,26 @@
                                   <!-- end widget -->
 
                             </li>
+                            <li>
+
+                                  <!-- begin widget -->
+                                  <div class="widget widget-stat widget-stat-right bg-success text-white">
+                                      <div class="widget-stat-btn"><a href="javascript:;" data-click="widget-reload"><i class="fa fa-repeat"></i></a></div>
+                                      <div class="widget-stat-icon"><i class="fa fa-money"></i></div>
+                                      <div class="widget-stat-info">
+                                          <div class="widget-stat-title">My Gifts</div>
+                                          <div class="widget-stat-number"><a href="#nav-pills-tab-4" data-toggle="tab">{{ $number_of_gifts }}</a></div>
+                                      </div>
+                                      <div class="widget-stat-progress">
+                                          <div class="progress">
+                                              <div class="progress-bar" style="width: 60%"></div>
+                                          </div>
+                                      </div>
+                                      <div class="widget-stat-footer"></div>
+                                  </div>
+                                  <!-- end widget -->
+
+                            </li>
 
                             @if(\Auth::user()->role_id == 1 || \Auth::user()->role_id == 2)
                             <li>
@@ -109,6 +129,35 @@
 
                             </li>
                             @endif
+
+                          
+
+                            @if(\Auth::user()->role_id == 1 || \Auth::user()->role_id == 2)
+
+                            <li>
+
+                                  <!-- begin widget -->
+                                  <div class="widget widget-stat widget-stat-right bg-info text-white">
+                                      <div class="widget-stat-btn"><a href="javascript:;" data-click="widget-reload"><i class="fa fa-repeat"></i></a></div>
+                                      <div class="widget-stat-icon"><i class="fa fa-money"></i></div>
+                                      <div class="widget-stat-info">
+                                          <div class="widget-stat-title">Donations</div>
+                                          <div class="widget-stat-number"><a href="#nav-pills-tab-5" data-toggle="tab">{{ $number_of_donations }}</a></div>
+                                      </div>
+                                      <div class="widget-stat-progress">
+                                          <div class="progress">
+                                              <div class="progress-bar" style="width: 60%"></div>
+                                          </div>
+                                      </div>
+                                      <div class="widget-stat-footer"></div>
+                                  </div>
+                                  <!-- end widget -->
+
+                            </li>
+
+                            @endif
+
+
                            
                         </ul>
                         <!-- end nav-pills -->
@@ -196,6 +245,65 @@
 
                                
                             </div>
+                            @endif
+
+                             <div class="tab-pane fade" id="nav-pills-tab-4">
+                                <h4>My Gifts</h4>
+
+                                 <!-- begin panel -->
+                                  <div class="panel pagination-inverse m-b-0 clearfix">
+                                      <table id="gifts-table" data-order='[[0,"desc"]]' class="table-responsive table table-bordered table-hover">
+                                          <thead>
+                                              <tr class="inverse">
+                                                  <th>Created at</th>
+                                                  <th>Donor Username</th>
+                                                  <th>Donor Contact number</th>
+                                                  <th>Donor Amount</th>                                                 
+                                                  <th>Primary Contact</th>
+                                                  <th>Status</th>
+                                                  <th>Amount</th>
+                                                  <th data-sorting="disabled"></th>
+                                              </tr>
+                                          </thead>
+                                         
+                                      </table>
+                                  </div>
+                                  <!-- end panel -->
+
+
+
+                               
+                            </div>
+
+                            @if(\Auth::user()->role_id == 1 || \Auth::user()->role_id == 2)
+
+
+                             <div class="tab-pane fade" id="nav-pills-tab-5">
+                                <h4>Donations</h4>
+
+                                 <!-- begin panel -->
+                                  <div class="panel pagination-inverse m-b-0 clearfix">
+                                      <table id="donations-table" data-order='[[0,"desc"]]' class="table-responsive table table-bordered table-hover">
+                                          <thead>
+                                              <tr class="inverse">
+                                                  <th>Created at</th>
+                                                  <th>Donor Username</th>
+                                                  <th>Donor First Name</th>
+                                                  <th>Donor Surname</th>
+                                                  <th>Donor Contact number</th>
+                                                  <th>Donor Amount</th>                                                 
+                                                  <th>Donation Status</th>       
+                                                  <th data-sorting="disabled"></th>
+                                              </tr>
+                                          </thead>
+                                         
+                                      </table>
+                                  </div>
+                                  <!-- end panel -->
+
+                               
+                            </div>
+
                             @endif
 
                              <!-- #modal-dialog -->

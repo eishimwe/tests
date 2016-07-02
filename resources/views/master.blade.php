@@ -210,7 +210,7 @@
                         <a href="{{ url('banking-details') }}">
                             <b class="pull-right"></b>
                             <i class="fa fa-money"></i>
-                            <span>Banking Details</span>
+                            <span>My Banking Details</span>
                             <span class="badge pull-right">{{ $number_bank_accounts }}</span>
                         </a>
                       
@@ -219,7 +219,7 @@
                         <a href="{{ url('donations-details') }}">
                             <b class="pull-right"></b>
                             <i class="fa fa-money"></i>
-                            <span>Donations</span>
+                            <span>My Donations</span>
                             <span class="badge pull-right">{{ $number_donations }}</span>
                         </a>
                       

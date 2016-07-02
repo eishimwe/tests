@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\UserRegistration;
 use App\Transaction;
+use App\Donation;
 
 class HomeController extends Controller
 {
@@ -33,7 +34,16 @@ class HomeController extends Controller
         $number_of_sponsors_users  = UserRegistration::where('sponsored_user_id',\Auth::user()->id)->count();
         $number_of_sponsored_users = UserRegistration::where('sponsor_user_id',\Auth::user()->id)->count();
         $number_of_transactions    = Transaction::count();
+      
+        $number_of_gifts           = \DB::table('transactions_payouts')
+                                        ->join('transactions','transactions.id','=','transactions_payouts.transaction_id')
+                                        ->join('users_transactions','users_transactions.transaction_id','=','transactions_payouts.transaction_id')
+                                        ->where('users_transactions.user_id','=',\Auth::user()->id)->count();
 
-        return view('home.home',compact('number_of_sponsored_users','number_of_sponsors_users','number_of_transactions'));
+        $number_of_donations       = Donation::count();
+
+                                       
+
+        return view('home.home',compact('number_of_sponsored_users','number_of_sponsors_users','number_of_transactions','number_of_gifts','number_of_donations'));
     }
 }

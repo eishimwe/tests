@@ -60,10 +60,10 @@ class TransactionsController extends Controller
 
         return Datatables::of($transactions_list)
                             ->addColumn('actions','
-                                                    @if($transaction_payout_amount)
-                                                    <a class="btn btn-xs btn-block btn-success" onClick="launchBankModal({{$id}});">
-                                                        Start Payout
-                                                    </a>
+                                                    @if($transaction_payout_amount && ($description == "Pending Payout")) 
+                                                        <a href="start-transaction-payout/{{$id}}" class="btn btn-xs btn-block btn-success">
+                                                            Start Payout
+                                                        </a>
                                                     @endif
                                                 ')
                             ->make(true);
@@ -111,6 +111,62 @@ class TransactionsController extends Controller
         //\Session::flash('success','Donation added');
 
         return \Response::json($response,201);
+
+
+    }
+
+    public function start_transaction_payout($transaction_id) {
+
+
+        $transaction = Transaction::find($transaction_id);
+        $transaction->transaction_type_id = 2; //Pending Donor Allocation
+        $transaction->save();
+
+
+        return redirect('home');
+
+        //2. The users on the payout queue statuses should be changed to "Pending Donor Allocation".
+
+    }
+
+
+    public function gifts_list() {
+
+        $user = User::find(\Auth::user()->id);
+
+
+        $number_of_gifts           = \DB::table('transactions_payouts')
+                                        ->join('transactions','transactions.id','=','transactions_payouts.transaction_id')
+                                        ->join('users_transactions','users_transactions.transaction_id','=','transactions_payouts.transaction_id')
+                                        ->where('users_transactions.user_id','=',\Auth::user()->id)
+                                        ->select(
+                                                \DB::raw(
+                                                    "
+                                                     `transactions_payouts`.created_at,
+                                                     `transactions`.id,
+                                                     `users`.username,
+                                                     `users`.first_name,
+                                                     `users`.last_name,
+                                                     `users`.email,
+                                                     `users`.referred_by_id,
+                                                     `contacts`.primary_contact,
+                                                     `transactions_types`.description                                   
+                                                   
+                                                    "
+
+                                            )
+                                        );
+                 
+
+        return Datatables::of($gifts_list)
+                            ->addColumn('actions','
+                                                    @if($transaction_payout_amount && ($description == "Pending Payout")) 
+                                                        <a href="start-transaction-payout/{{$id}}" class="btn btn-xs btn-block btn-success">
+                                                            Start Payout
+                                                        </a>
+                                                    @endif
+                                                ')
+                            ->make(true);
 
 
     }
