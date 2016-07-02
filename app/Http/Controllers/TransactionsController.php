@@ -20,6 +20,10 @@ use App\TransactionPayout;
 
 use App\Http\Requests\TransactionAmountRequest;
 
+use App\Donation;
+
+use App\DonationAllocation;
+
 
 
 class TransactionsController extends Controller
@@ -118,14 +122,106 @@ class TransactionsController extends Controller
     public function start_transaction_payout($transaction_id) {
 
 
-        $transaction = Transaction::find($transaction_id);
-        $transaction->transaction_type_id = 2; //Pending Donor Allocation
-        $transaction->save();
+        //Get amount to payout
+
+        $transaction_payout = TransactionPayout::where('transaction_id',$transaction_id)->first();
+        $user_transaction   = UserTransaction::where('transaction_id',$transaction_id)->first();
+
+        $donations = \DB::table('donations')
+                                ->select(
+                                \DB::raw(
+                                    "
+                                     `donations`.created_at,
+                                     `donations`.id,
+                                     `donations`.donation_amount,
+                                     `donations`.user_id                                   
+                                   
+                                    "
+
+                            )
+                            )->orderBy('created_at','asc')
+                            ->get();
+
+
+        //user 3 = R1500
+
+        //User 1 = 1500
+
+        //Cron Job is needed here to find a donor
+
+
+        $transaction_payout_amount = $transaction_payout->payout_amount;
+
+        $donation_allocation       = new DonationAllocation();
+
+
+        if (sizeof($donations) > 0) {
+
+
+            foreach ($donations as $donation) {
+
+
+                if($donation->donation_amount <= $transaction_payout_amount ) {
+
+                    $donation_allocation->donor_id          = $donation->user_id;
+                    $donation_allocation->receiver_id       = $user_transaction->user_id;
+                    $donation_allocation->donation_amount   = $donation->donation_amount;
+                    $donation_allocation->save();
+                    $transaction_payout_amount              = $transaction_payout_amount - $donation->donation_amount;
+
+
+                } else {
+
+
+                     $donation_allocation->donor_id          = $donation->user_id;
+                     $donation_allocation->receiver_id       = $user_transaction->user_id;
+                     $donation_allocation->donation_amount   = $donation->donation_amount;
+                     $donation_allocation->save();
+
+                     $transaction_payout_amount              = $transaction_payout_amount - $donation->donation_amount;
+
+
+
+
+                }
+
+                if ($transaction_payout_amount <= 0) {
+
+
+                     $transaction = Transaction::find($transaction_id);
+                     $transaction->transaction_type_id = 3; 
+                     $transaction->save();
+                     break;
+                     
+
+
+
+
+                }
+
+
+
+                
+            
+            }
+
+
+        }
+        else {
+
+
+            $transaction = Transaction::find($transaction_id);
+            $transaction->transaction_type_id = 2; 
+            $transaction->save();
+            
+
+        }
 
 
         return redirect('home');
 
-        //2. The users on the payout queue statuses should be changed to "Pending Donor Allocation".
+      
+
 
     }
 

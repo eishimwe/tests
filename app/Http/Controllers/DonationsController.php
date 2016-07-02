@@ -71,12 +71,11 @@ class DonationsController extends Controller
                              `users`.last_name,
                              `contacts`.primary_contact,
                              `donations`.donation_amount,
-                             `donations`.returns_percentage
-                             
+                             `donations`.returns_percentage                             
                             
                             "
                             )
-                    );
+                    )->orderBy('created_at','asc');
 
         return Datatables::of($all_donations)
                             ->addColumn('actions','<a href="delete_bank/{{$id}}" class="btn btn-xs btn-alt"></a>')
