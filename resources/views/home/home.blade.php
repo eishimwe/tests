@@ -244,10 +244,11 @@
                                         </div>
                                         <div class="modal-body">
 
-                                          {!! Form::open(['url'=>'save_donation','method'=>'post','class'=>'form-horizontal']) !!}
-
-              
-                                            <div class="form-group m-b-10 @if ($errors->has('donation_amount')) has-error has-feedback @endif">
+                                          {!! Form::open(['url'=>'save_transaction_payout_amount','method'=>'post','class'=>'form-horizontal','id' => 'transaction_amount_form']) !!}
+                                        
+                                            {!! Form::hidden('transactionID',NULL,['id' => 'transactionID']) !!}
+                                          
+                                            <div class="form-group m-b-10 @if ($errors->has('payout_amount')) has-error has-feedback @endif">
                                                 {!! Form::label('Payout Amount', 'Payout Amount', array('class' => 'col-md-3 control-label')) !!}  
                                                 
                                                 <div class="col-md-7">
@@ -257,9 +258,9 @@
                                          
 
                                              <div class="form-group m-b-10">
-                                                <label class="col-md-3 control-label"></label>
+                                                <div class="col-md-3"></div>
                                                 <div class="col-md-7">
-                                                    <button type="submit" class="btn btn-inverse ">Add Amount</button>
+                                                    <a id="submit_transaction_payout_amount" class="btn btn-inverse">Add Amount</a>
                                                 </div>
                                             </div>
 
@@ -333,11 +334,62 @@
 
                 }
 
-              function launchAmountModal(bank_id){
+              function launchAmountModal(transaction_id){
 
+                  $("#transaction_amount_form #transactionID").val(transaction_id);
                   $(".modalAmount").modal('show');
 
                 }
+
+
+
+                $("#submit_transaction_payout_amount").on("click",function(){
+
+
+            
+                        var myForm   = $("#transaction_amount_form")[0];
+                        var formData = new FormData(myForm);
+                        var token    = $('input[name="_token"]').val();
+
+
+                          $.ajax({
+                          type    :"POST",
+                          data    : formData,
+                          contentType: false,
+                          processData: false,
+                          headers : { 'X-CSRF-Token': token },
+                          url     :"{!! url('/save_transaction_payout_amount')!!}",
+                          beforeSend : function() {
+                              
+
+                          },
+                          success : function(data){
+
+
+                            if (data) {
+
+
+                              $('#modalAmount').modal('toggle');
+
+
+                            }
+
+
+                          },
+                        error: function(data){
+
+                           
+                            
+
+                            alert("Wrong Amount entered");
+                           
+
+                        }
+
+                      })
+
+                       });
+
 
 
             </script>

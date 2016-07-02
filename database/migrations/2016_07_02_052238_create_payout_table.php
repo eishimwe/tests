@@ -12,7 +12,7 @@ class CreatePayoutTable extends Migration
      */
     public function up()
     {
-        Schema::create('payouts', function (Blueprint $table) {
+        Schema::create('transactions_payouts', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('payout_amount');
             $table->integer('transaction_id')->unsigned();
@@ -30,6 +30,6 @@ class CreatePayoutTable extends Migration
      */
     public function down()
     {
-        Schema::drop('payouts');
+        Schema::drop('transactions_payouts');
     }
 }
