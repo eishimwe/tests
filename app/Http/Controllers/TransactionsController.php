@@ -199,7 +199,17 @@ class TransactionsController extends Controller
 
 
 
-                } 
+                } else {
+
+
+                    $transaction = Transaction::find($transaction_id);
+                    $transaction->transaction_type_id = 2; 
+                    $transaction->save();
+
+
+
+
+                }
 
 
 
