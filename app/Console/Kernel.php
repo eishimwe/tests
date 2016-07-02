@@ -30,8 +30,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+       
 
 
         $schedule->call(function () {
@@ -92,6 +91,11 @@ class Kernel extends ConsoleKernel
                             $donation_allocation->save();
                             $transaction_payout_amount              = $transaction_payout_amount - $donation->donation_amount;
 
+                            
+                            $objPayout                              = TransactionPayout::find($payout->id);
+                            $objPayout->payout_amount               = $transaction_payout_amount;
+                            $objPayout->save();
+
 
                         } else {
 
@@ -102,6 +106,10 @@ class Kernel extends ConsoleKernel
                              $donation_allocation->save();
 
                              $transaction_payout_amount              = $transaction_payout_amount - $donation->donation_amount;
+
+                             $objPayout                              = TransactionPayout::find($payout->id);
+                             $objPayout->payout_amount               = $transaction_payout_amount;
+                             $objPayout->save();
 
 
 
@@ -155,10 +163,7 @@ class Kernel extends ConsoleKernel
             }
             
 
-            $user = User::find(15);
-            $user->first_name = "Kapanga Intelligence";
-            $user->save();
-
+           
 
 
 
