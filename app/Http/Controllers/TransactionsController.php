@@ -266,7 +266,9 @@ class TransactionsController extends Controller
 
         return Datatables::of($gifts_list)
                             ->addColumn('actions','
-                                                   
+                                                   <a href="#" class="btn btn-xs btn-block btn-success">
+                                                            Confirm Payment
+                                                    </a>
                                                 ')
                             ->make(true);
 
