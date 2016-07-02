@@ -368,8 +368,9 @@
 
                             if (data) {
 
-
                               $('#modalAmount').modal('toggle');
+                              $('#transaction_amount_form')[0].reset();
+                              location.reload();
 
 
                             }
