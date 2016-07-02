@@ -113,17 +113,8 @@ var transactionsTable = function() {
                 {data: 'description', name: 'transaction_types.description'},
 
                 {data : function(data){
-
-                     if (data.paid == 0) {
-
-                       return 'R'+ data.amount_due + "  <button type='button' class='btn btn-xs btn-danger btn-rounded m-b-5'>Not Paid</button>"; 
-                    } else {
-
-                       return 'R'+ data.amount_due + "  <button type='button' class='btn btn-xs btn-success btn-rounded m-b-5'>Paid</button>"; 
-
-                    }
-
-
+  
+                    return "<a class='btn btn-xs btn-block btn-success' onClick='launchAmountModal(" + data.id + ");'>Add Amount</a>";              
                    
                 }
                 },

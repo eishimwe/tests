@@ -234,6 +234,49 @@
                                     </div>
                                 </div>
                             </div>
+
+                              <div class="modal fade modalAmount" id="modalAmount">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                            <h4 class="modal-title">Add Payout Amount</h4>
+                                        </div>
+                                        <div class="modal-body">
+
+                                          {!! Form::open(['url'=>'save_donation','method'=>'post','class'=>'form-horizontal']) !!}
+
+              
+                                            <div class="form-group m-b-10 @if ($errors->has('donation_amount')) has-error has-feedback @endif">
+                                                {!! Form::label('Payout Amount', 'Payout Amount', array('class' => 'col-md-3 control-label')) !!}  
+                                                
+                                                <div class="col-md-7">
+                                                    {!! Form::text('payout_amount',NULL,['class' =>'form-control','id' => 'payout_amount' ]) !!}   
+                                                </div>
+                                            </div>
+                                         
+
+                                             <div class="form-group m-b-10">
+                                                <label class="col-md-3 control-label"></label>
+                                                <div class="col-md-7">
+                                                    <button type="submit" class="btn btn-inverse ">Add Amount</button>
+                                                </div>
+                                            </div>
+
+                                      
+            
+                                          {!! Form::close() !!}
+
+                                         
+                                          
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a href="javascript:;" class="btn width-100 btn-default" data-dismiss="modal">Close</a>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                            
                         </div>
                         <!-- end tab-content -->
@@ -256,6 +299,7 @@
             <script>
 
             var oTable;
+            var oTableAmount;
 
                 function launchBankModal(bank_id){
 
@@ -286,6 +330,12 @@
                    
                   
                   $(".modalBank").modal('show');
+
+                }
+
+              function launchAmountModal(bank_id){
+
+                  $(".modalAmount").modal('show');
 
                 }
 
