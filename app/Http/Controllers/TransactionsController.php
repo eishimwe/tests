@@ -152,7 +152,7 @@ class TransactionsController extends Controller
 
         $transaction_payout_amount = $transaction_payout->payout_amount;
 
-        $donation_allocation       = new DonationAllocation();
+        
 
 
         if (sizeof($donations) > 0) {
@@ -163,6 +163,8 @@ class TransactionsController extends Controller
 
                 if($donation->donation_amount <= $transaction_payout_amount ) {
 
+
+                    $donation_allocation                    = new DonationAllocation();
                     $donation_allocation->donor_id          = $donation->user_id;
                     $donation_allocation->receiver_id       = $user_transaction->user_id;
                     $donation_allocation->donation_amount   = $donation->donation_amount;
@@ -172,7 +174,7 @@ class TransactionsController extends Controller
 
                 } else {
 
-
+                     $donation_allocation                    = new DonationAllocation();
                      $donation_allocation->donor_id          = $donation->user_id;
                      $donation_allocation->receiver_id       = $user_transaction->user_id;
                      $donation_allocation->donation_amount   = $donation->donation_amount;
@@ -197,7 +199,7 @@ class TransactionsController extends Controller
 
 
 
-                }
+                } 
 
 
 
