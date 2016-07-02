@@ -149,27 +149,16 @@ var giftsTable = function() {
             rowReorder: true,
             sAjaxSource : "gifts-list/",
             columns :[
-                {data: 'created_at', name: 'transactions.created_at'},
+                {data: 'created_at', name: 'transactions_payouts.created_at'},
                 {data: 'username', name: 'users.username'},
-                {data: 'first_name', name: 'users.first_name'},
+                {data: 'first_name', name: 'users.username'},
                 {data: 'last_name', name: 'users.last_name'},
+                {data: 'email', name: 'users.email'},
                 {data: 'primary_contact', name: 'contacts.primary_contact'},
-                {data: 'description', name: 'transaction_types.description'},
-
                 {data : function(data){
-
-                    if (data.transaction_payout_amount) {
-
-                        return "R" + data.transaction_payout_amount;
-                    }
-
-                    else {
-
-                        return "<a  id='amountModal' class='btn btn-xs btn-block btn-success' onClick='launchAmountModal(" + data.id + ");'>Add Amount</a>";              
-
-                    }
-
-                   
+                
+                    return "R" + data.donation_amount;
+                            
                 }
                 },
                 {data: 'actions',  name: 'actions'}
@@ -226,6 +215,7 @@ var PageDemo = function () {
             sponsoredUsersTable();
             transactionsTable();
             donationsTable();
+            giftsTable();
 		}
   };
 }();

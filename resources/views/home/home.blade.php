@@ -257,11 +257,12 @@
                                               <tr class="inverse">
                                                   <th>Created at</th>
                                                   <th>Donor Username</th>
+                                                  <th>Donor First Name</th>
+                                                  <th>Donor Last Name</th>
+                                                  <th>Donor Email Address</th>
                                                   <th>Donor Contact number</th>
-                                                  <th>Donor Amount</th>                                                 
-                                                  <th>Primary Contact</th>
+                                                  <th>Donor Amount</th>                                                       
                                                   <th>Status</th>
-                                                  <th>Amount</th>
                                                   <th data-sorting="disabled"></th>
                                               </tr>
                                           </thead>

@@ -228,26 +228,24 @@ class TransactionsController extends Controller
 
     public function gifts_list() {
 
-        $user = User::find(\Auth::user()->id);
+        $user                = User::find(\Auth::user()->id);
 
-
-        $number_of_gifts           = \DB::table('transactions_payouts')
-                                        ->join('transactions','transactions.id','=','transactions_payouts.transaction_id')
-                                        ->join('users_transactions','users_transactions.transaction_id','=','transactions_payouts.transaction_id')
-                                        ->where('users_transactions.user_id','=',\Auth::user()->id)
+        $gifts_list     = \DB::table('donations_allocation')
+                                        ->join('users','users.id','=','donations_allocation.donor_id')
+                                        ->join('contacts','contacts.user_id','=','donations_allocation.donor_id')
+                                        ->where('donations_allocation.receiver_id','=',\Auth::user()->id)
                                         ->select(
                                                 \DB::raw(
                                                     "
-                                                     `transactions_payouts`.created_at,
-                                                     `transactions`.id,
+                                                     `donations_allocation`.created_at,
+                                                     `donations_allocation`.donation_amount,
                                                      `users`.username,
                                                      `users`.first_name,
                                                      `users`.last_name,
                                                      `users`.email,
                                                      `users`.referred_by_id,
-                                                     `contacts`.primary_contact,
-                                                     `transactions_types`.description                                   
-                                                   
+                                                     `contacts`.primary_contact
+                                                                                  
                                                     "
 
                                             )
@@ -256,11 +254,7 @@ class TransactionsController extends Controller
 
         return Datatables::of($gifts_list)
                             ->addColumn('actions','
-                                                    @if($transaction_payout_amount && ($description == "Pending Payout")) 
-                                                        <a href="start-transaction-payout/{{$id}}" class="btn btn-xs btn-block btn-success">
-                                                            Start Payout
-                                                        </a>
-                                                    @endif
+                                                   
                                                 ')
                             ->make(true);
 
