@@ -126,17 +126,20 @@ class TransactionsController extends Controller
 
     public function gifts_list() {
 
-        $user                = User::find(\Auth::user()->id);
+        $user          = User::find(\Auth::user()->id);
 
         $gifts_list     = \DB::table('donations_allocation')
                                         ->join('users','users.id','=','donations_allocation.donor_id')
                                         ->join('contacts','contacts.user_id','=','donations_allocation.donor_id')
+                                        ->join('transactions','transactions.id','=','donations_allocation.transaction_id')
+                                        ->join('transactions_payouts','transactions_payouts.id','=','transactions.transaction_type_id')
                                         ->where('donations_allocation.receiver_id','=',\Auth::user()->id)
                                         ->select(
                                                 \DB::raw(
                                                     "
                                                      `donations_allocation`.created_at,
                                                      `donations_allocation`.donation_amount,
+                                                     `donations_allocation`.transaction_id,     
                                                      `users`.username,
                                                      `users`.first_name,
                                                      `users`.last_name,
@@ -174,10 +177,12 @@ class TransactionsController extends Controller
                                                     "
                                                      `donations_allocation`.created_at,
                                                      `donations_allocation`.donation_amount,
+                                                     `donations_allocation`.transaction_id,
                                                      `users`.username,
                                                      `users`.first_name,
                                                      `users`.last_name,
                                                      `users`.email,
+                                                     `users`.id,
                                                      `users`.referred_by_id,
                                                      `contacts`.primary_contact
                                                                                   
@@ -188,11 +193,7 @@ class TransactionsController extends Controller
                  
 
         return Datatables::of($my_donations_list)
-                            ->addColumn('actions','
-                                                   <a href="#" class="btn btn-xs btn-block btn-success">
-                                                            Confirm Payment
-                                                    </a>
-                                                ')
+                            ->addColumn('actions','<a class="btn btn-xs btn-block btn-success" onClick="launchBankModal({{$id}});">View Banking Details</a>')
                             ->make(true);
 
 

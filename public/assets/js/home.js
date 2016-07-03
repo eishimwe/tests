@@ -114,7 +114,7 @@ var transactionsTable = function() {
 
                 {data : function(data){
 
-                    if (data.description == 'Pending Payout') {
+                    if (data.description == 'Pending Payout' && !data.transaction_payout_amount) {
 
                         return "<a  id='amountModal' class='btn btn-xs btn-block btn-success' onClick='launchAmountModal(" + data.id + ");'>Add Amount</a>";              
 
@@ -179,7 +179,7 @@ var myDonationsTable = function() {
             rowReorder: true,
             sAjaxSource : "my-donations-list/",
             columns :[
-                {data: 'created_at', name: 'transactions_payouts.created_at'},
+                {data: 'actions',  name: 'actions'},
                 {data: 'username', name: 'users.username'},
                 {data: 'first_name', name: 'users.username'},
                 {data: 'last_name', name: 'users.last_name'},
