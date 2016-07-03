@@ -155,9 +155,11 @@ class TransactionsController extends Controller
 
         return Datatables::of($gifts_list)
                             ->addColumn('actions','
+                                                  @if ($donation_status == 0)
                                                    <a href="confirm-donor-payment/{{$id}}" class="btn btn-xs btn-block btn-success">
                                                             Confirm Payment
                                                     </a>
+                                                  @endif
                                                 ')
                             ->make(true);
 
@@ -178,6 +180,7 @@ class TransactionsController extends Controller
                                                      `donations_allocation`.created_at,
                                                      `donations_allocation`.donation_amount,
                                                      `donations_allocation`.transaction_id,
+                                                     `donations_allocation`.donation_status,
                                                      `users`.username,
                                                      `users`.first_name,
                                                      `users`.last_name,

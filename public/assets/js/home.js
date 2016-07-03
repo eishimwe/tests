@@ -201,7 +201,21 @@ var myDonationsTable = function() {
                             
                 }
                 },
-                {data: 'actions',  name: 'actions'}
+                {data : function(data) {
+
+                    if (data.donation_status == 0) {
+
+                       return "<button class='btn btn-xs btn-danger btn-rounded m-b-5' type='button'>Not Paid</button>" ;
+                    }
+
+                    if (data.donation_status == 1) {
+
+                       return "<button class='btn btn-xs btn-success btn-rounded m-b-5' type='button'>Paid</button>" ;
+                    }
+
+                    
+
+                }}
 
             ]
         });
