@@ -95,6 +95,7 @@ class Kernel extends ConsoleKernel
                                             $donation_allocation->receiver_id       = $user_transaction->user_id;
                                             $donation_allocation->transaction_id    = $payout->transaction_id;
                                             $donation_allocation->donation_amount   = $donation->donation_amount;
+                                            $donation_allocation->donation_status   = 0;
                                             $donation_allocation->save();
                                             $transaction_payout_amount              = $transaction_payout_amount - $donation->donation_amount;
 
@@ -104,8 +105,8 @@ class Kernel extends ConsoleKernel
                                             $objPayout->save();
 
 
-                                            $objDonation                              = Donation::find($donation->id);
-                                            $objDonation->is_valid                    = 0; 
+                                            $objDonation                             = Donation::find($donation->id);
+                                            $objDonation->is_valid                   = 0; 
                                             $objDonation->save();
 
 
@@ -118,7 +119,8 @@ class Kernel extends ConsoleKernel
                                              $donation_allocation->donor_id          = $donation->user_id;
                                              $donation_allocation->receiver_id       = $user_transaction->user_id;
                                              $donation_allocation->donation_amount   = $transaction_payout_amount;
-                                            $donation_allocation->transaction_id     = $payout->transaction_id;
+                                             $donation_allocation->transaction_id    = $payout->transaction_id;
+                                             $donation_allocation->donation_status   = 0;
                                              $donation_allocation->save();
 
                                              $transaction_payout_amount              = $transaction_payout_amount - $transaction_payout_amount;

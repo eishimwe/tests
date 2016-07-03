@@ -155,7 +155,16 @@ var giftsTable = function() {
                             
                 }
                 },
-                {data: 'description', name: 'transactions_types.description'},
+                {data : function(data) {
+
+                    if (data.donation_status == 0) {
+
+                       return "<button class='btn btn-xs btn-danger btn-rounded m-b-5' type='button'>Not Paid</button>" ;
+                    }
+
+                    
+
+                }},
                 {data: 'actions',  name: 'actions'}
 
             ]
