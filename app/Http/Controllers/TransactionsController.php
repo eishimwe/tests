@@ -136,6 +136,7 @@ class TransactionsController extends Controller
                                                 \DB::raw(
                                                     "
                                                      `donations_allocation`.created_at,
+                                                     `donations_allocation`.id,
                                                      `donations_allocation`.donation_amount,
                                                      `donations_allocation`.transaction_id,
                                                      `donations_allocation`.donation_status,
@@ -154,7 +155,7 @@ class TransactionsController extends Controller
 
         return Datatables::of($gifts_list)
                             ->addColumn('actions','
-                                                   <a href="#" class="btn btn-xs btn-block btn-success">
+                                                   <a href="confirm-donor-payment/{{$id}}" class="btn btn-xs btn-block btn-success">
                                                             Confirm Payment
                                                     </a>
                                                 ')

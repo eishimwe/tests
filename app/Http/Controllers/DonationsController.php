@@ -10,6 +10,8 @@ use Yajra\Datatables\Facades\Datatables;
 
 use App\Donation;
 
+use App\DonationAllocation;
+
 use App\Http\Requests\DonationRequest;
 
 
@@ -104,6 +106,17 @@ class DonationsController extends Controller
         return redirect('donations-details');
 
 
+
+    }
+
+
+    public function confirm_donor_payment($donation_allocation_id) {
+
+        $donation_allocation                  = DonationAllocation::find($donation_allocation_id);     
+        $donation_allocation->donation_status = 1;
+        $donation_allocation->save();
+
+        return redirect('home');
 
     }
 
