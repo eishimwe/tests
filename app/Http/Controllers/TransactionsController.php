@@ -118,117 +118,7 @@ class TransactionsController extends Controller
     public function start_transaction_payout($transaction_id) {
 
 
-        //Get amount to payout
-
-        $transaction_payout = TransactionPayout::where('transaction_id',$transaction_id)->first();
-        $user_transaction   = UserTransaction::where('transaction_id',$transaction_id)->first();
-
-        $donations = \DB::table('donations')
-                                ->select(
-                                \DB::raw(
-                                    "
-                                     `donations`.created_at,
-                                     `donations`.id,
-                                     `donations`.donation_amount,
-                                     `donations`.user_id                                   
-                                   
-                                    "
-
-                            )
-                            )->orderBy('created_at','asc')
-                            ->get();
-
-
-        //user 3 = R1500
-
-        //User 1 = 1500
-
-        //Cron Job is needed here to find a donor
-
-
-        $transaction_payout_amount = $transaction_payout->payout_amount;
-
-        
-
-
-        if (sizeof($donations) > 0) {
-
-
-            foreach ($donations as $donation) {
-
-
-                if($donation->donation_amount <= $transaction_payout_amount ) {
-
-
-                    $donation_allocation                    = new DonationAllocation();
-                    $donation_allocation->donor_id          = $donation->user_id;
-                    $donation_allocation->receiver_id       = $user_transaction->user_id;
-                    $donation_allocation->donation_amount   = $donation->donation_amount;
-                    $donation_allocation->save();
-                    $transaction_payout_amount              = $transaction_payout_amount - $donation->donation_amount;
-
-
-                } else {
-
-                     $donation_allocation                    = new DonationAllocation();
-                     $donation_allocation->donor_id          = $donation->user_id;
-                     $donation_allocation->receiver_id       = $user_transaction->user_id;
-                     $donation_allocation->donation_amount   = $donation->donation_amount;
-                     $donation_allocation->save();
-
-                     $transaction_payout_amount              = $transaction_payout_amount - $donation->donation_amount;
-
-
-
-
-                }
-
-                if ($transaction_payout_amount <= 0) {
-
-
-                     $transaction = Transaction::find($transaction_id);
-                     $transaction->transaction_type_id = 3; 
-                     $transaction->save();
-                     break;
-                     
-
-
-
-
-                } else {
-
-
-                    $transaction = Transaction::find($transaction_id);
-                    $transaction->transaction_type_id = 2; 
-                    $transaction->save();
-
-
-
-
-                }
-
-
-
-                
-            
-            }
-
-
-        }
-        else {
-
-
-            $transaction = Transaction::find($transaction_id);
-            $transaction->transaction_type_id = 2; 
-            $transaction->save();
-            
-
-        }
-
-
-        return redirect('home');
-
-      
+     
 
 
     }
@@ -261,6 +151,43 @@ class TransactionsController extends Controller
                  
 
         return Datatables::of($gifts_list)
+                            ->addColumn('actions','
+                                                   <a href="#" class="btn btn-xs btn-block btn-success">
+                                                            Confirm Payment
+                                                    </a>
+                                                ')
+                            ->make(true);
+
+
+    }
+
+    public function my_donations_list() {
+
+        $user                  = User::find(\Auth::user()->id);
+
+        $my_donations_list     = \DB::table('donations_allocation')
+                                        ->join('users','users.id','=','donations_allocation.receiver_id')
+                                        ->join('contacts','contacts.user_id','=','donations_allocation.receiver_id')
+                                        ->where('donations_allocation.donor_id','=',\Auth::user()->id)
+                                        ->select(
+                                                \DB::raw(
+                                                    "
+                                                     `donations_allocation`.created_at,
+                                                     `donations_allocation`.donation_amount,
+                                                     `users`.username,
+                                                     `users`.first_name,
+                                                     `users`.last_name,
+                                                     `users`.email,
+                                                     `users`.referred_by_id,
+                                                     `contacts`.primary_contact
+                                                                                  
+                                                    "
+
+                                            )
+                                        );
+                 
+
+        return Datatables::of($my_donations_list)
                             ->addColumn('actions','
                                                    <a href="#" class="btn btn-xs btn-block btn-success">
                                                             Confirm Payment

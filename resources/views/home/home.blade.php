@@ -115,7 +115,7 @@
                                       <div class="widget-stat-icon"><i class="fa fa-money"></i></div>
                                       <div class="widget-stat-info">
                                           <div class="widget-stat-title">My Donations</div>
-                                          <div class="widget-stat-number"><a href="#nav-pills-tab-4" data-toggle="tab">{{ $number_of_my_donations }}</a></div>
+                                          <div class="widget-stat-number"><a href="#nav-pills-tab-6" data-toggle="tab">{{ $number_of_my_donations }}</a></div>
                                       </div>
                                       <div class="widget-stat-progress">
                                           <div class="progress">
@@ -327,6 +327,32 @@
                             </div>
 
                             @endif
+
+                             <div class="tab-pane fade" id="nav-pills-tab-6">
+                                <h4>My Donations</h4>
+
+                                 <!-- begin panel -->
+                                  <div class="panel pagination-inverse m-b-0 clearfix">
+                                      <table id="my-donations-table" data-order='[[0,"desc"]]' class="table-responsive table table-bordered table-hover">
+                                          <thead>
+                                              <tr class="inverse">
+                                                  <th>Banking Details</th>
+                                                  <th>Username</th>
+                                                  <th>First Name</th>
+                                                  <th>Last Name</th>
+                                                  <th>Email Address</th>
+                                                  <th>Contact number</th>
+                                                  <th>Amount</th>                                                       
+                                                  <th>Status</th>
+                                                  <th data-sorting="disabled"></th>
+                                              </tr>
+                                          </thead>
+                                         
+                                      </table>
+                                  </div>
+                                  <!-- end panel -->
+                              </div>
+
 
                              <!-- #modal-dialog -->
                           <div class="modal fade modalBank" id="modalBank">

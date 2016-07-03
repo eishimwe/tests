@@ -163,6 +163,8 @@ Route::get('transactions-list',['Middleware' => 'cors','uses' => 'TransactionsCo
 Route::post('save_transaction_payout_amount',['Middleware' => 'cors','uses' => 'TransactionsController@save_transaction_payout_amount']);
 Route::get('start-transaction-payout/{transaction_id}',['Middleware' => 'cors','uses' => 'TransactionsController@start_transaction_payout']);
 Route::get('gifts-list',['Middleware' => 'cors','uses' => 'TransactionsController@gifts_list']);
+Route::get('my-donations-list',['Middleware' => 'cors','uses' => 'TransactionsController@my_donations_list']);
+
 
 
 

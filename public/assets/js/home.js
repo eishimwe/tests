@@ -166,6 +166,38 @@ var giftsTable = function() {
     }
 };
 
+var myDonationsTable = function() {
+    "use strict";
+
+    if ($('#my-donations-table').length !== 0) {
+        $('#my-donations-table').DataTable({
+            dom: 'rfrtip',
+           
+            responsive: true,
+            autoFill: true,
+            colReorder: true,
+            rowReorder: true,
+            sAjaxSource : "my-donations-list/",
+            columns :[
+                {data: 'created_at', name: 'transactions_payouts.created_at'},
+                {data: 'username', name: 'users.username'},
+                {data: 'first_name', name: 'users.username'},
+                {data: 'last_name', name: 'users.last_name'},
+                {data: 'email', name: 'users.email'},
+                {data: 'primary_contact', name: 'contacts.primary_contact'},
+                {data : function(data){
+                
+                    return "R" + data.donation_amount;
+                            
+                }
+                },
+                {data: 'actions',  name: 'actions'}
+
+            ]
+        });
+    }
+};
+
 var donationsTable = function() {
     "use strict";
 
@@ -215,6 +247,7 @@ var PageDemo = function () {
             transactionsTable();
             donationsTable();
             giftsTable();
+            myDonationsTable();
 		}
   };
 }();
