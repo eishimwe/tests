@@ -39,7 +39,7 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('master', function($view)
         {
             $number_bank_accounts = BankAccount::where('user_id',\Auth::user()->id)->count();
-            $number_donations     = Donation::where('user_id',\Auth::user()->id)->where('is_valid',1)->count();
+            $number_donations     = Donation::where('user_id',\Auth::user()->id)->count();
             $view->with('number_bank_accounts', $number_bank_accounts)->with('number_donations',$number_donations);
         });
 

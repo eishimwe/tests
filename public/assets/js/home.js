@@ -114,17 +114,15 @@ var transactionsTable = function() {
 
                 {data : function(data){
 
-                    if (data.transaction_payout_amount) {
-
-                        return "R" + data.transaction_payout_amount;
-                    }
-
-                    else {
+                    if (data.description == 'Pending Payout') {
 
                         return "<a  id='amountModal' class='btn btn-xs btn-block btn-success' onClick='launchAmountModal(" + data.id + ");'>Add Amount</a>";              
 
-                    }
+                    } else {
 
+                        return "R" + data.transaction_payout_amount;
+
+                    }
                    
                 }
                 },

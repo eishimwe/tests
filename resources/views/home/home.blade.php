@@ -107,6 +107,27 @@
 
                             </li>
 
+                            <li>
+
+                                  <!-- begin widget -->
+                                  <div class="widget widget-stat widget-stat-right bg-success text-white">
+                                      <div class="widget-stat-btn"><a href="javascript:;" data-click="widget-reload"><i class="fa fa-repeat"></i></a></div>
+                                      <div class="widget-stat-icon"><i class="fa fa-money"></i></div>
+                                      <div class="widget-stat-info">
+                                          <div class="widget-stat-title">My Donations</div>
+                                          <div class="widget-stat-number"><a href="#nav-pills-tab-4" data-toggle="tab">{{ $number_of_my_donations }}</a></div>
+                                      </div>
+                                      <div class="widget-stat-progress">
+                                          <div class="progress">
+                                              <div class="progress-bar" style="width: 60%"></div>
+                                          </div>
+                                      </div>
+                                      <div class="widget-stat-footer"></div>
+                                  </div>
+                                  <!-- end widget -->
+
+                            </li>
+
                             @if(\Auth::user()->role_id == 1 || \Auth::user()->role_id == 2)
                             <li>
 
@@ -115,7 +136,7 @@
                                       <div class="widget-stat-btn"><a href="javascript:;" data-click="widget-reload"><i class="fa fa-repeat"></i></a></div>
                                       <div class="widget-stat-icon"><i class="fa fa-chrome"></i></div>
                                       <div class="widget-stat-info">
-                                          <div class="widget-stat-title">Transactions</div>
+                                          <div class="widget-stat-title">All Transactions</div>
                                           <div class="widget-stat-number"><a href="#nav-pills-tab-3" data-toggle="tab">{{ $number_of_transactions }}</a></div>
                                       </div>
                                       <div class="widget-stat-progress">
@@ -141,7 +162,7 @@
                                       <div class="widget-stat-btn"><a href="javascript:;" data-click="widget-reload"><i class="fa fa-repeat"></i></a></div>
                                       <div class="widget-stat-icon"><i class="fa fa-money"></i></div>
                                       <div class="widget-stat-info">
-                                          <div class="widget-stat-title">Donations</div>
+                                          <div class="widget-stat-title">All Donations</div>
                                           <div class="widget-stat-number"><a href="#nav-pills-tab-5" data-toggle="tab">{{ $number_of_donations }}</a></div>
                                       </div>
                                       <div class="widget-stat-progress">
