@@ -193,6 +193,7 @@ var donationsTable = function() {
                    
                 }
                 },
+                {data: 'is_valid', name: 'donation.is_valid'},
                 
 
                 {data: 'actions',  name: 'actions'}

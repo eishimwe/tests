@@ -9,6 +9,8 @@ use App\TransactionPayout;
 use App\Transaction;
 use App\DonationAllocation;
 use App\UserTransaction;
+use App\Donation;
+
 
 
 class Kernel extends ConsoleKernel
@@ -64,7 +66,8 @@ class Kernel extends ConsoleKernel
                                     "
 
                             )
-                            )->orderBy('created_at','asc')
+                            )->where('is_valid',1)
+                            ->orderBy('created_at','asc')
                             ->get();
 
 
@@ -72,7 +75,7 @@ class Kernel extends ConsoleKernel
 
 
                 $transaction_payout_amount = $payout->payout_amount;      
-                $user_transaction          = UserTransaction::where('transaction_id',$payout->transaction_id)->first();
+                $user_transaction          = UserTransaction::where('transaction_id',$payout->transaction_id)->first();//R500
 
 
                 if (sizeof($donations) > 0) {
@@ -89,27 +92,41 @@ class Kernel extends ConsoleKernel
                             $donation_allocation->receiver_id       = $user_transaction->user_id;
                             $donation_allocation->donation_amount   = $donation->donation_amount;
                             $donation_allocation->save();
-                            $transaction_payout_amount              = $transaction_payout_amount - $donation->donation_amount;
+                            $transaction_payout_amount              = $transaction_payout_amount - $donation->donation_amount;//R2000 - R1500 = R500
 
                             
                             $objPayout                              = TransactionPayout::find($payout->id);
-                            $objPayout->payout_amount               = $transaction_payout_amount;
+                            $objPayout->payout_amount               = $transaction_payout_amount; 
                             $objPayout->save();
+
+
+                            $objDonation                              = Donation::find($donation->id);
+                            $objDonation->is_valid                    = 0; 
+                            $objDonation->save();
 
 
                         } else {
 
+                             
+                            //R1500 > R500
+                             $amount_to_donate                       =  $donation->donation_amount - $transaction_payout_amount;
+
                              $donation_allocation                    = new DonationAllocation();
                              $donation_allocation->donor_id          = $donation->user_id;
                              $donation_allocation->receiver_id       = $user_transaction->user_id;
-                             $donation_allocation->donation_amount   = $donation->donation_amount;
+                             $donation_allocation->donation_amount   = $amount_to_donate
                              $donation_allocation->save();
 
-                             $transaction_payout_amount              = $transaction_payout_amount - $donation->donation_amount;
+                             $transaction_payout_amount              = $transaction_payout_amount - $amount_to_donate;
 
                              $objPayout                              = TransactionPayout::find($payout->id);
                              $objPayout->payout_amount               = $transaction_payout_amount;
                              $objPayout->save();
+
+
+                             //$objDonation                              = Donation::find($donation->id);
+                             //$objDonation->is_valid                    = 0; 
+                             //$objDonation->save();
 
 
 

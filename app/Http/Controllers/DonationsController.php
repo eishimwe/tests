@@ -33,7 +33,6 @@ class DonationsController extends Controller
 
         $donations_list = \DB::table('donations')
                     ->join('users','users.id','=','donations.user_id')
-                    ->where('donations.is_valid',1)
                     ->where('donations.user_id',\Auth::user()->id)
 					->select(
 						\DB::raw(
@@ -41,7 +40,8 @@ class DonationsController extends Controller
 							 `donations`.id,
 							 `donations`.donation_amount,
 							 `donations`.returns_percentage,
-							 `donations`.created_at
+							 `donations`.created_at,
+                             `donations`.is_valid
 							
 							"
 							)
@@ -60,7 +60,6 @@ class DonationsController extends Controller
         $all_donations = \DB::table('donations')
                     ->join('users','users.id','=','donations.user_id')
                     ->join('contacts','contacts.user_id','=','donations.user_id')
-                    ->where('donations.is_valid',1)
                     ->select(
                         \DB::raw(
                             "
@@ -71,7 +70,8 @@ class DonationsController extends Controller
                              `users`.last_name,
                              `contacts`.primary_contact,
                              `donations`.donation_amount,
-                             `donations`.returns_percentage                             
+                             `donations`.returns_percentage,
+                             `donations`.is_valid                             
                             
                             "
                             )

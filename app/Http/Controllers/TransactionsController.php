@@ -64,11 +64,7 @@ class TransactionsController extends Controller
 
         return Datatables::of($transactions_list)
                             ->addColumn('actions','
-                                                    @if($transaction_payout_amount && ($description == "Pending Payout")) 
-                                                        <a href="start-transaction-payout/{{$id}}" class="btn btn-xs btn-block btn-success">
-                                                            Start Payout
-                                                        </a>
-                                                    @endif
+                                                   
                                                 ')
                             ->make(true);
 
