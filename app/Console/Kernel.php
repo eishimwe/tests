@@ -38,6 +38,7 @@ class Kernel extends ConsoleKernel
         $schedule->call(function () {
 
 
+
             $payouts = \DB::table('transactions_payouts')
                                 ->select(
                                 \DB::raw(
@@ -55,6 +56,7 @@ class Kernel extends ConsoleKernel
 
 
             $donations = \DB::table('donations')
+                                ->where('is_valid','=',1)
                                 ->select(
                                 \DB::raw(
                                     "
@@ -66,9 +68,11 @@ class Kernel extends ConsoleKernel
                                     "
 
                             )
-                            )->where('is_valid',1)
+                            )
                             ->orderBy('created_at','asc')
                             ->get();
+
+            //dd($donations);
 
 
             foreach ($payouts as $payout) {
@@ -92,7 +96,7 @@ class Kernel extends ConsoleKernel
                             $donation_allocation->receiver_id       = $user_transaction->user_id;
                             $donation_allocation->donation_amount   = $donation->donation_amount;
                             $donation_allocation->save();
-                            $transaction_payout_amount              = $transaction_payout_amount - $donation->donation_amount;//R2000 - R1500 = R500
+                            $transaction_payout_amount              = $transaction_payout_amount - $donation->donation_amount;
 
                             
                             $objPayout                              = TransactionPayout::find($payout->id);
@@ -108,7 +112,7 @@ class Kernel extends ConsoleKernel
                         } else {
 
                              
-                            //R1500 > R500
+                            
                              $amount_to_donate                       =  $donation->donation_amount - $transaction_payout_amount;
 
                              $donation_allocation                    = new DonationAllocation();
