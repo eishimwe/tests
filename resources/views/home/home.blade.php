@@ -333,7 +333,7 @@
 
                                  <!-- begin panel -->
                                   <div class="panel pagination-inverse m-b-0 clearfix">
-                                      <table id="my-donations-table" data-order='[[0,"desc"]]' class="table-responsive table table-bordered table-hover">
+                                      <table id="my-donations-table"  class="table-responsive table table-bordered table-hover">
                                           <thead>
                                               <tr class="inverse">
                                                   <th>Banking Details</th>

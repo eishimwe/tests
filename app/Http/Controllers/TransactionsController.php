@@ -132,14 +132,15 @@ class TransactionsController extends Controller
                                         ->join('users','users.id','=','donations_allocation.donor_id')
                                         ->join('contacts','contacts.user_id','=','donations_allocation.donor_id')
                                         ->join('transactions','transactions.id','=','donations_allocation.transaction_id')
-                                        ->join('transactions_payouts','transactions_payouts.id','=','transactions.transaction_type_id')
+                                       
                                         ->where('donations_allocation.receiver_id','=',\Auth::user()->id)
                                         ->select(
                                                 \DB::raw(
                                                     "
                                                      `donations_allocation`.created_at,
                                                      `donations_allocation`.donation_amount,
-                                                     `donations_allocation`.transaction_id,     
+                                                     `donations_allocation`.transaction_id,
+                                                     (SELECT `transactions_types`.`description` FROM `transactions_types` WHERE `transactions_types`.id = `transactions`.`transaction_type_id`) as description,     
                                                      `users`.username,
                                                      `users`.first_name,
                                                      `users`.last_name,

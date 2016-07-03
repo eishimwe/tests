@@ -14,8 +14,7 @@ var sponsorsUsersTable = function() {
            
             responsive: true,
             autoFill: true,
-            colReorder: true,
-            rowReorder: true,
+           
             sAjaxSource : "sponsors-list/",
             columns :[
                 {data: 'sponsor_type', name: 'sponsors_type.description'},
@@ -56,8 +55,7 @@ var sponsoredUsersTable = function() {
             order :[[0,"asc"]],
             responsive: true,
             autoFill: true,
-            colReorder: true,
-            rowReorder: true,
+          
             sAjaxSource : "sponsored-list/",
             columns :[
                 {data: 'created_at', name: 'users.created_at'},
@@ -101,8 +99,7 @@ var transactionsTable = function() {
            
             responsive: true,
             autoFill: true,
-            colReorder: true,
-            rowReorder: true,
+           
             sAjaxSource : "transactions-list/",
             columns :[
                 {data: 'created_at', name: 'transactions.created_at'},
@@ -143,8 +140,7 @@ var giftsTable = function() {
            
             responsive: true,
             autoFill: true,
-            colReorder: true,
-            rowReorder: true,
+           
             sAjaxSource : "gifts-list/",
             columns :[
                 {data: 'created_at', name: 'transactions_payouts.created_at'},
@@ -159,6 +155,7 @@ var giftsTable = function() {
                             
                 }
                 },
+                {data: 'description', name: 'transactions_types.description'},
                 {data: 'actions',  name: 'actions'}
 
             ]
@@ -175,8 +172,7 @@ var myDonationsTable = function() {
            
             responsive: true,
             autoFill: true,
-            colReorder: true,
-            rowReorder: true,
+           
             sAjaxSource : "my-donations-list/",
             columns :[
                 {data: 'actions',  name: 'actions'},
@@ -207,8 +203,7 @@ var donationsTable = function() {
            
             responsive: true,
             autoFill: true,
-            colReorder: true,
-            rowReorder: true,
+           
             sAjaxSource : "all-donations/",
             columns :[
                 {data: 'created_at', name: 'donations.created_at'},
@@ -223,9 +218,21 @@ var donationsTable = function() {
                    
                 }
                 },
-                {data: 'is_valid', name: 'donation.is_valid'},
-                
+                {data : function(data){
 
+                    if (data.is_valid == 1) {
+                        return 'available';
+                    }
+                    else {
+
+                        return 'not available';
+                    }
+
+
+                   
+                }
+                },
+               
                 {data: 'actions',  name: 'actions'}
 
             ]
