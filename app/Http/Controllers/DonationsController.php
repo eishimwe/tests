@@ -16,6 +16,8 @@ use App\Transaction;
 
 use App\TransactionType;
 
+use App\TransactionPayout;
+
 use App\UserTransaction;
 
 use App\Http\Requests\DonationRequest;
@@ -115,6 +117,7 @@ class DonationsController extends Controller
 
     public function confirm_donor_payment($donation_allocation_id) {
 
+    
         $donation_allocation                  = DonationAllocation::find($donation_allocation_id);
         $donor_id                             = $donation_allocation->donor_id;
         $donation_amount                      = $donation_allocation->donation_amount;     
@@ -122,24 +125,37 @@ class DonationsController extends Controller
         $donation_allocation->save();
 
         $original_donor_donation             = Donation::find($donation_allocation->donation_id);
+        $donation_return                     = $original_donor_donation->donation_amount + ($original_donor_donation->donation_amount * 30)/100;
         $all_donor_donations                 = DonationAllocation::where('donation_id',$donation_allocation->donation_id)->where('donation_status',1)->get();
         $total_donor_donations               = 0;
+                  
 
         foreach ($all_donor_donations as $all_donor_donation) {
             
 
             $total_donor_donations += $all_donor_donation->donation_amount;
+            $transaction_id  = $all_donor_donation->transaction_id;
         }
 
 
         if ($original_donor_donation->donation_amount == $total_donor_donations) {
 
-  
+
+            $date                             = \Carbon\Carbon::now('Africa/Johannesburg');
+            $date                             = $date->addDay(30)->toDateString();
             $transaction_type                 = TransactionType::where('description','Pending Payout')->first();
             $transaction                      = new Transaction();
-            $transaction->transaction_type_id = $transaction_type->id;
+            $transaction->transaction_type_id = $transaction_type->id;   
             $transaction->save();
             
+            
+            $transaction_payout                 = new TransactionPayout();
+            $transaction_payout->transaction_id = $transaction->id;
+            $transaction_payout->payout_date    = $date;
+            $transaction_payout->payout_amount  = $donation_return;
+            $transaction_payout->save();
+
+
             $user_transaction                 = new UserTransaction();
             $user_transaction->user_id        = $donation_allocation->donor_id;
             $user_transaction->transaction_id = $transaction->id;

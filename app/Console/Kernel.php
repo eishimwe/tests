@@ -36,8 +36,12 @@ class Kernel extends ConsoleKernel
              $schedule->call(function () {
 
 
+                $date = \Carbon\Carbon::now('Africa/Johannesburg')->toDateString();
+
+
 
                 $payouts = \DB::table('transactions_payouts')
+                                    ->where('payout_date','LIKE','%'.$date.'%')
                                     ->select(
                                     \DB::raw(
                                         "

@@ -30,7 +30,7 @@
                              
                                 <th>Donation Amount</th>
                                 <th>Donation Returns</th>
-                                <th>Expected Payout Date</th>
+                                <th>Created Date</th>
                                 <th data-sorting="disabled"></th>
                             </tr>
                         </thead>
