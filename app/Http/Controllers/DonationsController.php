@@ -12,10 +12,13 @@ use App\Donation;
 
 use App\DonationAllocation;
 
+use App\Transaction;
+
+use App\TransactionType;
+
+use App\UserTransaction;
+
 use App\Http\Requests\DonationRequest;
-
-
-
 
 
 class DonationsController extends Controller
@@ -112,9 +115,64 @@ class DonationsController extends Controller
 
     public function confirm_donor_payment($donation_allocation_id) {
 
-        $donation_allocation                  = DonationAllocation::find($donation_allocation_id);     
+        $donation_allocation                  = DonationAllocation::find($donation_allocation_id);
+        $donor_id                             = $donation_allocation->donor_id;
+        $donation_amount                      = $donation_allocation->donation_amount;     
         $donation_allocation->donation_status = 1;
         $donation_allocation->save();
+
+        $original_donor_donation             = Donation::find($donation_allocation->donation_id);
+        $all_donor_donations                 = DonationAllocation::where('donation_id',$donation_allocation->donation_id)->where('donation_status',1)->get();
+        $total_donor_donations               = 0;
+
+        foreach ($all_donor_donations as $all_donor_donation) {
+            
+
+            $total_donor_donations += $all_donor_donation->donation_amount;
+        }
+
+
+        if ($original_donor_donation->donation_amount == $total_donor_donations) {
+
+  
+            $transaction_type                 = TransactionType::where('description','Pending Payout')->first();
+            $transaction                      = new Transaction();
+            $transaction->transaction_type_id = $transaction_type->id;
+            $transaction->save();
+            
+            $user_transaction                 = new UserTransaction();
+            $user_transaction->user_id        = $donation_allocation->donor_id;
+            $user_transaction->transaction_id = $transaction->id;
+            $user_transaction->created_by     = \Auth::user()->id;
+            $user_transaction->save();
+
+
+        }
+
+
+
+
+        $transaction_id                = $donation_allocation->transaction_id;
+
+        $all_donations_transactions_no = DonationAllocation::where('transaction_id',$transaction_id)->count();     
+        $all_donations_transactions    = DonationAllocation::where('transaction_id',$transaction_id)->get();    
+        $complete_transaction_no       = 0;
+
+        foreach ($all_donations_transactions as $all_donations_transaction) {
+
+            if ($all_donations_transaction->donation_status == 1) {
+
+                 $complete_transaction_no ++ ;
+            }
+
+        }
+
+        if ($all_donations_transactions_no == $complete_transaction_no) {
+
+            $transaction  = Transaction::find($transaction_id);
+            $transaction->transaction_type_id = 5;
+            $transaction->save();
+        }
 
         return redirect('home');
 

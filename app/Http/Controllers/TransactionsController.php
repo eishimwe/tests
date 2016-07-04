@@ -102,6 +102,7 @@ class TransactionsController extends Controller
         $response = array();
 		$transaction_payout->payout_amount  = $request['payout_amount'];
 		$transaction_payout->transaction_id = $request['transactionID'];
+        $transaction_payout->payout_date    = \Carbon\Carbon::now('Africa/Johannesburg')->toDateTimeString();
         $transaction_payout->save();
 
         $response["message"]   = "Transaction Payout Amount Added!";

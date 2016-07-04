@@ -313,7 +313,7 @@
                                                   <th>Donor First Name</th>
                                                   <th>Donor Surname</th>
                                                   <th>Donor Contact number</th>
-                                                  <th>Donor Amount</th>                                                 
+                                                  <th>Donor Wish Amount</th>                                                 
                                                   <th>Donation Status</th>       
                                                   <th data-sorting="disabled"></th>
                                               </tr>
