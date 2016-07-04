@@ -254,6 +254,7 @@
                                                   <th>Primary Contact</th>
                                                   <th>Status</th>
                                                   <th>Amount</th>
+                                                  <th>Payout Date</th>
                                                   <th data-sorting="disabled"></th>
                                               </tr>
                                           </thead>

@@ -102,12 +102,13 @@ var transactionsTable = function() {
            
             sAjaxSource : "transactions-list/",
             columns :[
-                {data: 'created_at', name: 'transactions.created_at'},
+                {data: 'id', name: 'transactions.id'},
                 {data: 'username', name: 'users.username'},
                 {data: 'first_name', name: 'users.first_name'},
                 {data: 'last_name', name: 'users.last_name'},
                 {data: 'primary_contact', name: 'contacts.primary_contact'},
                 {data: 'description', name: 'transaction_types.description'},
+               
 
                 {data : function(data){
 
@@ -123,6 +124,7 @@ var transactionsTable = function() {
                    
                 }
                 },
+                {data: 'transaction_payout_date', name: 'transactions_payouts.payout_date'},
                 {data: 'actions',  name: 'actions'}
 
             ]
