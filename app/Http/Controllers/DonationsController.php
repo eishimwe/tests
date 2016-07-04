@@ -77,6 +77,7 @@ class DonationsController extends Controller
                              `users`.last_name,
                              `contacts`.primary_contact,
                              `donations`.donation_amount,
+                             (SELECT SUM(`donation_amount`) FROM `donations_allocation` WHERE `donation_id` = `donations`.id) as donated_amount,
                              `donations`.returns_percentage,
                              `donations`.is_valid                             
                             

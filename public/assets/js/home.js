@@ -251,7 +251,7 @@ var donationsTable = function() {
                 {data : function(data){
 
                     if (data.is_valid == 1) {
-                        return 'available';
+                        return  (data.donation_amount - data.donated_amount) + ' available';
                     }
                     else {
 

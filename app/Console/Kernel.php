@@ -100,7 +100,7 @@ class Kernel extends ConsoleKernel
                                             $donation_allocation->transaction_id    = $payout->transaction_id;
                                             $donation_allocation->donation_amount   = $donation->donation_amount;
                                             $donation_allocation->donation_id       = $donation->id;
-                                            $donation_allocation->donation_status   = 0;
+                                            $donation_allocation->donation_status   = 3;
                                             $donation_allocation->save();
                                             $transaction_payout_amount              = $transaction_payout_amount - $donation->donation_amount;
 
@@ -126,7 +126,7 @@ class Kernel extends ConsoleKernel
                                              $donation_allocation->donation_amount   = $transaction_payout_amount;
                                              $donation_allocation->transaction_id    = $payout->transaction_id;
                                              $donation_allocation->donation_id       = $donation->id;
-                                             $donation_allocation->donation_status   = 0;
+                                             $donation_allocation->donation_status   = 3;
                                              $donation_allocation->save();
 
                                              $transaction_payout_amount              = $transaction_payout_amount - $transaction_payout_amount;
