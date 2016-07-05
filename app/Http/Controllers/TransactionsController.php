@@ -121,6 +121,7 @@ class TransactionsController extends Controller
          $today_date                          = \Carbon\Carbon::now('Africa/Johannesburg')->toDateString();
          $donations_allocation_statuses_enums = \Config::get('donationallocationstatusesenums');
          $donations_statuses_enums            = \Config::get('donationstatusesenums');
+         $transactions_types_enums            = \Config::get('transactiontypesenums');
 
         $transactions    = \DB::table('transactions')
                                     ->where('transaction_payout_date','LIKE','%'.$today_date.'%')
@@ -179,7 +180,7 @@ class TransactionsController extends Controller
                             foreach ($donations as $donation) {
 
 
-                                if ($donation->amount <= $transaction_amount) {
+                                if ($donation->donation_amount < $transaction_amount) {
 
                                         $donation_allocation                    = new DonationAllocation();
                                         $donation_allocation->donor_id          = $donation->user_id;
@@ -191,16 +192,40 @@ class TransactionsController extends Controller
                                         $donation_allocation->save();
 
 
-                                         $objTransaction                         = Transaction::find($transaction->id);
-                                         $objTransaction->transaction_amount     = ($transaction_payout_amount - $donation->donation_amount); 
-                                         $objTransaction->save();
+                                        $objTransaction                         = Transaction::find($transaction->id);
+                                        $objTransaction->transaction_amount     = ($transaction_amount - $donation->donation_amount);
+                                        $objTransaction->transaction_type_id    = $transactions_types_enums['transactions_types']['Pending Donor Allocation']; 
+                                        $objTransaction->save();
 
 
-                                         $objDonation                             = Donation::find($donation->id);
-                                         $objDonation->donation_status_id         = $donations_statuses_enums['donations_statuses']['complete']; 
-                                         $objDonation->save();
+                                        $objDonation                             = Donation::find($donation->id);
+                                        $objDonation->donation_status_id         = $donations_statuses_enums['donations_statuses']['complete']; 
+                                        $objDonation->save();
 
 
+
+
+                                }
+
+                                else {
+
+                                      
+                                        $donation_allocation                    = new DonationAllocation();
+                                        $donation_allocation->donor_id          = $donation->user_id;
+                                        $donation_allocation->receiver_id       = $user_transaction->user_id;
+                                        $donation_allocation->transaction_id    = $transaction->id;
+                                        $donation_allocation->donation_amount   = $transaction_amount;
+                                        $donation_allocation->donation_id       = $donation->id;
+                                        $donation_allocation->donation_status   = $donations_allocation_statuses_enums['donations_allocation_statuses']['allocated'];
+                                        $donation_allocation->save();
+
+
+                                        $objTransaction                         = Transaction::find($transaction->id);
+                                        $objTransaction->transaction_type_id    = $transactions_types_enums['transactions_types']['Pending Payment Confirmation'];
+                                        $objTransaction->transaction_amount     = 0;
+                                        $objTransaction->save();
+
+                                        break;
 
 
                                 }
@@ -223,6 +248,8 @@ class TransactionsController extends Controller
 
 
          }
+
+         return view('home');
 
 
     }

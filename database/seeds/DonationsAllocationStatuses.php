@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\DonationStatus;
+use App\DonationAllocationStatus;
 
 class DonationsAllocationStatuses extends Seeder
 {
@@ -13,9 +13,9 @@ class DonationsAllocationStatuses extends Seeder
     public function run()
     {
         DB::table('donations_allocation_statuses')->delete();
-        DonationStatus::create(['id' => '1','description' => 'allocated']);
-        DonationStatus::create(['id' => '2','description' => 'cancelled']);
-        DonationStatus::create(['id' => '3','description' => 'complete']);
+        DonationAllocationStatus::create(['id' => '1','description' => 'allocated']);
+        DonationAllocationStatus::create(['id' => '2','description' => 'cancelled']);
+        DonationAllocationStatus::create(['id' => '3','description' => 'complete']);
       
       
     }
