@@ -122,11 +122,15 @@ class DonationsController extends Controller
 
     public function confirm_donor_payment($donation_allocation_id) {
 
+        $donations_allocation_enums          = \Config::get('donationallocationstatusesenums');
+        $transaction_types_enums             = \Config::get('transactiontypesenums');
+
+
     
         $donation_allocation                  = DonationAllocation::find($donation_allocation_id);
         $donor_id                             = $donation_allocation->donor_id;
         $donation_amount                      = $donation_allocation->donation_amount;     
-        $donation_allocation->donation_status = 1;
+        $donation_allocation->donation_status = $donations_allocation_enums['donations_allocation_statuses']['complete'];
         $donation_allocation->save();
 
         $original_donor_donation             = Donation::find($donation_allocation->donation_id);
@@ -145,22 +149,18 @@ class DonationsController extends Controller
 
         if ($original_donor_donation->donation_amount == $total_donor_donations) {
 
-
-            $date                             = \Carbon\Carbon::now('Africa/Johannesburg');
-            $date                             = $date->addDay(30)->toDateString();
-            $transaction_type                 = TransactionType::where('description','Pending Payout')->first();
-            $transaction                      = new Transaction();
-            $transaction->transaction_type_id = $transaction_type->id;   
+            
+            $date                                 = \Carbon\Carbon::now('Africa/Johannesburg');
+            $date                                 = $date->addDay(30)->toDateString();
+            $transaction_type                     = TransactionType::where('description','Pending Payout')->first();
+            $transaction                          = new Transaction();
+            $transaction->transaction_amount      = $donation_return;
+            $transaction->transaction_payout_date = $date;
+            
+            $transaction->transaction_type_id     = $transaction_type->id;   
             $transaction->save();
             
             
-            $transaction_payout                 = new TransactionPayout();
-            $transaction_payout->transaction_id = $transaction->id;
-            $transaction_payout->payout_date    = $date;
-            $transaction_payout->payout_amount  = $donation_return;
-            $transaction_payout->save();
-
-
             $user_transaction                 = new UserTransaction();
             $user_transaction->user_id        = $donation_allocation->donor_id;
             $user_transaction->transaction_id = $transaction->id;
@@ -191,7 +191,7 @@ class DonationsController extends Controller
         if ($all_donations_transactions_no == $complete_transaction_no) {
 
             $transaction  = Transaction::find($transaction_id);
-            $transaction->transaction_type_id = 5;
+            $transaction->transaction_type_id = $transaction_types_enums['transactions_types']['Payment Confirmed'];
             $transaction->save();
         }
 
