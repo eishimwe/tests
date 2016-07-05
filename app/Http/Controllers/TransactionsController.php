@@ -123,7 +123,7 @@ class TransactionsController extends Controller
          $donations_statuses_enums            = \Config::get('donationstatusesenums');
          $transactions_types_enums            = \Config::get('transactiontypesenums');
 
-        $transactions    = \DB::table('transactions')
+         $transactions    = \DB::table('transactions')
                                     ->where('transaction_payout_date','LIKE','%'.$today_date.'%')
                                     ->where('transaction_amount','<>',0)
                                     ->select(
@@ -140,8 +140,8 @@ class TransactionsController extends Controller
                                     )->orderBy('created_at','asc')
                                     ->get();
 
-        dd($transactions);
 
+    
 
 
         $donations  = \DB::table('donations')
@@ -163,15 +163,19 @@ class TransactionsController extends Controller
                                         ->orderBy('created_at','asc')
                                         ->get();
 
+
+         
+
         
        
 
         
+         //check why array bring null values when no data
+         if($transactions[0]->id) {
 
-         if(sizeof($transactions) > 0) {
 
-
-                if(sizeof($donations) > 0) {
+                //check why array bring null values when no data
+                if($donations[0]->id) {
 
 
                        foreach ($transactions as $transaction) {
