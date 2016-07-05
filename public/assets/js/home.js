@@ -159,14 +159,14 @@ var giftsTable = function() {
                 },
                 {data : function(data) {
 
-                    if (data.donation_status == 0) {
+                    if (data.donation_status == 1) {
 
                        return "<button class='btn btn-xs btn-danger btn-rounded m-b-5' type='button'>Not Paid</button>" ;
                     }
 
-                    if (data.donation_status == 1) {
+                    if (data.donation_status == 3) {
 
-                       return "<button class='btn btn-xs btn-success btn-rounded m-b-5' type='button'>Paid</button>" ;
+                       return "<button class='btn btn-xs btn-success btn-rounded m-b-5' type='button'> Paid</button>" ;
                     }
 
                     
@@ -205,12 +205,12 @@ var myDonationsTable = function() {
                 },
                 {data : function(data) {
 
-                    if (data.donation_status == 0) {
+                    if (data.donation_status == 1) {
 
                        return "<button class='btn btn-xs btn-danger btn-rounded m-b-5' type='button'>Not Paid</button>" ;
                     }
 
-                    if (data.donation_status == 1) {
+                    if (data.donation_status == 3) {
 
                        return "<button class='btn btn-xs btn-success btn-rounded m-b-5' type='button'>Paid</button>" ;
                     }

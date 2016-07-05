@@ -249,13 +249,15 @@ class TransactionsController extends Controller
 
          }
 
-         return view('home');
+         return \Redirect::back();
 
 
     }
 
 
     public function gifts_list() {
+
+        $donations_allocation_statuses_enums = \Config::get('donationallocationstatusesenums');
 
         $user          = User::find(\Auth::user()->id);
 
@@ -286,7 +288,7 @@ class TransactionsController extends Controller
 
         return Datatables::of($gifts_list)
                             ->addColumn('actions','
-                                                  @if ($donation_status == 0)
+                                                  @if ($donation_status == 1)
                                                    <a href="confirm-donor-payment/{{$id}}" class="btn btn-xs btn-block btn-success">
                                                             Confirm Payment
                                                     </a>
