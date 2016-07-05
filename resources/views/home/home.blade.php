@@ -240,6 +240,7 @@
                             @if(\Auth::user()->role_id == 1 || \Auth::user()->role_id == 2)
 
                             <div class="tab-pane fade" id="nav-pills-tab-3">
+                                <a href="start-transaction" class="btn btn-success btn-block">Start Transaction</a>
                                 <h4>Transactions</h4>
 
                                  <!-- begin panel -->
@@ -262,9 +263,6 @@
                                       </table>
                                   </div>
                                   <!-- end panel -->
-
-
-
                                
                             </div>
                             @endif

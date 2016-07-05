@@ -115,7 +115,50 @@ class TransactionsController extends Controller
 
     }
 
-    public function start_transaction_payout($transaction_id) {
+    public function start_transaction() {
+
+
+        $today_date      = \Carbon\Carbon::now('Africa/Johannesburg')->toDateString();
+
+        $transactions    = \DB::table('transactions')
+                                    ->where('transaction_payout_date','LIKE','%'.$today_date.'%')
+                                    ->whereNotNull('transaction_amount')
+                                    ->select(
+                                    \DB::raw(
+                                        "
+                                         `transactions`.created_at,
+                                         `transactions`.id,
+                                         `transactions`.transaction_amount,
+                                         SUM(`transaction_amount`) as Total_Transactions_amounts                                                              
+                                       
+                                        "
+
+                                            )
+                                    )->orderBy('created_at','asc')
+                                    ->get();
+
+
+
+        $donations  = \DB::table('donations')
+                        
+                                        ->where('is_valid','=',1)
+                                        ->select(
+                                                \DB::raw(
+                                                    "
+                                                     `donations`.`created_at`,
+                                                     `donations`.`id`,
+                                                     (`donations`.`donation_amount` - ifnull((SELECT SUM(`donation_amount`) FROM `donations_allocation` WHERE `donations_allocation`.`donation_id` = `donations`.`id`),0)) as 'donation_amount',
+                                                     `donations`.user_id,
+                                                     `donations`.is_valid                                    
+                                                   
+                                                    "
+
+                                                    )
+                                                )
+                                        ->orderBy('created_at','asc')
+                                        ->get();
+
+         dd($donations);
 
 
      
