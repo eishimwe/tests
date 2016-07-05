@@ -158,10 +158,61 @@ class TransactionsController extends Controller
                                         ->orderBy('created_at','asc')
                                         ->get();
 
-         dd($donations);
+
+        $donations_statuses_enums = \Config::get('donationstatusesenums');
+        
+
+         
 
 
-     
+         if(sizeof($transactions) > 0) {
+
+
+                if(sizeof($donations) > 0) {
+
+
+                       foreach ($transactions as $transaction) {
+
+                                $transaction_amount = $transaction->transaction_amount;
+                                $user_transaction   = UserTransaction::where('transaction_id',$transaction->id)->first();
+
+                            foreach ($donations as $donation) {
+
+
+                                if ($donation->amount <= $transaction_amount) {
+
+
+                                        $donation_allocation                    = new DonationAllocation();
+                                        $donation_allocation->donor_id          = $donation->user_id;
+                                        $donation_allocation->receiver_id       = $user_transaction->user_id;
+                                        $donation_allocation->transaction_id    = $transaction->id;
+                                        $donation_allocation->donation_amount   = $donation->donation_amount;
+                                        $donation_allocation->donation_id       = $donation->id;
+                                        $donation_allocation->donation_status   = $donations_statuses_enums['donations_statuses']['allocated'];
+                                        $donation_allocation->save();
+
+
+
+                                }
+
+
+                                
+
+                            }
+                    
+
+                    
+                        }
+
+
+                } else {
+
+                        //Transaction but no donations
+
+                }
+
+
+         }
 
 
     }

@@ -13,10 +13,10 @@ class DonationsTypes extends Seeder
     public function run()
     {
         DB::table('donations_statuses')->delete();
-        DonationStatus::create(['id' => '1','description' => 'available']);
-        DonationStatus::create(['id' => '2','description' => 'not available']);
-        DonationStatus::create(['id' => '3','description' => 'waiting payment confirmation']);
-        DonationStatus::create(['id' => '4','description' => 'cancelled']);
+        DonationStatus::create(['id' => '1','description' => 'allocated']);
+        DonationStatus::create(['id' => '2','description' => 'cancelled']);
+        DonationStatus::create(['id' => '3','description' => 'complete']);
+      
       
     }
 }
