@@ -134,8 +134,8 @@ class DonationsController extends Controller
         $donation_allocation->save();
 
         $original_donor_donation             = Donation::find($donation_allocation->donation_id);
-        $donation_return                     = $original_donor_donation->donation_amount + ($original_donor_donation->donation_amount * 30)/100;
-        $all_donor_donations                 = DonationAllocation::where('donation_id',$donation_allocation->donation_id)->where('donation_status',1)->get();
+        $donation_return                     = $original_donor_donation->donation_amount + ($original_donor_donation->donation_amount * 30)/100; 
+        $all_donor_donations                 = DonationAllocation::where('donation_id',$donation_allocation->donation_id)->where('donation_status',3)->get();
         $total_donor_donations               = 0;
                   
 
