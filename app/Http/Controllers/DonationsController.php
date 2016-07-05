@@ -67,6 +67,7 @@ class DonationsController extends Controller
         $all_donations = \DB::table('donations')
                     ->join('users','users.id','=','donations.user_id')
                     ->join('contacts','contacts.user_id','=','donations.user_id')
+                    ->join('donations_statuses','donations_statuses.id','=','donations.donation_status_id')
                     ->select(
                         \DB::raw(
                             "
@@ -79,7 +80,7 @@ class DonationsController extends Controller
                              `donations`.donation_amount,
                              (SELECT SUM(`donation_amount`) FROM `donations_allocation` WHERE `donation_id` = `donations`.id) as donated_amount,
                              `donations`.returns_percentage,
-                             `donations`.is_valid                             
+                             `donations_statuses`.description                             
                             
                             "
                             )

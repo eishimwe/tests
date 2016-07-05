@@ -248,21 +248,8 @@ var donationsTable = function() {
                    
                 }
                 },
-                {data : function(data){
 
-                    if (data.is_valid == 1) {
-                        return  (data.donation_amount - data.donated_amount) + ' available';
-                    }
-                    else {
-
-                        return 'not available';
-                    }
-
-
-                   
-                }
-                },
-               
+                {data: 'description', name: 'donations_statuses.description'},
                 {data: 'actions',  name: 'actions'}
 
             ]
