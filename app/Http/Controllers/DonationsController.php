@@ -181,7 +181,7 @@ class DonationsController extends Controller
 
         foreach ($all_donations_transactions as $all_donations_transaction) {
 
-            if ($all_donations_transaction->donation_status == 1) {
+            if ($all_donations_transaction->donation_status == 3) {
 
                  $complete_transaction_no ++ ;
             }

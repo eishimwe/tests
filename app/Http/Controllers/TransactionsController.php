@@ -125,7 +125,7 @@ class TransactionsController extends Controller
 
         $transactions    = \DB::table('transactions')
                                     ->where('transaction_payout_date','LIKE','%'.$today_date.'%')
-                                    ->whereNotNull('transaction_amount')
+                                    ->where('transaction_amount','<>',0)
                                     ->select(
                                     \DB::raw(
                                         "
@@ -139,6 +139,8 @@ class TransactionsController extends Controller
                                             )
                                     )->orderBy('created_at','asc')
                                     ->get();
+
+        dd($transactions);
 
 
 
