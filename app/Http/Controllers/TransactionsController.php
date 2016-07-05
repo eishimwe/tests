@@ -159,7 +159,7 @@ class TransactionsController extends Controller
                                         ->get();
 
 
-        $donations_statuses_enums = \Config::get('donationstatusesenums');
+        $donations_allocation_statuses_enums = \Config::get('donationallocationstatusesenums');
         
 
          
@@ -181,15 +181,27 @@ class TransactionsController extends Controller
 
                                 if ($donation->amount <= $transaction_amount) {
 
-
                                         $donation_allocation                    = new DonationAllocation();
                                         $donation_allocation->donor_id          = $donation->user_id;
                                         $donation_allocation->receiver_id       = $user_transaction->user_id;
                                         $donation_allocation->transaction_id    = $transaction->id;
                                         $donation_allocation->donation_amount   = $donation->donation_amount;
                                         $donation_allocation->donation_id       = $donation->id;
-                                        $donation_allocation->donation_status   = $donations_statuses_enums['donations_statuses']['allocated'];
+                                        $donation_allocation->donation_status   = $donations_allocation_statuses_enums['donations_statuses']['allocated'];
                                         $donation_allocation->save();
+
+
+                                        //Deduct Transaction Money
+                                         $objTransaction                         = Transaction::find($transaction->id);
+                                         $objTransaction->transaction_amount     = ($transaction_payout_amount - $donation->donation_amount; 
+                                         $objTransaction->save();
+
+
+                                         //Change donation status to 0 not valid
+                                         $objDonation                             = Donation::find($donation->id);
+                                         $objDonation->is_valid                   = 0; 
+                                         $objDonation->save();
+
 
 
 

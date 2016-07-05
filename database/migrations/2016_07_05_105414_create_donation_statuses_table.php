@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDonationsStatuses extends Migration
+class CreateDonationStatusesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -17,8 +17,8 @@ class CreateDonationsStatuses extends Migration
             $table->string('description', 50);
             $table->integer('created_by')->default(-1);
             $table->integer('updated_by')->default(-1);
-            $table->timestamps();
             $table->primary('id');
+            $table->timestamps();
         });
     }
 

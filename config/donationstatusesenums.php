@@ -4,9 +4,9 @@
 
 		'donations_statuses' => [
 
-			'allocated'  			=> 1,
-			'cancelled' 			=> 2,
-			'complete'				=> 3,
+			'available'  		=> 1,
+			'complete' 			=> 2,
+			'cancelled'		    => 3,
 
 		]
 
