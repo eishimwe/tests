@@ -406,10 +406,10 @@
                                             {!! Form::hidden('transactionID',NULL,['id' => 'transactionID']) !!}
                                           
                                             <div class="form-group m-b-10 @if ($errors->has('payout_amount')) has-error has-feedback @endif">
-                                                {!! Form::label('Payout Amount', 'Payout Amount', array('class' => 'col-md-3 control-label')) !!}  
+                                                {!! Form::label('Transaction Amount', 'Transaction Amount', array('class' => 'col-md-3 control-label')) !!}  
                                                 
                                                 <div class="col-md-7">
-                                                    {!! Form::text('payout_amount',NULL,['class' =>'form-control','id' => 'payout_amount' ]) !!}   
+                                                    {!! Form::text('transaction_amount',NULL,['class' =>'form-control','id' => 'transaction_amount' ]) !!}   
                                                 </div>
                                             </div>
                                          

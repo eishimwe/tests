@@ -25,7 +25,7 @@ class TransactionAmountRequest extends Request
     {
         return [
 
-            'payout_amount'   => 'required|integer|between:500,20000',
+            'transaction_amount'   => 'required|integer|between:500,20000',
            
         ];
     }

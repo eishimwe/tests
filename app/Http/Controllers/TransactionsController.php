@@ -98,19 +98,17 @@ class TransactionsController extends Controller
 
     }
 
-    public function save_transaction_payout_amount(TransactionAmountRequest $request,TransactionPayout $transaction_payout) {
+    public function save_transaction_payout_amount(TransactionAmountRequest $request,Transaction $transaction) {
 
-        $response = array();
-		$transaction_payout->payout_amount  = $request['payout_amount'];
-		$transaction_payout->transaction_id = $request['transactionID'];
-        $transaction_payout->payout_date    = \Carbon\Carbon::now('Africa/Johannesburg')->toDateTimeString();
-        $transaction_payout->save();
-
-        $response["message"]   = "Transaction Payout Amount Added!";
-        $response["error"]     = FALSE;
-        $response["meetingID"] = $request['transactionID'];
-
-        //\Session::flash('success','Donation added');
+        $response                             = array();   
+        $transaction                          = Transaction::find($request['transactionID']);
+        $transaction->transaction_amount      = $request['transaction_amount'];
+        $transaction->transaction_payout_date = \Carbon\Carbon::now('Africa/Johannesburg')->toDateTimeString();
+        $transaction->save();
+        
+        $response["message"]                  = "Transaction Payout Amount Added!";
+        $response["error"]                    = FALSE;
+        $response["meetingID"]                = $request['transactionID'];
 
         return \Response::json($response,201);
 

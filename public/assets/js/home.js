@@ -112,19 +112,19 @@ var transactionsTable = function() {
 
                 {data : function(data){
 
-                    if (data.description == 'Pending Payout' && !data.transaction_payout_amount) {
+                    if (data.description == 'Pending Payout' && !data.transaction_amount) {
 
                         return "<a  id='amountModal' class='btn btn-xs btn-block btn-success' onClick='launchAmountModal(" + data.id + ");'>Add Amount</a>";              
 
                     } else {
 
-                        return "R" + data.transaction_payout_amount;
+                        return "R" + data.transaction_amount;
 
                     }
                    
                 }
                 },
-                {data: 'transaction_payout_date', name: 'transactions_payouts.payout_date'},
+                {data: 'transaction_payout_date', name: 'transactions.transactions_payout_date'},
                 {data: 'actions',  name: 'actions'}
 
             ]
