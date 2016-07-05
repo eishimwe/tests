@@ -118,7 +118,9 @@ class TransactionsController extends Controller
     public function start_transaction() {
 
 
-        $today_date      = \Carbon\Carbon::now('Africa/Johannesburg')->toDateString();
+         $today_date                          = \Carbon\Carbon::now('Africa/Johannesburg')->toDateString();
+         $donations_allocation_statuses_enums = \Config::get('donationallocationstatusesenums');
+         $donations_statuses_enums            = \Config::get('donationstatusesenums');
 
         $transactions    = \DB::table('transactions')
                                     ->where('transaction_payout_date','LIKE','%'.$today_date.'%')
@@ -141,7 +143,7 @@ class TransactionsController extends Controller
 
         $donations  = \DB::table('donations')
                         
-                                        ->where('is_valid','=',1)
+                                        ->where('donation_status_id','=',$donations_statuses_enums['donations_statuses']['available'])
                                         ->select(
                                                 \DB::raw(
                                                     "
@@ -158,12 +160,10 @@ class TransactionsController extends Controller
                                         ->orderBy('created_at','asc')
                                         ->get();
 
-
-        $donations_allocation_statuses_enums = \Config::get('donationallocationstatusesenums');
         
+       
 
-         
-
+        
 
          if(sizeof($transactions) > 0) {
 
@@ -187,19 +187,17 @@ class TransactionsController extends Controller
                                         $donation_allocation->transaction_id    = $transaction->id;
                                         $donation_allocation->donation_amount   = $donation->donation_amount;
                                         $donation_allocation->donation_id       = $donation->id;
-                                        $donation_allocation->donation_status   = $donations_allocation_statuses_enums['donations_statuses']['allocated'];
+                                        $donation_allocation->donation_status   = $donations_allocation_statuses_enums['donations_allocation_statuses']['allocated'];
                                         $donation_allocation->save();
 
 
-                                        //Deduct Transaction Money
                                          $objTransaction                         = Transaction::find($transaction->id);
-                                         $objTransaction->transaction_amount     = ($transaction_payout_amount - $donation->donation_amount; 
+                                         $objTransaction->transaction_amount     = ($transaction_payout_amount - $donation->donation_amount); 
                                          $objTransaction->save();
 
 
-                                         //Change donation status to 0 not valid
                                          $objDonation                             = Donation::find($donation->id);
-                                         $objDonation->is_valid                   = 0; 
+                                         $objDonation->donation_status_id         = $donations_statuses_enums['donations_statuses']['complete']; 
                                          $objDonation->save();
 
 

@@ -102,10 +102,13 @@ class DonationsController extends Controller
 
      public function save_donation(DonationRequest $request,Donation $Donation) {
 
-		$Donation->donation_amount    = $request['donation_amount'];
-		$Donation->user_id            = \Auth::user()->id;
-		$Donation->is_valid           = 1;
-		$Donation->returns_percentage = 30;
+        $donations_statuses_enums            = \Config::get('donationstatusesenums');
+
+
+        $Donation->donation_amount    = $request['donation_amount'];
+        $Donation->user_id            = \Auth::user()->id;
+        $Donation->donation_status_id = $donations_statuses_enums['donations_statuses']['available'];
+        $Donation->returns_percentage = 30;
         $Donation->save();
 
         \Session::flash('success','Donation added');
