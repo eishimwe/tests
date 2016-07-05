@@ -50,11 +50,11 @@ class TransactionsController extends Controller
         							 `users`.first_name,
         							 `users`.last_name,
 									 `users`.email,
-                                     (SELECT `payout_amount` from `transactions_payouts` where `transaction_id` = `transactions`.`id`) as 'transaction_payout_amount',
-                                     (SELECT `payout_date` from `transactions_payouts` where `transaction_id` = `transactions`.`id`) as 'transaction_payout_date',
-                                    `users`.referred_by_id,
-                                    `contacts`.primary_contact,
-                                    `transactions_types`.description                                   
+                                     `transactions`.`transaction_amount`,
+                                     `transactions`.`transaction_payout_date`,
+                                     `users`.referred_by_id,
+                                     `contacts`.primary_contact,
+                                     `transactions_types`.description                                   
                                    
         							"
 

@@ -16,6 +16,8 @@ class TransactionsTable extends Migration
 
             $table->increments('id');
             $table->integer('transaction_type_id');
+            $table->integer('transaction_amount'); 
+            $table->datetime('transaction_payout_date'); 
             $table->foreign('transaction_type_id')->references('id')->on('transactions_types');
             $table->integer('created_by')->default(-1);
             $table->integer('updated_by')->default(-1);
