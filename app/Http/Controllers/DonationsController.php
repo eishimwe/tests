@@ -38,9 +38,11 @@ class DonationsController extends Controller
     
      public function donations_list(){
 
+        $user_id = \Auth::user()->id;
+
         $donations_list = \DB::table('donations')
                     ->join('users','users.id','=','donations.user_id')
-                    ->where('donations.user_id',\Auth::user()->id)
+                    ->where('donations.user_id',$user_id)
 					->select(
 						\DB::raw(
 							"

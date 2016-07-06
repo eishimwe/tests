@@ -20,13 +20,13 @@ class SponsorsController extends Controller
 	public function sponsors_list()
     {
 
-        $user = User::find(\Auth::user()->id);
+        $user_id = \Auth::user()->id;
 
         $sponsors_users = \DB::table('users_registrations')
                             ->join('contacts','contacts.user_id','=','users_registrations.sponsor_user_id')
                             ->join('users','users.id','=','users_registrations.sponsor_user_id')
                             ->join('sponsor_types','sponsor_types.id','=','users_registrations.sponsor_type_id')
-                            ->where('users_registrations.sponsored_user_id','=',\Auth::user()->id)
+                            ->where('users_registrations.sponsored_user_id','=',$user_id)
         					->select(
         						\DB::raw(
         							"
