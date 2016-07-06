@@ -7,6 +7,7 @@ use App\BankType;
 use App\BankAccount;
 use App\User;
 use App\Auth;
+use App\Donation;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -38,7 +39,8 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('master', function($view)
         {
             $number_bank_accounts = BankAccount::where('user_id',\Auth::user()->id)->count();
-            $view->with('variable', $number_bank_accounts);
+            $number_donations     = Donation::where('user_id',\Auth::user()->id)->count();
+            $view->with('number_bank_accounts', $number_bank_accounts)->with('number_donations',$number_donations);
         });
 
       
