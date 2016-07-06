@@ -24,6 +24,8 @@ use App\Donation;
 
 use App\DonationAllocation;
 
+use Clickatell\Api\ClickatellHttp;
+
 
 
 class TransactionsController extends Controller
@@ -84,6 +86,34 @@ class TransactionsController extends Controller
 
         $transaction->transaction_type_id = $transaction_type->id;
         $transaction->save();
+
+
+        //Send SMS API
+
+        //http://api.clickatell.com/http/sendmsg?user=USERNAME&password=PASSWORD&api_id=3611294&to=27829699114&text=Message
+
+        
+        //https://www.clickatell.com/developers/scripts/php-library/
+
+        $username = "elieish";
+        $password = "cabTLVdeSdSLbJ";
+        $apiID    = "3611294";
+
+
+         $clickatell = new ClickatellHttp($username, $password, $apiID); 
+         $response   = $clickatell->sendMessage(array('27829699114'), "I love you too much.Elie");
+ 
+        //foreach ($response as $message) { 
+            //echo $message->id;
+             // Message response fields:
+            // $message->id
+            // $message->destination
+            // $message->error
+            // $message->errorCode
+        //}
+     
+   
+ 
 
         $user_transaction                 = new UserTransaction();
         $user_transaction->user_id        = $user->id;
