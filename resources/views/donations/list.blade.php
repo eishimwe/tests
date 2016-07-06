@@ -68,7 +68,10 @@ var donations_table = function() {
                 {data: 'donation_amount', name: 'donations.donation_amount'},
                 {data: function(data){
 
-                    return ((data.returns_percentage/100) * data.donation_amount) + data.donation_amount;
+                    var return_amount = (data.returns_percentage / 100) * data.donation_amount;
+                    return_amount     = return_amount + data.donation_amount;
+
+                    return return_amount;
 
                 }},
                 {data: 'created_at', name: 'donations.created_at'},
