@@ -13,10 +13,15 @@ var sponsorsUsersTable = function() {
             dom: 'rfrtip',
             responsive: true,
             autoFill: true,
-            sAjaxSource : "sponsors-list/",
-            headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
+            "ajax": {
+                        "url"  : 'sponsors-list/',
+                        "type" : 'GET',
+                        "beforeSend" : function(xhr) {
+                          xhr.setRequestHeader('X-CSRF-TOKEN', $('meta[name="csrf-token"]').attr('content'));
+                         },
+                   },
+           
+           
             columns :[
 
 
