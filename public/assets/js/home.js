@@ -97,6 +97,9 @@ var sponsoredUsersTable = function() {
 var transactionsTable = function() {
     "use strict";
 
+    var token =  $('meta[name="csrf-token"]').attr('content');
+  
+
     if ($('#transactions-table').length !== 0) {
         $('#transactions-table').DataTable({
             dom: 'rfrtip',
@@ -104,7 +107,7 @@ var transactionsTable = function() {
             responsive: true,
             autoFill: true,
             headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    'X-CSRF-TOKEN': token
             },
            
             sAjaxSource : "transactions-list/",
