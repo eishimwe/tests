@@ -105,9 +105,9 @@ Route::get('users-list',['Middleware' => 'auth','uses' => 'UsersController@index
 | 
 */
 
-Route::get('sponsors-list',['Middleware' => 'auth','uses' => 'SponsorsController@sponsors_list']);
+Route::get('sponsors-list/{user_id}',['Middleware' => 'auth','uses' => 'SponsorsController@sponsors_list']);
 
-Route::get('sponsored-list',['Middleware' => 'auth','uses' => 'SponsorsController@sponsored_list']);
+Route::get('sponsored-list/{user_id}',['Middleware' => 'auth','uses' => 'SponsorsController@sponsored_list']);
 
 Route::get('confirm-registration-fees/{username}/{reg}',['Middleware' => 'auth','uses' => 'SponsorsController@confirm_payment']);
 

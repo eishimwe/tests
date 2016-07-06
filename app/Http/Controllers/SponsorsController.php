@@ -17,11 +17,10 @@ class SponsorsController extends Controller
 {
 
 
-	public function sponsors_list()
+	public function sponsors_list($user_id)
     {
 
-        $user_id = \Auth::user()->id;
-
+      
         $sponsors_users = \DB::table('users_registrations')
                             ->join('contacts','contacts.user_id','=','users_registrations.sponsor_user_id')
                             ->join('users','users.id','=','users_registrations.sponsor_user_id')
@@ -55,16 +54,16 @@ class SponsorsController extends Controller
 
     }
 
-    public function sponsored_list()
+    public function sponsored_list($user_id)
     {
 
-
+    
         $sponsored_users = \DB::table('users_registrations')
                             ->join('contacts','contacts.user_id','=','users_registrations.sponsored_user_id')
                             ->join('sponsor_types','sponsor_types.id','=','users_registrations.sponsor_type_id')  
                             ->join('users','users.id','=','users_registrations.sponsored_user_id')
                             ->join('user_registration_statuses','user_registration_statuses.id','=','users.user_registration_statuses_id')
-                            ->where('users_registrations.sponsor_user_id','=',\Auth::user()->id)
+                            ->where('users_registrations.sponsor_user_id','=',$user_id)
                           
                             ->select(
                                 \DB::raw(

@@ -449,7 +449,7 @@
 
         @section('custom_stript')
 
-            <script src="{{ asset('assets/js/home.js') }}"></script>
+        @include('home.homejs')
 
 
             <script>
