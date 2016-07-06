@@ -69,7 +69,7 @@ var donations_table = function() {
                 {data: function(data){
 
                     var return_amount = (data.returns_percentage / 100) * data.donation_amount;
-                    return_amount     = return_amount + data.donation_amount;
+                    return_amount     = parseInt(return_amount) + parseInt(data.donation_amount);
 
                     return return_amount;
 
