@@ -68,7 +68,6 @@ class DonationsController extends Controller
                     ->join('users','users.id','=','donations.user_id')
                     ->join('contacts','contacts.user_id','=','donations.user_id')
                     ->join('donations_statuses','donations_statuses.id','=','donations.donation_status_id')
-                    ->where('users.id',\Auth::user()->id)
                     ->select(
                         \DB::raw(
                             "
