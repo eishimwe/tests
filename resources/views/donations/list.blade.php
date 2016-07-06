@@ -58,10 +58,10 @@ var donations_table = function() {
             dom: '<"toolbar">',
             responsive: true,
             autoFill: true,
-            colReorder: true,
-            keys: true,
-            rowReorder: true,
-            select: true,
+            headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+           
             sAjaxSource : "donations-list",
             columns :[
                

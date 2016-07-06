@@ -14,12 +14,9 @@ var usersTable = function() {
             buttons: [
                 'copy', 'csv', 'excel', 'pdf', 'print'
             ],
-            responsive: true,
-            autoFill: true,
-            colReorder: true,
-            keys: true,
-            rowReorder: true,
-            select: true,
+            headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
             sAjaxSource : "users-list",
             columns :[
                 {data: 'id', name: 'users.id'},

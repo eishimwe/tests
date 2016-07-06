@@ -14,6 +14,9 @@ var sponsorsUsersTable = function() {
             responsive: true,
             autoFill: true,
             sAjaxSource : "sponsors-list/",
+            headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
             columns :[
 
 
@@ -55,6 +58,9 @@ var sponsoredUsersTable = function() {
             dom: 'rfrtip',
            
             responsive: true,
+            headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
             autoFill: true,
             sAjaxSource : "sponsored-list/",
             columns :[
@@ -97,6 +103,9 @@ var transactionsTable = function() {
            
             responsive: true,
             autoFill: true,
+            headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
            
             sAjaxSource : "transactions-list/",
             columns :[
@@ -140,6 +149,9 @@ var giftsTable = function() {
            
             responsive: true,
             autoFill: true,
+            headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
            
             sAjaxSource : "gifts-list/",
             columns :[
@@ -186,6 +198,9 @@ var myDonationsTable = function() {
            
             responsive: true,
             autoFill: true,
+            headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
            
             sAjaxSource : "my-donations-list/",
             columns :[
@@ -231,6 +246,9 @@ var donationsTable = function() {
            
             responsive: true,
             autoFill: true,
+            headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
            
             sAjaxSource : "all-donations/",
             columns :[
