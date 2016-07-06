@@ -287,10 +287,10 @@ var PageDemo = function () {
 
             sponsorsUsersTable();
             sponsoredUsersTable();
-            transactionsTable();
-            donationsTable();
+            transactionsTable();     
             giftsTable();
             myDonationsTable();
+            donationsTable();
 		}
   };
 }();
