@@ -14,6 +14,8 @@
 */
 
 use App\UserRegistration;
+use App\Transaction;
+use App\Donation;
 
 
 
@@ -26,7 +28,24 @@ Route::get('login',function() {
 
         $number_of_sponsors_users  = UserRegistration::where('sponsored_user_id',\Auth::user()->id)->count();
         $number_of_sponsored_users = UserRegistration::where('sponsor_user_id',\Auth::user()->id)->count();
-        return view('home.home',compact('number_of_sponsored_users','number_of_sponsors_users'));
+
+
+        $number_of_transactions    = Transaction::count();
+      
+        $number_of_gifts           = \DB::table('donations_allocation')
+                                       
+                                        ->where('receiver_id','=',\Auth::user()->id)->count();
+
+
+        $number_of_my_donations    = \DB::table('donations_allocation')
+                                       
+                                        ->where('donor_id','=',\Auth::user()->id)->count();
+
+        $number_of_donations       = Donation::count();
+
+
+
+        return view('home.home',compact('number_of_sponsored_users','number_of_sponsors_users','number_of_transactions','number_of_gifts','number_of_my_donations','number_of_donations'));
 
 	
 	}
