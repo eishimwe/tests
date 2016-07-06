@@ -36,8 +36,7 @@ class TransactionsController extends Controller
     public function transactions_list()
     {
 
-        $user = User::find(\Auth::user()->id);
-
+        
         $transactions_list = \DB::table('users_transactions')
                             ->join('transactions','transactions.id','=','users_transactions.transaction_id')
                             ->join('transactions_types','transactions_types.id','=','transactions.transaction_type_id')
@@ -291,16 +290,14 @@ class TransactionsController extends Controller
     }
 
 
-    public function gifts_list() {
+    public function gifts_list($user_id) {
 
         $donations_allocation_statuses_enums = \Config::get('donationallocationstatusesenums');
-
-        $user          = User::find(\Auth::user()->id);
 
         $gifts_list     = \DB::table('donations_allocation')
                                         ->join('users','users.id','=','donations_allocation.donor_id')
                                         ->join('contacts','contacts.user_id','=','donations_allocation.donor_id')      
-                                        ->where('donations_allocation.receiver_id','=',\Auth::user()->id)
+                                        ->where('donations_allocation.receiver_id','=',$user_id)
                                         ->select(
                                                 \DB::raw(
                                                     "
@@ -335,14 +332,13 @@ class TransactionsController extends Controller
 
     }
 
-    public function my_donations_list() {
+    public function my_donations_list($user_id) {
 
-        $user                  = User::find(\Auth::user()->id);
 
         $my_donations_list     = \DB::table('donations_allocation')
                                         ->join('users','users.id','=','donations_allocation.receiver_id')
                                         ->join('contacts','contacts.user_id','=','donations_allocation.receiver_id')
-                                        ->where('donations_allocation.donor_id','=',\Auth::user()->id)
+                                        ->where('donations_allocation.donor_id','=',$user_id)
                                         ->select(
                                                 \DB::raw(
                                                     "

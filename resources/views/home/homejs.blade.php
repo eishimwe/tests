@@ -147,7 +147,7 @@ var transactionsTable = function() {
 };
 
 
-var giftsTable = function() {
+var giftsTable = function(user_id) {
     "use strict";
 
     if ($('#gifts-table').length !== 0) {
@@ -160,7 +160,7 @@ var giftsTable = function() {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
            
-            sAjaxSource : "gifts-list/",
+            sAjaxSource : "gifts-list/" + user_id,
             columns :[
                 {data: 'created_at', name: 'transactions_payouts.created_at'},
                 {data: 'username', name: 'users.username'},
@@ -196,7 +196,7 @@ var giftsTable = function() {
     }
 };
 
-var myDonationsTable = function() {
+var myDonationsTable = function(user_id) {
     "use strict";
 
     if ($('#my-donations-table').length !== 0) {
@@ -209,7 +209,7 @@ var myDonationsTable = function() {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
            
-            sAjaxSource : "my-donations-list/",
+            sAjaxSource : "my-donations-list/" + user_id,
             columns :[
                 {data: 'actions',  name: 'actions'},
                 {data: 'username', name: 'users.username'},
@@ -292,7 +292,7 @@ var PageDemo = function () {
             sponsorsUsersTable(user_id);
             sponsoredUsersTable(user_id);
             transactionsTable();     
-            giftsTable();
+            giftsTable(user_id);
             myDonationsTable();
             donationsTable();
 		}
