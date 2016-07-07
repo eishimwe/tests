@@ -294,7 +294,7 @@ var PageDemo = function () {
             sponsoredUsersTable(user_id);
             transactionsTable();     
             giftsTable(user_id);
-            myDonationsTable();
+            myDonationsTable(user_id);
             donationsTable();
 		}
   };
