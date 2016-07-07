@@ -192,19 +192,13 @@ class TransactionsController extends Controller
                                         ->orderBy('created_at','asc')
                                         ->get();
 
-
-         
-
-        
-       
-
         
          //check why array bring null values when no data
          if($transactions[0]->id) {
 
 
                 //check why array bring null values when no data
-                if($donations[0]->id) {
+                if(sizeof($donations) > 0  && $donations[0]->id) {
 
 
                        foreach ($transactions as $transaction) {
@@ -277,7 +271,12 @@ class TransactionsController extends Controller
 
                 } else {
 
-                        //Transaction but no donations
+
+                    $objTransaction                         = Transaction::find($transactions[0]->id);
+                    $objTransaction->transaction_type_id    = $transactions_types_enums['transactions_types']['Pending Donor Allocation']; 
+                    $objTransaction->save();
+
+                        
 
                 }
 
