@@ -94,13 +94,13 @@ class TransactionsController extends Controller
         
         //https://www.clickatell.com/developers/scripts/php-library/
 
-        $username = "elieish";
-        $password = "cabTLVdeSdSLbJ";
-        $apiID    = "3611294";
+        //$username = "elieish";
+        //$password = "cabTLVdeSdSLbJ";
+        //$apiID    = "3611294";
 
 
-         $clickatell = new ClickatellHttp($username, $password, $apiID); 
-         $response   = $clickatell->sendMessage(array('27829699114'), "I love you too much.Elie");
+         //$clickatell = new ClickatellHttp($username, $password, $apiID); 
+         //$response   = $clickatell->sendMessage(array('27829699114'), "I love you too much.Elie");
  
         //foreach ($response as $message) { 
             //echo $message->id;
