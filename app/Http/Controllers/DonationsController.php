@@ -305,11 +305,15 @@ class DonationsController extends Controller
             $transaction->save();
             
             
-            $user_transaction                 = new UserTransaction();
-            $user_transaction->user_id        = $donation_allocation->donor_id;
-            $user_transaction->transaction_id = $transaction->id;
-            $user_transaction->created_by     = \Auth::user()->id;
+            $user_transaction                     = new UserTransaction();
+            $user_transaction->user_id            = $donation_allocation->donor_id;
+            $user_transaction->transaction_id     = $transaction->id;
+            $user_transaction->created_by         = \Auth::user()->id;
             $user_transaction->save();
+
+
+            $original_donor_donation->donation_status_id = 2;
+            $original_donor_donation->save();
 
 
         }
