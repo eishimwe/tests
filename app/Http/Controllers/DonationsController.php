@@ -86,7 +86,7 @@ class DonationsController extends Controller
                             
                             "
                             )
-                    )->orderBy('created_at','asc');
+                    )->orderBy('created_at','desc');
 
         return Datatables::of($all_donations)
                             ->addColumn('actions','<a href="delete_bank/{{$id}}" class="btn btn-xs btn-alt"></a>')
