@@ -303,7 +303,7 @@
 
                                  <!-- begin panel -->
                                   <div class="panel pagination-inverse m-b-0 clearfix">
-                                      <table id="donations-table" data-order='[[0,"desc"]]' class="table-responsive table table-bordered table-hover">
+                                      <table id="donations-table" class="table-responsive table table-bordered table-hover">
                                           <thead>
                                               <tr class="inverse">
                                                   <th>Created at</th>
