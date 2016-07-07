@@ -128,6 +128,9 @@ var transactionsTable = function() {
 
                     if (data.description == 'Pending Payout' && !data.transaction_amount) {
 
+                        console.log(data.description);
+                        console.log(!data.transaction_amount);
+
                         return "<a  id='amountModal' class='btn btn-xs btn-block btn-success' onClick='launchAmountModal(" + data.id + ");'>Add Amount</a>";              
 
                     } else {
