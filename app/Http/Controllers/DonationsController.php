@@ -114,6 +114,146 @@ class DonationsController extends Controller
         $Donation->returns_percentage = 30;
         $Donation->save();
 
+
+
+         $today_date                          = \Carbon\Carbon::now('Africa/Johannesburg')->toDateString();
+         $donations_allocation_statuses_enums = \Config::get('donationallocationstatusesenums');
+         $donations_statuses_enums            = \Config::get('donationstatusesenums');
+         $transactions_types_enums            = \Config::get('transactiontypesenums');
+
+         $transactions    = \DB::table('transactions')
+                                    ->where('transaction_payout_date','LIKE','%'.$today_date.'%')
+                                    ->where('transaction_amount','<>',0)
+                                    ->select(
+                                    \DB::raw(
+                                        "
+                                         `transactions`.created_at,
+                                         `transactions`.id,
+                                         `transactions`.transaction_amount,
+                                         SUM(`transaction_amount`) as Total_Transactions_amounts                                                              
+                                       
+                                        "
+
+                                            )
+                                    )->orderBy('created_at','asc')
+                                    ->get();
+
+
+    
+
+
+        $donations  = \DB::table('donations')
+                        
+                                        ->where('donation_status_id','=',$donations_statuses_enums['donations_statuses']['available'])
+                                        ->select(
+                                                \DB::raw(
+                                                    "
+                                                     `donations`.`created_at`,
+                                                     `donations`.`id`,
+                                                     (`donations`.`donation_amount` - ifnull((SELECT SUM(`donation_amount`) FROM `donations_allocation` WHERE `donations_allocation`.`donation_id` = `donations`.`id`),0)) as 'donation_amount',
+                                                     `donations`.user_id,
+                                                     `donations`.is_valid                                    
+                                                   
+                                                    "
+
+                                                    )
+                                                )
+                                        ->orderBy('created_at','asc')
+                                        ->get();
+
+        
+         //check why array bring null values when no data
+         if($transactions[0]->id) {
+
+
+                //check why array bring null values when no data
+                if(sizeof($donations) > 0  && $donations[0]->id) {
+
+
+                       foreach ($transactions as $transaction) {
+
+                                $transaction_amount = $transaction->transaction_amount;
+                                $user_transaction   = UserTransaction::where('transaction_id',$transaction->id)->first();
+
+                            foreach ($donations as $donation) {
+
+
+                                if ($donation->donation_amount < $transaction_amount) {
+
+                                        $donation_allocation                    = new DonationAllocation();
+                                        $donation_allocation->donor_id          = $donation->user_id;
+                                        $donation_allocation->receiver_id       = $user_transaction->user_id;
+                                        $donation_allocation->transaction_id    = $transaction->id;
+                                        $donation_allocation->donation_amount   = $donation->donation_amount;
+                                        $donation_allocation->donation_id       = $donation->id;
+                                        $donation_allocation->donation_status   = $donations_allocation_statuses_enums['donations_allocation_statuses']['allocated'];
+                                        $donation_allocation->save();
+
+
+                                        $objTransaction                         = Transaction::find($transaction->id);
+                                        $objTransaction->transaction_amount     = ($transaction_amount - $donation->donation_amount);
+                                        $objTransaction->transaction_type_id    = $transactions_types_enums['transactions_types']['Pending Donor Allocation']; 
+                                        $objTransaction->save();
+
+
+                                        $objDonation                             = Donation::find($donation->id);
+                                        $objDonation->donation_status_id         = $donations_statuses_enums['donations_statuses']['complete']; 
+                                        $objDonation->save();
+
+
+
+
+                                }
+
+                                else {
+
+                                      
+                                        $donation_allocation                    = new DonationAllocation();
+                                        $donation_allocation->donor_id          = $donation->user_id;
+                                        $donation_allocation->receiver_id       = $user_transaction->user_id;
+                                        $donation_allocation->transaction_id    = $transaction->id;
+                                        $donation_allocation->donation_amount   = $transaction_amount;
+                                        $donation_allocation->donation_id       = $donation->id;
+                                        $donation_allocation->donation_status   = $donations_allocation_statuses_enums['donations_allocation_statuses']['allocated'];
+                                        $donation_allocation->save();
+
+
+                                        $objTransaction                         = Transaction::find($transaction->id);
+                                        $objTransaction->transaction_type_id    = $transactions_types_enums['transactions_types']['Pending Payment Confirmation'];
+                                        $objTransaction->transaction_amount     = 0;
+                                        $objTransaction->save();
+
+                                        break;
+
+
+                                }
+
+
+                                
+
+                            }
+                    
+
+                    
+                        }
+
+
+                } else {
+
+
+                    $objTransaction                         = Transaction::find($transactions[0]->id);
+                    $objTransaction->transaction_type_id    = $transactions_types_enums['transactions_types']['Pending Donor Allocation']; 
+                    $objTransaction->save();
+
+                        
+
+                }
+
+
+
+
+
+
         \Session::flash('success','Donation added');
         return redirect('donations-details');
 
