@@ -30,11 +30,11 @@ Route::get('login',function() {
         $number_of_sponsored_users = UserRegistration::where('sponsor_user_id',\Auth::user()->id)->count();
 
 
-        $number_of_transactions    = Transaction::count();
+        $number_of_transactions    = Transaction::where('transaction_type_id','<>',5)->count();
       
         $number_of_gifts           = \DB::table('donations_allocation')
                                        
-                                        ->where('receiver_id','=',\Auth::user()->id)->count();
+                                        ->where('receiver_id','=',\Auth::user()->id)->where('donation_status','<>',3)->count();
 
 
         $number_of_my_donations    = \DB::table('donations_allocation')

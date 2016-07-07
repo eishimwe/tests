@@ -41,7 +41,8 @@ class TransactionsController extends Controller
                             ->join('transactions','transactions.id','=','users_transactions.transaction_id')
                             ->join('transactions_types','transactions_types.id','=','transactions.transaction_type_id')
                             ->join('users','users.id','=','users_transactions.user_id')
-                            ->join('contacts','contacts.user_id','=','users.id')              
+                            ->join('contacts','contacts.user_id','=','users.id')
+                            ->where('transaction_types.id','<>',5)              
         					->select(
         						\DB::raw(
         							"
@@ -297,6 +298,7 @@ class TransactionsController extends Controller
                                         ->join('users','users.id','=','donations_allocation.donor_id')
                                         ->join('contacts','contacts.user_id','=','donations_allocation.donor_id')      
                                         ->where('donations_allocation.receiver_id','=',$user_id)
+                                        ->where('donations_allocation.donation_status','<>',3)
                                         ->select(
                                                 \DB::raw(
                                                     "
