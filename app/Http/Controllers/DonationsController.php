@@ -115,7 +115,6 @@ class DonationsController extends Controller
         $Donation->save();
 
 
-
          $today_date                          = \Carbon\Carbon::now('Africa/Johannesburg')->toDateString();
          $donations_allocation_statuses_enums = \Config::get('donationallocationstatusesenums');
          $donations_statuses_enums            = \Config::get('donationstatusesenums');
@@ -248,6 +247,9 @@ class DonationsController extends Controller
                         
 
                 }
+
+
+         }
 
 
 
