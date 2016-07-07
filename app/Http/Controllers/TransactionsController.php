@@ -42,7 +42,7 @@ class TransactionsController extends Controller
                             ->join('transactions_types','transactions_types.id','=','transactions.transaction_type_id')
                             ->join('users','users.id','=','users_transactions.user_id')
                             ->join('contacts','contacts.user_id','=','users.id')
-                            ->where('transaction_types.id','<>',5)              
+                            ->where('transactions.transaction_type_id','<>',5)              
         					->select(
         						\DB::raw(
         							"
