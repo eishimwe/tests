@@ -83,7 +83,7 @@ class AuthController extends Controller
         $user->last_name  = $data['last_name'];
         $user->username   = $data['username'];
         $user->email      = $data['email'];
-        $user->role_id    = 2;
+        $user->role_id    = 3;
         $user->password   = bcrypt($data['password']);
         $user->user_registration_statuses_id = $pending_user_status;
 
