@@ -272,8 +272,19 @@ var donationsTable = function() {
                    
                 }
                 },
+                {data : function(data){
 
-                {data: 'description', name: 'donations_statuses.description'},
+                    var donated_amount = data.donated_amount;
+                    if(!donated_amount) {
+
+                         donated_amount = 0;
+                    }
+
+                    return "R " + (parseInt(data.donation_amount) - parseInt(donated_amount)) + " " +data.description;
+
+                   
+                }
+                },
                 {data: 'actions',  name: 'actions'}
 
             ]
