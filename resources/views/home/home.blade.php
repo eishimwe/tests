@@ -327,7 +327,7 @@
                             @endif
 
                              <div class="tab-pane fade" id="nav-pills-tab-6">
-                                <h4>My Donations</h4>
+                                <h4>Outstanding Donations</h4>
 
                                  <!-- begin panel -->
                                   <div class="panel pagination-inverse m-b-0 clearfix">
