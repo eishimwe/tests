@@ -73,7 +73,7 @@
                                       <div class="widget-stat-btn"><a href="javascript:;" data-click="widget-reload"><i class="fa fa-repeat"></i></a></div>
                                       <div class="widget-stat-icon"><i class="fa fa-user"></i></div>
                                       <div class="widget-stat-info">
-                                          <div class="widget-stat-title">My Blessings</div>
+                                          <div class="widget-stat-title">My Team</div>
                                           <div class="widget-stat-number"><a href="#nav-pills-tab-2" data-toggle="tab">{{ $number_of_sponsored_users }}</a></div>
                                       </div>
                                       <div class="widget-stat-progress">
@@ -93,7 +93,7 @@
                                       <div class="widget-stat-btn"><a href="javascript:;" data-click="widget-reload"><i class="fa fa-repeat"></i></a></div>
                                       <div class="widget-stat-icon"><i class="fa fa-money"></i></div>
                                       <div class="widget-stat-info">
-                                          <div class="widget-stat-title">My Blessees</div>
+                                          <div class="widget-stat-title">My Blessings</div>
                                           <div class="widget-stat-number"><a href="#nav-pills-tab-4" data-toggle="tab">{{ $number_of_gifts }}</a></div>
                                       </div>
                                       <div class="widget-stat-progress">
@@ -114,7 +114,7 @@
                                       <div class="widget-stat-btn"><a href="javascript:;" data-click="widget-reload"><i class="fa fa-repeat"></i></a></div>
                                       <div class="widget-stat-icon"><i class="fa fa-money"></i></div>
                                       <div class="widget-stat-info">
-                                          <div class="widget-stat-title">Allocated Donations</div>
+                                          <div class="widget-stat-title">My Blessees</div>
                                           <div class="widget-stat-number"><a href="#nav-pills-tab-6" data-toggle="tab">{{ $number_of_my_donations }}</a></div>
                                       </div>
                                       <div class="widget-stat-progress">

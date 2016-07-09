@@ -8,7 +8,12 @@ use App\Http\Requests;
 
 use App\User;
 
+use App\Contact;
+
 use Yajra\Datatables\Facades\Datatables;
+
+use Clickatell\Api\ClickatellHttp;
+
 
 class UsersController extends Controller
 {
@@ -65,4 +70,46 @@ class UsersController extends Controller
 
 
     }
+
+    public function send_sms() {
+
+
+            $contacts         = Contact::whereIn('user_id',array(2,3,4))->get();
+            $contacts_numbers = array();
+
+            foreach ($contacts as $contact) {
+
+              
+                $contacts_numbers[] = $contact->primary_contact;
+
+        
+            }
+
+            //dd($contacts_numbers);
+
+
+            $username = "elieish";
+            $password = "cabTLVdeSdSLbJ";
+            $apiID    = "3611294";
+
+
+            $clickatell = new ClickatellHttp($username, $password, $apiID); 
+            $response   = $clickatell->sendMessage($contacts_numbers, "I love you too much.Elie");
+     
+            foreach ($response as $message) { 
+                
+                echo $message->id."<br>";
+                echo $message->destination."<br>";
+                echo $message->error."<br>";
+                echo $message->errorCode."<br>";
+                
+
+            }
+     
+   
+
+    }
+
+
+
 }

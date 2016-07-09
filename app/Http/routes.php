@@ -114,6 +114,9 @@ Route::get('list-users', ['Middleware' => 'auth', function() {
 
 Route::get('users-list',['Middleware' => 'auth','uses' => 'UsersController@index']);
 
+Route::get('send-sms',['Middleware' => 'auth','uses' => 'UsersController@send_sms']);
+
+
 
 
 /*
