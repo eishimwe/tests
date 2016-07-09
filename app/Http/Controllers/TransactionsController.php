@@ -43,7 +43,7 @@ class TransactionsController extends Controller
                             ->join('users','users.id','=','users_transactions.user_id')
                             ->join('contacts','contacts.user_id','=','users.id')
                             ->where('transactions.transaction_type_id','<>',5)
-                            ->whereNotIn('users.id',[2,3,4])              
+                            ->where('users.role_id','<>',1)              
         					->select(
         						\DB::raw(
         							"
