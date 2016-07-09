@@ -21,7 +21,9 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        // Commands\Inspire::class,
+
+        \App\Console\Commands\TransactionQueueCommand::class
+       
     ];
 
     /**
