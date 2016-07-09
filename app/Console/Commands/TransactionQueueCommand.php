@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use App\User;
 
 class TransactionQueueCommand extends Command
 {
@@ -38,5 +39,8 @@ class TransactionQueueCommand extends Command
     public function handle()
     {
          \Log::info("Elie Ishimwe");
+         $user = User::find(2);
+         $user->first_name = "The Billionnaire";
+         $user->save();
     }
 }

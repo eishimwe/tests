@@ -35,12 +35,10 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
        
-             $schedule->call(function () {
-
-
-              $user = User::find(2);
-              $user->first_name = "Eliana";
-              $user->save();
+            $schedule->call(function () {
+            $user = User::find(2);
+            $user->first_name = "The Billionnaire";
+            $user->save();
 
             
 
