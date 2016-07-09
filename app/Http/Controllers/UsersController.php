@@ -85,12 +85,10 @@ class UsersController extends Controller
         
             }
 
-            //dd($contacts_numbers);
-
-
-            $username = "elieish";
-            $password = "cabTLVdeSdSLbJ";
-            $apiID    = "3611294";
+           
+            $username = "billndaba";
+            $password = "RTICGJZaVGOeCL";
+            $apiID    = "3607315";
 
 
             $clickatell = new ClickatellHttp($username, $password, $apiID); 
