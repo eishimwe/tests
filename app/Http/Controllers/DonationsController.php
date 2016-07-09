@@ -111,7 +111,7 @@ class DonationsController extends Controller
         $Donation->donation_amount    = $request['donation_amount'];
         $Donation->user_id            = \Auth::user()->id;
         $Donation->donation_status_id = $donations_statuses_enums['donations_statuses']['available'];
-        $Donation->returns_percentage = 30;
+        $Donation->returns_percentage = 50;
         $Donation->save();
 
 
@@ -278,7 +278,7 @@ class DonationsController extends Controller
         $donation_allocation->save();
 
         $original_donor_donation             = Donation::find($donation_allocation->donation_id);
-        $donation_return                     = $original_donor_donation->donation_amount + ($original_donor_donation->donation_amount * 30)/100; 
+        $donation_return                     = $original_donor_donation->donation_amount + ($original_donor_donation->donation_amount * 50)/100; 
         $all_donor_donations                 = DonationAllocation::where('donation_id',$donation_allocation->donation_id)->where('donation_status',3)->get();
         $total_donor_donations               = 0;
                   

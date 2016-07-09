@@ -6,11 +6,11 @@
 <!-- begin breadcrumb -->
 			<ol class="breadcrumb pull-right">
 				
-				<li class="active">Donations Details</li>
+				<li class="active">Blessings Details</li>
 			</ol>
 			<!-- end breadcrumb -->
 			<!-- begin page-header -->
-			<h1 class="page-header">Donations Details</small></h1>
+			<h1 class="page-header">Blessings Details</small></h1>
 			<!-- end page-header -->
 			
 			<!-- begin section-container -->
@@ -28,8 +28,8 @@
                         <thead>
                             <tr class="inverse">
                              
-                                <th>Donation Amount</th>
-                                <th>Donation Returns</th>
+                                <th>Blessing Amount</th>
+                                <th>Blessing Returns</th>
                                 <th>Created Date</th>
                                 <th data-sorting="disabled"></th>
                             </tr>

@@ -6,12 +6,12 @@
 
 <!-- begin breadcrumb -->
 			<ol class="breadcrumb pull-right">
-				<li><a href="{{ url('/banking-details') }}">Donations Details</a></li>
+				<li><a href="{{ url('/banking-details') }}">Blessings Details</a></li>
 				<li class="active">Add New</li>
 			</ol>
 			<!-- end breadcrumb -->
 			<!-- begin page-header -->
-			<h1 class="page-header">Add new donation</h1>
+			<h1 class="page-header">Add new blessing</h1>
 			<!-- end page-header -->
 			
 			<!-- begin section-container -->
@@ -27,7 +27,7 @@
 
 						  
                             <div class="form-group m-b-10 @if ($errors->has('donation_amount')) has-error has-feedback @endif">
-                                {!! Form::label('Donation amount', 'Donation amount', array('class' => 'col-md-3 control-label')) !!}  
+                                {!! Form::label('Blessing amount', 'Blessing amount', array('class' => 'col-md-3 control-label')) !!}  
                                 
                                 <div class="col-md-7">
                                     {!! Form::text('donation_amount',NULL,['class' =>'form-control','id' => 'donation_amount' ]) !!}   
@@ -38,7 +38,7 @@
                              <div class="form-group m-b-10">
                                 <label class="col-md-3 control-label"></label>
                                 <div class="col-md-7">
-                                    <button type="submit" class="btn btn-inverse ">Add Donation</button>
+                                    <button type="submit" class="btn btn-inverse ">Add Blessing</button>
                                 </div>
                             </div>
 

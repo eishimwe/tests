@@ -216,15 +216,17 @@
                         </a>
                       
                     </li>
+                    @if (Auth::user()->user_registration_statuses_id == 3)
                      <li class="has-sub">
                         <a href="{{ url('donations-details') }}">
                             <b class="pull-right"></b>
                             <i class="fa fa-money"></i>
-                            <span>My Donations</span>
+                            <span>Create New Blessing</span>
                             <span class="badge pull-right">{{ $number_donations }}</span>
                         </a>
                       
                     </li>
+                    @endif
                
                     @if (Auth::user()->role_id == 1)
                         <li class="has-sub">
