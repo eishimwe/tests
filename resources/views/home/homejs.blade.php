@@ -24,6 +24,9 @@ var sponsorsUsersTable = function(user_id) {
             columns :[
 
 
+                {data: 'actions',  name: 'actions'},
+
+
                 {data : function(data){
 
                      if (data.paid == 0) {
@@ -40,7 +43,7 @@ var sponsorsUsersTable = function(user_id) {
                 }
                 },
 
-                 {data: 'actions',  name: 'actions'},
+                 
                 
                 {data: 'username', name: 'users.username'},
                

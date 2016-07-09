@@ -193,9 +193,8 @@
                                       <table id="sponsors-users-table" data-order='[[0,"asc"]]' class="table-responsive table table-bordered table-hover">
                                           <thead>
                                               <tr class="inverse">
-                                                  
-                                                  <th>Amount to pay</th>
                                                   <th data-sorting="disabled">Banking details</th>
+                                                  <th>Amount to pay</th>  
                                                   <th>Username</th>
                                                   <th>Primary Contact</th>
                                                 
