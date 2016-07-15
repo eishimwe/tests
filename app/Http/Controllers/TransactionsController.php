@@ -32,7 +32,7 @@ class TransactionsController extends Controller
 {
 
 
-
+    // API call done
     public function transactions_list()
     {
 
@@ -75,7 +75,7 @@ class TransactionsController extends Controller
 
     }
 
-
+    // API call done
     public function add_to_payout_queue($username,$reg) {
 
 
@@ -128,7 +128,7 @@ class TransactionsController extends Controller
 
 
     }
-
+    // API call done
     public function save_transaction_payout_amount(TransactionAmountRequest $request,Transaction $transaction) {
 
         $response                             = array();   
@@ -145,7 +145,7 @@ class TransactionsController extends Controller
 
 
     }
-
+    // API call done
     public function start_transaction() {
 
 
