@@ -291,7 +291,7 @@ class TransactionsController extends Controller
 
     }
 
-
+    // API call done
     public function gifts_list($user_id) {
 
         $donations_allocation_statuses_enums = \Config::get('donationallocationstatusesenums');
@@ -334,7 +334,7 @@ class TransactionsController extends Controller
 
 
     }
-
+    // API call done
     public function my_donations_list($user_id) {
 
 

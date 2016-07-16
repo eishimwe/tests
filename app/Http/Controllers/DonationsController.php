@@ -35,7 +35,7 @@ class DonationsController extends Controller
 
     }
 
-    
+    // API call done
      public function donations_list(){
 
         $user_id = \Auth::user()->id;
@@ -63,7 +63,7 @@ class DonationsController extends Controller
 
 
     }
-
+    // API call done
     public function all_donations(){
 
         $all_donations = \DB::table('donations')
@@ -96,13 +96,13 @@ class DonationsController extends Controller
 
     }
 
-
+    // API call done
     public function add_donation() {
 
     	return view('donations.add');
     }
 
-
+    // API call done, logic here duplicated in TransactionController
      public function save_donation(DonationRequest $request,Donation $Donation) {
 
         $donations_statuses_enums            = \Config::get('donationstatusesenums');
@@ -263,7 +263,7 @@ class DonationsController extends Controller
 
     }
 
-
+    // API call done
     public function confirm_donor_payment($donation_allocation_id) {
 
         $donations_allocation_enums          = \Config::get('donationallocationstatusesenums');
