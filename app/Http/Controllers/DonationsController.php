@@ -111,7 +111,7 @@ class DonationsController extends Controller
         $Donation->donation_amount    = $request['donation_amount'];
         $Donation->user_id            = \Auth::user()->id;
         $Donation->donation_status_id = $donations_statuses_enums['donations_statuses']['available'];
-        $Donation->returns_percentage = 50;
+        $Donation->returns_percentage = 75;
         $Donation->save();
 
 

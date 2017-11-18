@@ -25,7 +25,7 @@ class DonationRequest extends Request
     {
         return [
 
-            'donation_amount'   => 'required|integer|between:500,10000',
+            'donation_amount'   => 'required|integer|between:200,50000',
            
         ];
     }
