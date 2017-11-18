@@ -76,7 +76,7 @@ class AuthController extends Controller
         
 
         $enums = \Config::get('registrationstatusesenums');
-        $pending_user_status = $enums['users_registration_statuses']['pendingactivation'];
+        $pending_user_status = $enums['users_registration_statuses']['activated'];
 
         $user = new User();
         $user->first_name = $data['first_name'];

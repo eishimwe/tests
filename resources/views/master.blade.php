@@ -221,7 +221,7 @@
                         <a href="{{ url('donations-details') }}">
                             <b class="pull-right"></b>
                             <i class="fa fa-money"></i>
-                            <span>Create New Blessing</span>
+                            <span>Orders</span>
                             <span class="badge pull-right">{{ $number_donations }}</span>
                         </a>
                       

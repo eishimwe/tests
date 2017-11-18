@@ -129,11 +129,11 @@
         
         <li><a href="{{ url('/') }}" class="active">Home</a></li>
         
-        <li> <a href="#">Process</a></li>
+        <li> <a href="{{ url('/process') }}">Process</a></li>
        
-        <li> <a href="#">FAQs</a></li>
+        <li> <a href="{{ url('/faq') }}">FAQs</a></li>
         
-        <li> <a href="#">Contact</a></li>
+        <li> <a href="{{ url('/contact') }}">Contact</a></li>
         
         <li> <a href="{{ url('/register') }}">Register</a></li>
         

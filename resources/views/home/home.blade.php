@@ -23,7 +23,7 @@
             @elseif(Auth::user()->user_registration_statuses_id == 3)
              <div class="alert alert-success fade in m-b-10">
                 <strong>Congratulations!</strong>
-                Your account has been successfully activated,your personal referral identification is '<strong>{{ \Request::root() }}/sponsor/{{ \Auth::user()->username }}</strong>'
+                Your account has been successfully activated
                 <span class="close" data-dismiss="alert">&times;</span>
             </div>
     
@@ -54,7 +54,7 @@
                                      <div class="widget-stat-btn"><a href="javascript:;" data-click="widget-reload"><i class="fa fa-repeat"></i></a></div>
                                      <div class="widget-stat-icon"><i class="fa fa-user"></i></div>
                                      <div class="widget-stat-info">
-                                         <div class="widget-stat-title">My Sponsors</div>
+                                         <div class="widget-stat-title">Earnings</div>
                                          <div class="widget-stat-number"> <a href="#nav-pills-tab-1" data-toggle="tab">{{ $number_of_sponsors_users }} </a></div>
                                      </div>
                                      <div class="widget-stat-progress">
@@ -73,7 +73,7 @@
                                       <div class="widget-stat-btn"><a href="javascript:;" data-click="widget-reload"><i class="fa fa-repeat"></i></a></div>
                                       <div class="widget-stat-icon"><i class="fa fa-user"></i></div>
                                       <div class="widget-stat-info">
-                                          <div class="widget-stat-title">My Team</div>
+                                          <div class="widget-stat-title">Funds Paids</div>
                                           <div class="widget-stat-number"><a href="#nav-pills-tab-2" data-toggle="tab">{{ $number_of_sponsored_users }}</a></div>
                                       </div>
                                       <div class="widget-stat-progress">
@@ -93,7 +93,7 @@
                                       <div class="widget-stat-btn"><a href="javascript:;" data-click="widget-reload"><i class="fa fa-repeat"></i></a></div>
                                       <div class="widget-stat-icon"><i class="fa fa-money"></i></div>
                                       <div class="widget-stat-info">
-                                          <div class="widget-stat-title">My Blessings</div>
+                                          <div class="widget-stat-title">Funds Kept</div>
                                           <div class="widget-stat-number"><a href="#nav-pills-tab-4" data-toggle="tab">{{ $number_of_gifts }}</a></div>
                                       </div>
                                       <div class="widget-stat-progress">
@@ -114,7 +114,7 @@
                                       <div class="widget-stat-btn"><a href="javascript:;" data-click="widget-reload"><i class="fa fa-repeat"></i></a></div>
                                       <div class="widget-stat-icon"><i class="fa fa-money"></i></div>
                                       <div class="widget-stat-info">
-                                          <div class="widget-stat-title">My Blessees</div>
+                                          <div class="widget-stat-title">Balance</div>
                                           <div class="widget-stat-number"><a href="#nav-pills-tab-6" data-toggle="tab">{{ $number_of_my_donations }}</a></div>
                                       </div>
                                       <div class="widget-stat-progress">
@@ -185,7 +185,7 @@
                         <!-- begin tab-content -->
                         <div class="tab-content panel">
                             <div class="tab-pane fade active in" id="nav-pills-tab-1">
-                                <h4>My Sponsors</h4>
+                                <h4>Earnings</h4>
 
 
                                   <!-- begin panel -->
