@@ -6,12 +6,12 @@
 
 <!-- begin breadcrumb -->
 			<ol class="breadcrumb pull-right">
-				<li><a href="{{ url('/banking-details') }}">Order Details</a></li>
+				<li><a href="{{ url('/banking-details') }}">Order / Investment Details</a></li>
 				<li class="active">Add New</li>
 			</ol>
 			<!-- end breadcrumb -->
 			<!-- begin page-header -->
-			<h1 class="page-header">Add new order</h1>
+			<h1 class="page-header">Add new order / Investment</h1>
 			<!-- end page-header -->
 			
 			<!-- begin section-container -->
@@ -30,7 +30,8 @@
                                 {!! Form::label('Order amount', 'Order amount', array('class' => 'col-md-3 control-label')) !!}
                                 
                                 <div class="col-md-7">
-                                    {!! Form::text('donation_amount',NULL,['class' =>'form-control','id' => 'donation_amount' ]) !!}   
+                                    {!! Form::text('donation_amount',NULL,['class' =>'form-control','id' => 'donation_amount' ]) !!}
+                                    (R200 - R50 000)
                                 </div>
                             </div>
 

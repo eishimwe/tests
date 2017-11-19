@@ -6,11 +6,11 @@
 <!-- begin breadcrumb -->
 			<ol class="breadcrumb pull-right">
 				
-				<li class="active">Orders Details</li>
+				<li class="active">Orders / Investments Details</li>
 			</ol>
 			<!-- end breadcrumb -->
 			<!-- begin page-header -->
-			<h1 class="page-header">Orders Details</small></h1>
+			<h1 class="page-header">Orders / Investment Details </small> </h1>
 			<!-- end page-header -->
 			
 			<!-- begin section-container -->

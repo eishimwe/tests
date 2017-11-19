@@ -12,7 +12,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     
     <!-- ================== BEGIN BASE CSS STYLE ================== -->
-    <link href="http://fonts.googleapis.com/css?family=Nunito:400,300,700" rel="stylesheet" id="fontFamilySrc" />
+    <link href="{{ asset('/assets/css/fonts.css') }}" rel="stylesheet" />
 
     <link href="{{ asset('/assets/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('/assets/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
@@ -221,7 +221,7 @@
                         <a href="{{ url('donations-details') }}">
                             <b class="pull-right"></b>
                             <i class="fa fa-money"></i>
-                            <span>Orders</span>
+                            <span>Orders / Investments</span>
                             <span class="badge pull-right">{{ $number_donations }}</span>
                         </a>
                       

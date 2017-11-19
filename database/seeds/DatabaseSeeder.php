@@ -148,6 +148,13 @@ class DatabaseSeeder extends Seeder {
         DonationAllocationStatus::create(['id' => '3','description' => 'complete']);
 
 
+        DB::table('donations')->delete();
+        DB::table('donations_allocation')->delete();
+        DB::table('transactions')->delete();
+        DB::table('users_transactions')->delete();
+        DB::table('users_registrations')->delete();
+
+
 
     }
 
