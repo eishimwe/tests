@@ -107,10 +107,10 @@ class DonationsController extends Controller
 
         $donations_statuses_enums            = \Config::get('donationstatusesenums');
 
-
         $Donation->donation_amount    = $request['donation_amount'];
         $Donation->user_id            = \Auth::user()->id;
         $Donation->donation_status_id = $donations_statuses_enums['donations_statuses']['available'];
+        $Donation->month              = $request['month'];
         $Donation->returns_percentage = 75;
         $Donation->save();
 
@@ -256,7 +256,7 @@ class DonationsController extends Controller
 
 
 
-        \Session::flash('success','Donation added');
+        \Session::flash('success','Order added');
         return redirect('donations-details');
 
 

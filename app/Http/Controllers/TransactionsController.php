@@ -85,6 +85,7 @@ class TransactionsController extends Controller
         $transaction_type = TransactionType::where('description','Pending Payout')->first();
         $transaction      = new Transaction();
 
+
         $transaction->transaction_type_id = $transaction_type->id;
         $transaction->save();
 

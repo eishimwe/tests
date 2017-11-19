@@ -33,9 +33,23 @@
                                     {!! Form::text('donation_amount',NULL,['class' =>'form-control','id' => 'donation_amount' ]) !!}   
                                 </div>
                             </div>
-                         
 
-                             <div class="form-group m-b-10">
+                            <div  class="form-group m-b-10">
+
+                                {!! Form::label('Month(s)', 'Month(s)', array('class' => 'col-md-3 control-label')) !!}
+
+                                <div class="col-md-7">
+
+                                    {!! Form::select('month',['1' => '1','2' => '2','3' => '3' ],1,['class' => 'form-control' ,'id' => 'month']) !!}
+
+
+                                </div>
+
+                            </div>
+
+
+
+                        <div class="form-group m-b-10">
                                 <label class="col-md-3 control-label"></label>
                                 <div class="col-md-7">
                                     <button type="submit" class="btn btn-inverse ">Add Order</button>

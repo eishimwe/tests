@@ -8,6 +8,9 @@ use App\User;
 use App\BankType;
 use App\SponsorType;
 use App\Contact;
+use App\DonationStatus;
+use App\TransactionType;
+use App\DonationAllocationStatus;
 
 
 
@@ -124,8 +127,25 @@ class DatabaseSeeder extends Seeder {
         Contact::create(['id' => '2','primary_contact' => '0829699114','user_id' =>'2']);
         Contact::create(['id' => '3','primary_contact' => '0827871674','user_id' =>'3']);
         Contact::create(['id' => '4','primary_contact' => '0793993378','user_id' =>'4']);
-       
 
+
+        DB::table('donations_statuses')->delete();
+        DonationStatus::create(['id' => '1','description' => 'available']);
+        DonationStatus::create(['id' => '2','description' => 'complete']);
+
+
+        DB::table('transactions_types')->delete();
+        TransactionType::create(['id' => '1','description' => 'Pending Payout']);
+        TransactionType::create(['id' => '2','description' => 'Pending Donor Allocation']);
+        TransactionType::create(['id' => '3','description' => 'Pending Payout Confirmation']);
+        TransactionType::create(['id' => '4','description' => 'Pending Payment Confirmation']);
+        TransactionType::create(['id' => '5','description' => 'Payment Confirmed']);
+
+
+        DB::table('donations_allocation_statuses')->delete();
+        DonationAllocationStatus::create(['id' => '1','description' => 'allocated']);
+        DonationAllocationStatus::create(['id' => '2','description' => 'cancelled']);
+        DonationAllocationStatus::create(['id' => '3','description' => 'complete']);
 
 
 
