@@ -54,7 +54,7 @@
                                      <div class="widget-stat-btn"><a href="javascript:;" data-click="widget-reload"><i class="fa fa-repeat"></i></a></div>
                                      <div class="widget-stat-icon"><i class="fa fa-user"></i></div>
                                      <div class="widget-stat-info">
-                                         <div class="widget-stat-title">Funds Paids</div>
+                                         <div class="widget-stat-title">My Earnings</div>
                                          <div class="widget-stat-number"> <a href="#nav-pills-tab-1" data-toggle="tab">{{ $number_of_sponsors_users }} </a></div>
                                      </div>
                                      <div class="widget-stat-progress">
@@ -93,7 +93,7 @@
                                       <div class="widget-stat-btn"><a href="javascript:;" data-click="widget-reload"><i class="fa fa-repeat"></i></a></div>
                                       <div class="widget-stat-icon"><i class="fa fa-money"></i></div>
                                       <div class="widget-stat-info">
-                                          <div class="widget-stat-title">Funds Kept</div>
+                                          <div class="widget-stat-title">My Earnings</div>
                                           <div class="widget-stat-number"><a href="#nav-pills-tab-4" data-toggle="tab">{{ $number_of_gifts }}</a></div>
                                       </div>
                                       <div class="widget-stat-progress">
@@ -265,7 +265,7 @@
                             @endif
 
                              <div class="tab-pane fade" id="nav-pills-tab-4">
-                                <h4>My Gifts</h4>
+                                <h4>My Earnings</h4>
 
                                  <!-- begin panel -->
                                   <div class="panel pagination-inverse m-b-0 clearfix">

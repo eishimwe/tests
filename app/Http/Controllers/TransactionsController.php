@@ -76,7 +76,7 @@ class TransactionsController extends Controller
     }
 
     // API call done
-    public function add_to_payout_queue($username,$reg) {
+    public function add_to_payout_queue($username) {
 
 
 

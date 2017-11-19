@@ -58,13 +58,8 @@ class SponsorsController extends Controller
     {
 
     
-        $sponsored_users = \DB::table('users_registrations')
-                            ->join('contacts','contacts.user_id','=','users_registrations.sponsored_user_id')
-                            ->join('sponsor_types','sponsor_types.id','=','users_registrations.sponsor_type_id')  
-                            ->join('users','users.id','=','users_registrations.sponsored_user_id')
-                            ->join('user_registration_statuses','user_registration_statuses.id','=','users.user_registration_statuses_id')
-                            ->where('users_registrations.sponsor_user_id','=',$user_id)
-                          
+        $sponsored_users = \DB::table('users')
+                            ->join('contacts','contacts.user_id','=','users.id')
                             ->select(
                                 \DB::raw(
                                     "
@@ -76,28 +71,19 @@ class SponsorsController extends Controller
                                     `users`.email,
                                     `users`.role_id,
                                     `users`.referred_by_id,
-                                    `contacts`.`primary_contact`,
-                                    `users_registrations`.`amount_due`,
-                                    `users_registrations`.`paid`,
-                                    `users_registrations`.`id` as 'reg',
-                                    `user_registration_statuses`.`description`,
-                                    `sponsor_types`.`description` as sponsor_type
-                                    
-                                     
+                                    `contacts`.`primary_contact`
+                                
+                                         
                                     "
 
                             )
                             );
         return Datatables::of($sponsored_users)
                             ->addColumn('actions','
-                                                  @if($description == "Pending activation" && $paid == 0)
-                                                    <a href="confirm-registration-fees/{{ $username }}/{{ $reg }}" class="btn btn-xs btn-success active">
-                                                        Confirm 
-                                                    </a>
-                                                  @endif
-                                                  @if($description == "Activation Complete" && (\Auth::user()->role_id == 1 || \Auth::user()->role_id == 2))
+                                                
+                                                  @if(\Auth::user()->role_id == 1 || \Auth::user()->role_id == 2)
 
-                                                    <a href="add-to-payout-queue/{{ $username }}/{{ $reg }}" class="btn btn-success m-r-5 m-b-5 active">
+                                                    <a href="add-to-payout-queue/{{ $username }}" class="btn btn-success m-r-5 m-b-5 active">
                                                         Add to Payout
                                                     </a>
                                                   @endif
