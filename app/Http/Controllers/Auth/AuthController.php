@@ -118,7 +118,7 @@ class AuthController extends Controller
             $contact->save();
 
 
-            if (isset($data['sponsor_username'])) {
+   /*         if (isset($data['sponsor_username'])) {
 
                 
                 $secondary_sponsor    = User::find($primary_sponsor->referred_by_id);
@@ -187,7 +187,7 @@ class AuthController extends Controller
                 $user_registration->amount_due        = '100';
                 $user_registration->save();
 
-            }
+            }*/
 
             
 

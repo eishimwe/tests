@@ -187,7 +187,6 @@
                             <div class="tab-pane fade active in" id="nav-pills-tab-1">
                                 <h4>Funds Paids</h4>
 
-
                                   <!-- begin panel -->
                                   <div class="panel pagination-inverse m-b-0 clearfix">
                                       <table id="sponsors-users-table" data-order='[[0,"asc"]]' class="table-responsive table table-bordered table-hover">
