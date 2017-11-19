@@ -44,75 +44,25 @@ class DatabaseSeeder extends Seeder {
         					'username' 						=> 'admin',
         					'first_name' 					=> 'admin',
         					'last_name'						=> 'admin',
-        					'email'							=> 'admin@randgodz.co.za',
+        					'email'							=> 'admin@admin.co.za',
         					'id_number'     				=> '1000000000000',
         					'password'      				=> bcrypt('Billionnaire'),
         					'created_by'					=> '-1',
         					'user_registration_statuses_id' => '3',
         					'referred_by_id'				=> '1',
         					'sponsor_type_id'               => '1',
-        					'role_id'						=> '2'
-
-
-        				]);
-
-
-        User::create(
-        				[
-        					'id' 							=> '2',
-        					'username' 						=> 'Angelo',
-        					'first_name' 					=> 'Elie',
-        					'last_name'						=> 'Ishimwe',
-        					'email'							=> 'elieish@gmail.com',
-        					'id_number'     				=> '8000000000000',
-        					'password'      				=> bcrypt('Billionnaire'),
-        					'created_by'					=> '-1',
-        					'user_registration_statuses_id' => '3',
-        					'referred_by_id'				=> '1',
-        					'sponsor_type_id'               => '1',
         					'role_id'						=> '1'
 
 
         				]);
 
 
-        User::create(
-        				[
-        					'id' 							=> '3',
-        					'username' 						=> 'Mpha',
-        					'first_name' 					=> 'Mpha',
-        					'last_name'						=> 'Kheswa',
-        					'email'							=> 'mphakheswa@gmail.com',
-        					'id_number'     				=> '8000000000000',
-        					'password'      				=> bcrypt('Billionnaire'),
-        					'created_by'					=> '-1',
-        					'user_registration_statuses_id' => '3',
-        					'referred_by_id'				=> '1',
-        					'sponsor_type_id'               => '1',
-        					'role_id'						=> '1'
 
 
-        				]);
 
 
-         User::create(
-        				[
-        					'id' 							=> '4',
-        					'username' 						=> 'Sihle',
-        					'first_name' 					=> 'Sihle',
-        					'last_name'						=> 'Ndaba',
-        					'email'							=> 'sihlendaba53@gmail.com',
-        					'id_number'     				=> '8000000000000',
-        					'password'      				=> bcrypt('Billionnaire'),
-        					'created_by'					=> '-1',
-        					'user_registration_statuses_id' => '3',
-        					'referred_by_id'				=> '1',
-        					'sponsor_type_id'               => '1',
-        					'role_id'						=> '1'
 
 
-        				]);
-       
 
         DB::table('bank_types')->delete();
         BankType::create(['id' => '1','description' => 'FNB']);

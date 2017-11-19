@@ -237,7 +237,7 @@
                             @if(\Auth::user()->role_id == 1 || \Auth::user()->role_id == 2)
 
                             <div class="tab-pane fade" id="nav-pills-tab-3">
-                                @if(\Auth::user()->role_id == 1)<a href="start-transaction" class="btn btn-success btn-block">Start Transaction</a>@endif
+                                @if(\Auth::user()->role_id == 1 || \Auth::user()->role_id == 2)<a href="start-transaction" class="btn btn-success btn-block">Start Transaction</a>@endif
                                 <h4>Transactions</h4>
 
                                  <!-- begin panel -->
