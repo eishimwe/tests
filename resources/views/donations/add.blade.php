@@ -65,6 +65,41 @@
                   
                 </div>
                 <!-- end row -->
+                <div class="row">
+
+                    <table class="table table-sm">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Month</th>
+                            <th>Return Percentage</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row"></th>
+                            <td>1</td>
+                            <td>50%</td>
+
+                        </tr>
+                        <tr>
+                            <th scope="row"></th>
+                            <td>2</td>
+                            <td>75%</td>
+
+                        </tr>
+                        <tr>
+                            <th scope="row"></th>
+                            <td>3</td>
+                            <td>80%</td>
+
+                        </tr>
+                        </tbody>
+                    </table>
+
+
+                </div>
 			</div>
 			<!-- end section-container -->
 

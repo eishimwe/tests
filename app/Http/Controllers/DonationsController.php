@@ -123,7 +123,6 @@ class DonationsController extends Controller
              $return_percentage = $percentage[$request['month']];
          }
 
-
         $donations_statuses_enums     = \Config::get('donationstatusesenums');
         $Donation->donation_amount    = $request['donation_amount'];
         $Donation->user_id            = \Auth::user()->id;
@@ -131,7 +130,6 @@ class DonationsController extends Controller
         $Donation->month              = $request['month'];
         $Donation->returns_percentage = $return_percentage;
         $Donation->save();
-
 
          $today_date                          = \Carbon\Carbon::now('Africa/Johannesburg')->toDateString();
          $donations_allocation_statuses_enums = \Config::get('donationallocationstatusesenums');
