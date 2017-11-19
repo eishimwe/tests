@@ -105,13 +105,31 @@ class DonationsController extends Controller
     // API call done, logic here duplicated in TransactionController
      public function save_donation(DonationRequest $request,Donation $Donation) {
 
-        $donations_statuses_enums            = \Config::get('donationstatusesenums');
 
+        $percentage = [
+
+           '1'   => 50,
+
+            '2'  => 75,
+
+            '3'  => 80,
+
+            '4'  => 100
+
+        ];
+
+         if (array_key_exists($request['month'], $percentage)) {
+
+             $return_percentage = $percentage[$request['month']];
+         }
+
+
+        $donations_statuses_enums     = \Config::get('donationstatusesenums');
         $Donation->donation_amount    = $request['donation_amount'];
         $Donation->user_id            = \Auth::user()->id;
         $Donation->donation_status_id = $donations_statuses_enums['donations_statuses']['available'];
         $Donation->month              = $request['month'];
-        $Donation->returns_percentage = 75;
+        $Donation->returns_percentage = $return_percentage;
         $Donation->save();
 
 
