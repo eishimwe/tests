@@ -301,7 +301,6 @@ class TransactionsController extends Controller
                                         ->join('users','users.id','=','donations_allocation.donor_id')
                                         ->join('contacts','contacts.user_id','=','donations_allocation.donor_id')      
                                         ->where('donations_allocation.receiver_id','=',$user_id)
-                                        ->where('donations_allocation.donation_status','<>',3)
                                         ->select(
                                                 \DB::raw(
                                                     "
