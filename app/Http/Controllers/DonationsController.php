@@ -57,7 +57,7 @@ class DonationsController extends Controller
 					);
 
         return Datatables::of($donations_list)
-                            ->addColumn('actions','<a href="delete_bank/{{$id}}" class="btn btn-xs btn-alt"></a>')
+                            ->addColumn('actions','<a href="delete_bank/{{$id}}" class="btn btn-xs btn-primary"> Instant Withdraw</a>')
                             ->make(true);
 
 
