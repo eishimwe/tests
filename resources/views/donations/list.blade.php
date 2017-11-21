@@ -41,7 +41,48 @@
 			</div>
 <!-- end section-container -->
 
+<div class="modal fade modalInstantPayment" id="modalInstantPayment">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Add Withdrawal Amount</h4>
+            </div>
+            <div class="modal-body">
 
+                {!! Form::open(['url'=>'add_instant_payment','method'=>'post','class'=>'form-horizontal','id' => 'add_instant_payment_form']) !!}
+
+                {!! Form::hidden('donationID',NULL,['id' => 'donationID']) !!}
+
+                <div class="form-group m-b-10 @if ($errors->has('payout_amount')) has-error has-feedback @endif">
+                    {!! Form::label('Withdrawal Amount', 'Withdrawal Amount', array('class' => 'col-md-3 control-label')) !!}
+
+                    <div class="col-md-7">
+                        {!! Form::text('withdrawal_amount',NULL,['class' =>'form-control','id' => 'withdrawal_amount' ]) !!}
+                    </div>
+                </div>
+
+                <div class="form-group m-b-10">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-7">
+                        <a id="submit_instant_payout_amount" class="btn btn-inverse">Request</a>
+                    </div>
+                </div>
+
+
+
+                {!! Form::close() !!}
+
+
+
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:;" class="btn width-100 btn-default" data-dismiss="modal">Close</a>
+
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
 
 @section('custom_stript')
@@ -99,6 +140,60 @@ var PageDemo = function () {
 		}
   };
 }();
+
+
+function launchInstantPayment(donation_id){
+
+      $("#add_instant_payment_form #donationID").val(donation_id);
+     $(".modalInstantPayment").modal('show');
+
+}
+
+$("#submit_instant_payout_amount").on("click",function(){
+
+
+
+    var myForm   = $("#add_instant_payment_form")[0];
+    var formData = new FormData(myForm);
+    var token    = $('input[name="_token"]').val();
+
+
+    $.ajax({
+        type    :"POST",
+        data    : formData,
+        contentType: false,
+        processData: false,
+        headers : { 'X-CSRF-Token': token },
+        url     :"{!! url('/save_transaction_payout_amount')!!}",
+        beforeSend : function() {
+
+
+        },
+        success : function(data){
+
+            //if (data) {
+                //$('#modalAmount').modal('toggle');
+                //$('#transaction_amount_form')[0].reset();
+                //location.reload();
+
+            //}
+
+
+        },
+        error: function(data){
+
+
+
+
+            alert("Wrong Amount entered");
+
+
+        }
+
+    })
+
+});
+
 
 </script>
 
