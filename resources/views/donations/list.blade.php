@@ -54,6 +54,8 @@
 
                 {!! Form::hidden('donationID',NULL,['id' => 'donationID']) !!}
 
+                {!! Form::hidden('donationAmount',NULL,['id' => 'donationAmount']) !!}
+
                 <div class="form-group m-b-10 @if ($errors->has('payout_amount')) has-error has-feedback @endif">
                     {!! Form::label('Withdrawal Amount', 'Withdrawal Amount', array('class' => 'col-md-3 control-label')) !!}
 
@@ -142,9 +144,10 @@ var PageDemo = function () {
 }();
 
 
-function launchInstantPayment(donation_id){
+function launchInstantPayment(donation_id,$donation_amount){
 
       $("#add_instant_payment_form #donationID").val(donation_id);
+      $("#add_instant_payment_form #donationAmount").val($donation_amount);
      $(".modalInstantPayment").modal('show');
 
 }
@@ -164,7 +167,7 @@ $("#submit_instant_payout_amount").on("click",function(){
         contentType: false,
         processData: false,
         headers : { 'X-CSRF-Token': token },
-        url     :"{!! url('/save_transaction_payout_amount')!!}",
+        url     :"{!! url('/add_instant_payment_amount')!!}",
         beforeSend : function() {
 
 

@@ -370,4 +370,14 @@ class TransactionsController extends Controller
 
     }
 
+    public function add_instant_payment_amount(Request $request){
+
+
+
+    }
+
+
+
+
+
 }
