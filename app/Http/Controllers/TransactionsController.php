@@ -19,6 +19,7 @@ use App\User;
 use App\TransactionPayout;
 
 use App\Http\Requests\TransactionAmountRequest;
+use App\Http\Requests\InstantPaymentRequest;
 
 use App\Donation;
 
@@ -370,9 +371,27 @@ class TransactionsController extends Controller
 
     }
 
-    public function add_instant_payment_amount(Request $request){
+    public function add_instant_payment_amount(InstantPaymentRequest $request){
 
 
+
+        $transaction_type = TransactionType::where('description','Pending Payout')->first();
+        $transaction      = new Transaction();
+        $transaction->transaction_type_id = $transaction_type->id;
+        $transaction->transaction_amount = $request->withdrawal_amount;
+        $transaction->save();
+
+
+        $user_transaction                 = new UserTransaction();
+        $user_transaction->user_id        = $request->userID;
+        $user_transaction->transaction_id = $transaction->id;
+        $user_transaction->created_by     = \Auth::user()->id;
+        $user_transaction->save();
+
+
+        print($request->donationAmount);
+
+      die();
 
     }
 

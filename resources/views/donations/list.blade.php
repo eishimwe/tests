@@ -55,6 +55,7 @@
                 {!! Form::hidden('donationID',NULL,['id' => 'donationID']) !!}
 
                 {!! Form::hidden('donationAmount',NULL,['id' => 'donationAmount']) !!}
+                {!! Form::hidden('userID',NULL,['id' => 'userID']) !!}
 
                 <div class="form-group m-b-10 @if ($errors->has('payout_amount')) has-error has-feedback @endif">
                     {!! Form::label('Withdrawal Amount', 'Withdrawal Amount', array('class' => 'col-md-3 control-label')) !!}
@@ -144,12 +145,14 @@ var PageDemo = function () {
 }();
 
 
-function launchInstantPayment(donation_id,$donation_amount){
+function launchInstantPayment(donation_id,donation_amount,donation_percentage,user_id){
 
-      $("#add_instant_payment_form #donationID").val(donation_id);
-      $("#add_instant_payment_form #donationAmount").val($donation_amount);
+    var amount =   (donation_amount * (donation_percentage / 100)) + donation_amount;
+
+    $("#add_instant_payment_form #donationID").val(donation_id);
+    $("#add_instant_payment_form #userID").val(user_id);
+      $("#add_instant_payment_form #donationAmount").val(amount/2);
      $(".modalInstantPayment").modal('show');
-
 }
 
 $("#submit_instant_payout_amount").on("click",function(){
@@ -174,6 +177,8 @@ $("#submit_instant_payout_amount").on("click",function(){
         },
         success : function(data){
 
+
+
             //if (data) {
                 //$('#modalAmount').modal('toggle');
                 //$('#transaction_amount_form')[0].reset();
@@ -186,9 +191,7 @@ $("#submit_instant_payout_amount").on("click",function(){
         error: function(data){
 
 
-
-
-            alert("Wrong Amount entered");
+            alert(data.responseText);
 
 
         }
