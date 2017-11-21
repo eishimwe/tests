@@ -387,10 +387,13 @@ class TransactionsController extends Controller
         $user_transaction->created_by     = \Auth::user()->id;
         $user_transaction->save();
 
+        $response["message"]                  = "Transaction Payout Amount Added!";
+        $response["error"]                    = FALSE;
 
-        print($request->donationAmount);
 
-      die();
+        return \Response::json($response,201);
+
+
 
     }
 

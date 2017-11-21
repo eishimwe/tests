@@ -178,13 +178,13 @@ $("#submit_instant_payout_amount").on("click",function(){
         success : function(data){
 
 
+            if (!data.error) {
 
-            //if (data) {
-                //$('#modalAmount').modal('toggle');
-                //$('#transaction_amount_form')[0].reset();
-                //location.reload();
+                $('#modalInstantPayment').modal('toggle');
+                $('#add_instant_payment_form')[0].reset();
+                location.reload();
 
-            //}
+            }
 
 
         },

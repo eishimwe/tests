@@ -51,7 +51,9 @@ class DonationsController extends Controller
 							 `donations`.returns_percentage,
 							 `donations`.created_at,
                              `donations`.is_valid,
-                             `donations`.user_id
+                             `donations`.user_id,
+                             `donations`.donation_status_id
+                             
 							
 							"
 							)
@@ -60,7 +62,11 @@ class DonationsController extends Controller
         return Datatables::of($donations_list)
                             ->addColumn('actions','
 
+                                                @if($donation_status_id == 2)
+
                                                 <a class="btn btn-xs btn-block btn-success" onClick="launchInstantPayment({{$id }},{{ $donation_amount }},{{ $returns_percentage}},{{ $user_id}})" > Instant Withdraw</a>
+                                                
+                                                @endif
                                                 
                                                 ')
                             ->make(true);
