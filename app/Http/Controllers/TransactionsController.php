@@ -373,12 +373,11 @@ class TransactionsController extends Controller
 
     public function add_instant_payment_amount(InstantPaymentRequest $request){
 
-
-
         $transaction_type = TransactionType::where('description','Pending Payout')->first();
         $transaction      = new Transaction();
         $transaction->transaction_type_id = $transaction_type->id;
         $transaction->transaction_amount = $request->withdrawal_amount;
+        $transaction->transaction_payout_date = date('Y-m-d H:i:s', strtotime("+2 days"));
         $transaction->save();
 
 
