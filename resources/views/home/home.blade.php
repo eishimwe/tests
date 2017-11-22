@@ -73,7 +73,7 @@
                                       <div class="widget-stat-btn"><a href="javascript:;" data-click="widget-reload"><i class="fa fa-repeat"></i></a></div>
                                       <div class="widget-stat-icon"><i class="fa fa-user"></i></div>
                                       <div class="widget-stat-info">
-                                          <div class="widget-stat-title">N/A2</div>
+                                          <div class="widget-stat-title">Team</div>
                                           <div class="widget-stat-number"><a href="#nav-pills-tab-2" data-toggle="tab">{{ $number_of_sponsored_users }}</a></div>
                                       </div>
                                       <div class="widget-stat-progress">
