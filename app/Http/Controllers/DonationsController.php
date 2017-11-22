@@ -64,7 +64,7 @@ class DonationsController extends Controller
 
                                                 @if($donation_status_id == 2)
 
-                                                <a class="btn btn-xs btn-block btn-success" onClick="launchInstantPayment({{$id }},{{ $donation_amount }},{{ $returns_percentage}},{{ $user_id}})" > Instant Withdraw</a>
+                                                    <a class="btn btn-xs btn-block btn-success" onClick="launchInstantPayment({{$id }},{{ $donation_amount }},{{ $returns_percentage}},{{ $user_id}})" > Instant Withdraw</a>
                                                 
                                                 @endif
                                                 

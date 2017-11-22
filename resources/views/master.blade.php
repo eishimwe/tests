@@ -5,10 +5,10 @@
 <!--<![endif]-->
 <head>
     <meta charset="utf-8" />
-    <title>Rand Godz</title>
+    <title>Social Life Style</title>
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
     <meta content="" name="description" />
-    <meta content="" name="Rand Godz" />
+    <meta content="" name="Social Life Style" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     
     <!-- ================== BEGIN BASE CSS STYLE ================== -->
@@ -50,7 +50,7 @@
             <div class="container-fluid">
                 <!-- begin mobile sidebar expand / collapse button -->
                 <div class="navbar-header">
-                    <a href="index.html" class="navbar-brand" > Rand Godz</a>
+                    <a href="index.html" class="navbar-brand" > Social Life Style</a>
                     <button type="button" class="navbar-toggle" data-click="sidebar-toggled">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -194,7 +194,7 @@
                                     <li><a href="{{ url('/logout') }}">Log Out</a></li>
                                 </ul>
                             </div>
-                            <div class="position">Rand Godz</div>
+                            <div class="position">Social Life Style</div>
                         </div>
                     </li>
                     <li class="nav-header">Navigation</li>
@@ -272,7 +272,7 @@
                         <i class="fa fa-arrow-up"></i> <span class="hidden-xs">Back to Top</span>
                     </a>
                 </span>
-                &copy; 2016 <b>Rand Godz</b> All Right Reserved
+                &copy; 2016 <b>Social Life Style</b> All Right Reserved
             </div>
             <!-- end #footer -->
         </div>

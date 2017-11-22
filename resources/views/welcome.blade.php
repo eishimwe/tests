@@ -5,7 +5,7 @@
 <!--[if (gt IE 9)|!(IE)]><!--> <html lang="en-gb" class="no-js"> <!--<![endif]-->
 
 <head>
-    <title>Rand Godz</title>
+    <title>Social Life Style</title>
     
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -98,7 +98,7 @@
     <div class="right_links">
         
         <ul>
-            <li class="link"><a href="mailto:admin@randgodz.co.za"><i class="fa fa-envelope"></i> admin@randgodz.co.za</a></li>
+            <li class="link"><a href="mailto:"><i class="fa fa-phone"></i></a>+27 71 033 8252</li>
             <li class="link"><a href="{{ url('/register') }}"><i class="fa fa-edit"></i> Register</a></li>
             <li class="link"><a href="{{ url('/login') }}"><i class="fa fa-edit"></i> Login</a></li>
         </ul>
@@ -128,13 +128,7 @@
         <ul class="nav navbar-nav">
         
         <li><a href="{{ url('/') }}" class="active">Home</a></li>
-        
-        <li> <a href="{{ url('/process') }}">Process</a></li>
-       
-        <li> <a href="{{ url('/faq') }}">FAQs</a></li>
-        
-        <li> <a href="{{ url('/contact') }}">Contact</a></li>
-        
+
         <li> <a href="{{ url('/register') }}">Register</a></li>
         
         <li> <a href="{{ url('/login') }}">Login</a></li>
@@ -170,89 +164,13 @@
     
     <div class="master-slider ms-skin-default" id="masterslider">
     
-    <!-- slide sokuqala  -->
-    <div class="ms-slide slide-2" data-delay="8">
-         
-        <!-- slide background -->
-        <img src="{{ asset('/assets/images/sliders/image3.jpg') }}" data-src="{{ asset('/assets/images/sliders/image3.jpg') }}" alt="Rand Godz"/>     
-        
 
-        <h1 class="ms-layer stext4"
-            style="left: 130px; top: 335px;"
-            data-type="text"
-            data-duration="900"
-            data-delay="800"
-            data-ease="easeOutExpo"
-            data-effect="bottom(40)"
-        >
-            Freedom is a<br /> 
-            <strong>State of <em>Mind</em></strong>
-        </h1>
-        
-        <h4 class="ms-layer stext5"
-            style="left: 130px; top: 470px;"
-            data-type="text"
-            data-duration="900"
-            data-delay="1500"
-            data-ease="easeOutExpo"
-            data-effect="bottom(40)"
-        >
-            Take a leap into your financial freedom.
-        </h4>
-        
-        <div class="ms-layer"
-            style="left: 130px; top: 550px;"
-            data-type="text"
-            data-delay="2500"
-            data-ease="easeOutExpo"
-            data-duration="900"
-            data-effect="scale(1.5,1.6)"
-        >
-            <a href="{{ url('/register') }}" class="sbutton1">Become a Rand God Now!</a>
-        </div>
-        
-    </div>
-    <!-- end of slide sokuqala -->
-
-    <!-- slide sesibili  -->
-    <div class="ms-slide slide-2" data-delay="8">
-         
-        <!-- slide background -->
-        <img src="{{ asset('/assets/images/sliders/image1.jpg') }}" data-src="{{ asset('/assets/images/sliders/image1.jpg') }}" alt="Rand Godz"/>     
-        
-
-        <h1 class="ms-layer stext1"
-            style="left: 130px; top: 335px;"
-            data-type="text"
-            data-duration="900"
-            data-delay="800"
-            data-ease="easeOutExpo"
-            data-effect="bottom(40)"
-        >
-            
-            <strong>From Scarcity to <br><em>Abundance</em></strong>
-        </h1>
-        
-        
-        <div class="ms-layer"
-            style="left: 130px; top: 550px;"
-            data-type="text"
-            data-delay="2500"
-            data-ease="easeOutExpo"
-            data-duration="900"
-            data-effect="scale(1.5,1.6)"
-        >
-            <a href="#" class="sbutton1">Get Started Today!</a>
-        </div>
-        
-    </div>
-    <!-- end of slide sesibili -->    
 
     <!-- slide sesithathu  -->
     <div class="ms-slide slide-2" data-delay="8">
          
         <!-- slide background -->
-        <img src="{{ asset('/assets/images/sliders/image2.jpg') }}" data-src="{{ asset('/assets/images/sliders/image2.jpg') }}" alt="Rand Godz"/>     
+        <img src="{{ asset('/assets/images/sliders/image2.jpg') }}" data-src="{{ asset('/assets/images/sliders/image2.jpg') }}" alt="Social Life Style"/>
 
         
         <div class="ms-layer"
@@ -290,10 +208,10 @@
                     
                     <div class="one_half">
                         <br />
-                        <h1 class="whitecaps">Join The <em>Rand Godz</em> <br /> <strong>Community</strong></h1>
-                        <p class="white">Become a Rand God by making donations to other members of the Rand Godz community. The minimum amount allowed for donations is R500.00. This donation is offered to other members of the Rand community who need the financial injection.<br><br>
+                        <h1 class="whitecaps">Join The <em>Social Life Style</em> <br /> <strong>Community</strong></h1>
+                        <p class="white"><br><br>
 
-                            One you have donated to a member, you will get an incentive of 50% in at least 30 days.</p>
+                            </p>
                         <br /><br />
                         <a href="{{ url('/register') }}" class="readmore_but10">Register Now!</a> 
                         <a href="{{ url('/login') }}" class="readmore_but10">Login</a>
@@ -321,7 +239,7 @@
                     
                     <div class="one_half">
                         <br />
-                        <h1 class="whitecaps">More about the <br /> <strong>Rand Godz</strong></h1>
+                        <h1 class="whitecaps">More about the <br /> <strong>Social Life Style</strong></h1>
                         <br /><br />
                         <a href="{{ url('/register') }}" class="readmore_but10">Get Started</a> <a href="{{ url('/login') }}" class="readmore_but10">Login!</a>
                     </div>
@@ -345,7 +263,7 @@
     
     <div class="one_half">
     
-        Copyright © 2016 Rand Godz. All rights reserved.  <a href="#">Terms and Conditions of use</a>
+        Copyright © 2016 Social Life Style. All rights reserved.  <a href="#">Terms and Conditions of use</a>
                    
     </div>
     
